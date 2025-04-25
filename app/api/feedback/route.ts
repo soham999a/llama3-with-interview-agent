@@ -83,7 +83,11 @@ export async function POST(request: Request) {
       };
 
       const docRef = await db.collection("feedback").add(feedbackData);
-      feedbackId = docRef.id;
+      const newFeedbackId = docRef.id;
+      return Response.json(
+        { success: true, feedbackId: newFeedbackId, feedback: validatedFeedback },
+        { status: 200 }
+      );
     }
 
     return Response.json(
