@@ -2,7 +2,8 @@ import { db } from "@/firebase/admin";
 import { replicateAdapter } from "@/lib/replicate-integration";
 
 export async function POST(request: Request) {
-  const { interviewId, userId, transcript, feedbackId } = await request.json();
+  const requestData = await request.json();
+  const { interviewId, userId, transcript, feedbackId } = requestData;
 
   try {
     // Format the transcript for the prompt
@@ -66,30 +67,32 @@ export async function POST(request: Request) {
       summary: "Overall, the candidate performed well in the interview."
     };
 
-    let responseId = feedbackId;
-
-    // Store the feedback in Firestore
+    // Handle existing feedback
     if (feedbackId) {
-      // Update existing feedback
       await db.collection("feedback").doc(feedbackId).update({
         feedback: validatedFeedback,
         updatedAt: new Date().toISOString(),
       });
-    } else {
-      // Create new feedback
-      const feedbackData = {
-        interviewId,
-        userId,
-        feedback: validatedFeedback,
-        createdAt: new Date().toISOString(),
-      };
+      
+      return Response.json(
+        { success: true, feedbackId: feedbackId, feedback: validatedFeedback },
+        { status: 200 }
+      );
+    } 
+    
+    // Handle new feedback
+    const feedbackData = {
+      interviewId,
+      userId,
+      feedback: validatedFeedback,
+      createdAt: new Date().toISOString(),
+    };
 
-      const docRef = await db.collection("feedback").add(feedbackData);
-      responseId = docRef.id;
-    }
-
+    const docRef = await db.collection("feedback").add(feedbackData);
+    const newFeedbackId = docRef.id;
+    
     return Response.json(
-      { success: true, feedbackId: responseId, feedback: validatedFeedback },
+      { success: true, feedbackId: newFeedbackId, feedback: validatedFeedback },
       { status: 200 }
     );
   } catch (error) {
@@ -99,6 +102,5 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  // Added comment to force Git to recognize the file as modified
   return Response.json({ success: true, data: "Feedback API is working!" }, { status: 200 });
 }
