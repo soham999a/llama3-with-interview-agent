@@ -1,21 +1,23 @@
 import { db } from "@/firebase/admin";
-import { replicateAdapter } from "@/lib/replicate-integration";
+import { simpleDeepseekAdapter } from "@/lib/simple-deepseek";
 
-export async function POST(request) {
-  const requestData = await request.json();
-  const interviewId = requestData.interviewId;
-  const userId = requestData.userId;
-  const transcript = requestData.transcript;
-  const existingFeedbackId = requestData.feedbackId;
+export async function POST(request: Request) {
+  // Parse the request body
+  const requestBody = await request.json();
+  const interviewId = requestBody.interviewId;
+  const userId = requestBody.userId;
+  const transcript = requestBody.transcript;
+  // Use a different variable name to avoid reassignment issues
+  const existingFeedbackId = requestBody.feedbackId;
 
   try {
     // Format the transcript for the prompt
     const formattedTranscript = transcript
-      .map((sentence) => `- ${sentence.role}: ${sentence.content}\n`)
+      .map((sentence: { role: string; content: string }) => `- ${sentence.role}: ${sentence.content}\n`)
       .join("");
 
-    // Generate feedback using Replicate adapter
-    const result = await replicateAdapter.generateObject({
+    // Generate feedback using DeepSeek adapter
+    const result = await simpleDeepseekAdapter.generateObject({
       prompt: `
         You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
         Transcript:
