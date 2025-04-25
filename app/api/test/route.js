@@ -5,7 +5,7 @@ export async function GET() {
   return NextResponse.json({ message: 'DeepSeek integration test API is working!' });
 }
 
-export async function POST(request: Request) {
+export async function POST(request) {
   try {
     const { prompt, type } = await request.json();
 
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     } else {
       return NextResponse.json({ success: false, error: 'Invalid type. Use "question" or "feedback".' });
     }
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json({ success: false, error: error.message });
   }
 }

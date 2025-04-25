@@ -1,18 +1,14 @@
 import { db } from "@/firebase/admin";
 import { simpleDeepseekAdapter } from "@/lib/simple-deepseek";
 
-export async function POST(request: Request) {
-  // Parse the request body without destructuring feedbackId
-  const requestData = await request.json();
-  const interviewId = requestData.interviewId;
-  const userId = requestData.userId;
-  const transcript = requestData.transcript;
-  const existingFeedbackId = requestData.feedbackId;
-
+export async function POST(request) {
+  // Parse the request body without destructuring
+  const requestBody = await request.json();
+  
   try {
     // Format the transcript for the prompt
-    const formattedTranscript = transcript
-      .map((sentence: { role: string; content: string }) => `- ${sentence.role}: ${sentence.content}\n`)
+    const formattedTranscript = requestBody.transcript
+      .map((sentence) => `- ${sentence.role}: ${sentence.content}\n`)
       .join("");
 
     // Generate feedback using DeepSeek adapter
@@ -74,8 +70,8 @@ export async function POST(request: Request) {
     };
 
     // Handle existing feedback
-    if (existingFeedbackId) {
-      await db.collection("feedback").doc(existingFeedbackId).update({
+    if (requestBody.feedbackId) {
+      await db.collection("feedback").doc(requestBody.feedbackId).update({
         feedback: validatedFeedback,
         updatedAt: new Date().toISOString(),
       });
@@ -83,7 +79,7 @@ export async function POST(request: Request) {
       return Response.json(
         { 
           success: true, 
-          feedbackId: existingFeedbackId, 
+          feedbackId: requestBody.feedbackId, 
           feedback: validatedFeedback 
         },
         { status: 200 }
@@ -92,26 +88,25 @@ export async function POST(request: Request) {
     
     // Handle new feedback
     const feedbackData = {
-      interviewId,
-      userId,
+      interviewId: requestBody.interviewId,
+      userId: requestBody.userId,
       feedback: validatedFeedback,
       createdAt: new Date().toISOString(),
     };
 
     const docRef = await db.collection("feedback").add(feedbackData);
-    const newFeedbackId = docRef.id;
     
     return Response.json(
       { 
         success: true, 
-        feedbackId: newFeedbackId, 
+        feedbackId: docRef.id, 
         feedback: validatedFeedback 
       },
       { status: 200 }
     );
   } catch (error) {
     console.error("Error:", error);
-    return Response.json({ success: false, error }, { status: 500 });
+    return Response.json({ success: false, error: error.toString() }, { status: 500 });
   }
 }
 

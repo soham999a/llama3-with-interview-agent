@@ -2,7 +2,7 @@ import { db } from "@/firebase/admin";
 import { getRandomInterviewCover } from "@/lib/utils";
 import { replicateAdapter } from "@/lib/replicate-integration";
 
-export async function POST(request: Request) {
+export async function POST(request) {
   const { type, role, level, techstack, amount, userid } = await request.json();
 
   try {
@@ -120,7 +120,7 @@ export async function POST(request: Request) {
     return Response.json({ success: true, interviewId: docRef.id }, { status: 200 });
   } catch (error) {
     console.error("Error:", error);
-    return Response.json({ success: false, error: error }, { status: 500 });
+    return Response.json({ success: false, error: error.toString() }, { status: 500 });
   }
 }
 
