@@ -66,6 +66,8 @@ export async function POST(request: Request) {
       summary: "Overall, the candidate performed well in the interview."
     };
 
+    let responseId = feedbackId;
+
     // Store the feedback in Firestore
     if (feedbackId) {
       // Update existing feedback
@@ -83,15 +85,11 @@ export async function POST(request: Request) {
       };
 
       const docRef = await db.collection("feedback").add(feedbackData);
-      const newFeedbackId = docRef.id;
-      return Response.json(
-        { success: true, feedbackId: newFeedbackId, feedback: validatedFeedback },
-        { status: 200 }
-      );
+      responseId = docRef.id;
     }
 
     return Response.json(
-      { success: true, feedbackId, feedback: validatedFeedback },
+      { success: true, feedbackId: responseId, feedback: validatedFeedback },
       { status: 200 }
     );
   } catch (error) {
