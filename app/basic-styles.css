@@ -1,0 +1,224 @@
+/* Basic styles */
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+a {
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #7c3aed;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6d28d9;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-4 {
+  gap: 16px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+/* Cards */
+.card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Forms */
+input, textarea, select {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #7c3aed;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  color: #d1d5db;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #7c3aed;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #1e1e1e;
+  color: #7c3aed;
+  border: 1px solid #3a3a3a;
+}
+
+/* Navigation */
+.sidebar {
+  width: 240px;
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  color: #d1d5db;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: rgba(124, 58, 237, 0.1);
+  color: white;
+  text-decoration: none;
+}
+
+/* Auth */
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 32px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Interview */
+.interview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.interview-card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #7c3aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-primary {
+  color: #7c3aed;
+}
+
+.bg-dark {
+  background-color: #121212;
+}
+
+.bg-card {
+  background-color: #1e1e1e;
+}
+
+.bg-primary {
+  background-color: #7c3aed;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}

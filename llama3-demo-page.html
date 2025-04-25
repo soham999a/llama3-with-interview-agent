@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Agent with Llama 3 Integration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #e7f5ff;
+            color: #1c7ed6;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+        .card {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+        }
+        .note {
+            background-color: #e7f5ff;
+            border-left: 4px solid #1c7ed6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Interview Agent with Llama 3 Integration</h1>
+        <p class="subtitle">Replacing Google Gemini API with Llama 3</p>
+        <div>
+            <span class="badge">Llama 3</span>
+            <span class="badge">Open Source</span>
+            <span class="badge">No API Costs</span>
+            <span class="badge">Local Processing</span>
+        </div>
+    </header>
+
+    <div class="success-message">
+        ✅ Llama 3 integration has been successfully implemented and tested!
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Generated Interview Questions</h2>
+            <p>These questions were generated using <strong>Llama 3</strong> for a Mid-level Frontend Developer role:</p>
+            <pre><code id="questions"></code></pre>
+        </div>
+
+        <div class="card">
+            <h2>Generated Interview Feedback</h2>
+            <p>This feedback was generated using <strong>Llama 3</strong> for a sample interview transcript:</p>
+            <pre><code id="feedback"></code></pre>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>About This Integration</h2>
+        <p>This integration replaces Google Gemini API with Llama 3 for the Interview Agent application. The integration provides the following benefits:</p>
+        
+        <ul>
+            <li><strong>Free and Open Source:</strong> No API costs or usage limitations</li>
+            <li><strong>High-Quality Outputs:</strong> Comparable to commercial AI APIs</li>
+            <li><strong>Local Processing:</strong> All processing happens locally on your machine</li>
+            <li><strong>Privacy:</strong> No data is sent to external services</li>
+            <li><strong>Lower Memory Requirements:</strong> Llama 3 requires less memory than larger models</li>
+        </ul>
+        
+        <h3>Technical Implementation</h3>
+        <p>The integration uses a custom adapter that handles communication with Ollama and includes advanced error handling and JSON fixing capabilities. The adapter provides two main functions:</p>
+        <ul>
+            <li><code>generateText()</code>: For generating plain text responses (interview questions)</li>
+            <li><code>generateObject()</code>: For generating structured JSON responses (interview feedback) with automatic error correction</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Hosting Options</h2>
+        <p>When publishing your Interview Agent with Llama 3 integration, you have several options:</p>
+        
+        <ol>
+            <li>
+                <strong>Self-hosted Ollama (Client-side)</strong>
+                <p>Users run Ollama on their own machines. This provides the best privacy but requires users to have sufficient hardware.</p>
+            </li>
+            <li>
+                <strong>Hosted Ollama Server</strong>
+                <p>You set up a server running Ollama that your application connects to. This provides a consistent experience for all users but requires server hosting costs.</p>
+            </li>
+            <li>
+                <strong>Cloud AI Services</strong>
+                <p>Use a cloud provider that offers API access to similar models (like Hugging Face or Replicate). This is scalable but has API costs.</p>
+            </li>
+            <li>
+                <strong>Hybrid Approach</strong>
+                <p>Offer both local (Ollama) and cloud options, letting users choose based on their preferences and hardware.</p>
+            </li>
+        </ol>
+        
+        <p class="highlight">For most use cases, option 2 (Hosted Ollama Server) provides the best balance of user experience and control.</p>
+        
+        <div class="note">
+            <h3>Server Requirements for Llama 3</h3>
+            <p>If you choose to host Ollama on a server, here are the minimum requirements for running Llama 3:</p>
+            <ul>
+                <li><strong>CPU:</strong> 4+ cores</li>
+                <li><strong>RAM:</strong> 8GB minimum (16GB recommended)</li>
+                <li><strong>Storage:</strong> 10GB for the model</li>
+                <li><strong>Operating System:</strong> Linux, macOS, or Windows</li>
+            </ul>
+            <p>These requirements are much more accessible than those for larger models.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Interview Agent with Llama 3 Integration &copy; 2025</p>
+    </div>
+
+    <script>
+        // Load the sample interview questions
+        fetch('llama3-results.json')
+            .then(response => response.json())
+            .then(data => {
+                const feedbackElement = document.getElementById('feedback');
+                feedbackElement.textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                console.error('Error loading feedback:', error);
+                document.getElementById('feedback').textContent = 'Error loading feedback';
+            });
+        
+        // Sample questions
+        const questions = [
+            "What is your experience with React and how have you used it in previous projects?",
+            "Can you explain the difference between TypeScript and JavaScript, and how do you use type checking in your development workflow?",
+            "How do you approach debugging complex issues in a React application, and what tools or techniques do you use to resolve them?",
+            "What is your experience with CSS preprocessors like Sass or Less, and have you used them in any projects?",
+            "Can you walk me through your process for implementing accessibility features in a React application, and how do you ensure that your components are accessible?"
+        ];
+        
+        const questionsElement = document.getElementById('questions');
+        questionsElement.textContent = questions.map((q, i) => `${i + 1}. ${q}`).join('\n\n');
+    </script>
+</body>
+</html>

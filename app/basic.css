@@ -1,0 +1,157 @@
+/* Basic CSS that will definitely work */
+body {
+  background-color: #121212;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: #d6e0ff;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #7c3aed;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6d28d9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #7c3aed;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #7c3aed;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #7c3aed;
+  cursor: pointer;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #d6e0ff;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-4 {
+  gap: 16px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Navigation */
+.sidebar {
+  width: 240px;
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  color: #d6e0ff;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.nav-link:hover {
+  background-color: rgba(124, 58, 237, 0.1);
+  color: white;
+  text-decoration: none;
+}

@@ -1,0 +1,39 @@
+{
+  "totalScore": 85,
+  "categoryScores": [
+    {
+      "name": "Communication Skills",
+      "score": 90,
+      "comment": "The candidate's responses are clear and well-structured, but there is room for improvement in terms of concision."
+    },
+    {
+      "name": "Technical Knowledge",
+      "score": 80,
+      "comment": "The candidate demonstrates a good understanding of React concepts, but some answers could be more detailed and specific."
+    },
+    {
+      "name": "Problem-Solving",
+      "score": 75,
+      "comment": "The candidate proposes solutions that are relevant to the role, but they could be more comprehensive and analytical."
+    },
+    {
+      "name": "Cultural & Role Fit",
+      "score": 70,
+      "comment": "The candidate's responses suggest a general awareness of company values and job requirements, but they could be more tailored to the specific role."
+    },
+    {
+      "name": "Confidence & Clarity",
+      "score": 90,
+      "comment": "The candidate is confident in their responses and engages well with the interviewer, but there are moments where they could provide more concrete examples or evidence."
+    }
+  ],
+  "strengths": [
+    "Strong understanding of React concepts",
+    "Good communication skills"
+  ],
+  "areasForImprovement": [
+    "Could be more concise in responses",
+    "Needs to provide more specific details and examples"
+  ],
+  "finalAssessment": "The candidate demonstrates a good foundation in React and problem-solving, but could benefit from further development in terms of clarity, concision, and tailoring their responses to the role."
+}

@@ -1,0 +1,18 @@
+{
+  "role": "Frontend Developer",
+  "type": "technical",
+  "level": "Mid-level",
+  "techstack": [
+    "React",
+    "TypeScript",
+    "CSS"
+  ],
+  "questions": [
+    "Can you explain your experience with React and how you've used it in previous projects?",
+    "What is your approach to handling state changes in a React application, and have you ever encountered any issues with reconciliation?",
+    "How do you stay up-to-date with the latest developments and best practices in TypeScript, and can you give an example of when you might use type inference over explicit typing?"
+  ],
+  "userId": "test-user-123",
+  "finalized": true,
+  "createdAt": "2025-04-23T15:27:11.606Z"
+}

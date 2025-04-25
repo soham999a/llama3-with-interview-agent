@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-success-100: #49de50;
+  --color-success-200: #42c748;
+  --color-destructive-100: #f75353;
+  --color-destructive-200: #c44141;
+
+  --color-primary-100: #dddfff;
+  --color-primary-200: #cac5fe;
+  --color-primary-300: #7c3aed;
+  --color-primary-400: #6d28d9;
+
+  --color-light-100: #d6e0ff;
+  --color-light-400: #6870a6;
+  --color-light-600: #4f557d;
+  --color-light-800: #24273a;
+
+  --color-dark-100: #020408;
+  --color-dark-200: #27282f;
+  --color-dark-300: #242633;
+
+  --font-inter: "Inter", sans-serif;
+
+  --user-primary: var(--color-primary-100);
+
+  --bg-pattern: url("/pattern.png");
+}
+
+/* Dark mode variables */
+.dark {
+  --background: #121212;
+  --foreground: #ffffff;
+  --card: #1e1e1e;
+  --card-foreground: #ffffff;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --secondary: #252525;
+  --secondary-foreground: #ffffff;
+  --muted: #252525;
+  --muted-foreground: #d6e0ff;
+  --accent: #252525;
+  --accent-foreground: #ffffff;
+  --destructive: #f75353;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #6870a6;
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    @apply h-full;
+  }
+  
+  body {
+    @apply bg-dark-100 text-white h-full;
+    font-family: var(--font-inter);
+  }
+  
+  h1 {
+    @apply text-3xl font-bold text-white mb-4;
+  }
+  
+  h2 {
+    @apply text-2xl font-bold text-white mb-3;
+  }
+  
+  h3 {
+    @apply text-xl font-semibold text-white mb-2;
+  }
+  
+  p {
+    @apply text-light-100 mb-4;
+  }
+  
+  a {
+    @apply text-primary-300 hover:underline;
+  }
+  
+  ul {
+    @apply list-disc list-inside mb-4;
+  }
+  
+  li {
+    @apply text-light-100 mb-1;
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Buttons */
+  .btn-call {
+    @apply inline-block px-7 py-3 font-bold text-sm leading-5 text-white transition-colors duration-150 bg-success-100 border border-transparent rounded-full shadow-sm focus:outline-none focus:shadow-2xl active:bg-success-200 hover:bg-success-200 min-w-28 cursor-pointer items-center justify-center overflow-visible;
+  }
+
+  .btn-disconnect {
+    @apply inline-block px-7 py-3 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-destructive-100 border border-transparent rounded-full shadow-sm focus:outline-none focus:shadow-2xl active:bg-destructive-200 hover:bg-destructive-200 min-w-28;
+  }
+
+  .btn-primary {
+    @apply bg-primary-300 hover:bg-primary-400 text-white px-5 py-2.5 rounded-md font-medium transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-dark-200 hover:bg-dark-300 text-primary-300 px-5 py-2.5 rounded-md font-medium transition-colors border border-primary-300/30;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-dark-200 rounded-lg p-6 shadow-lg;
+  }
+
+  .card-border {
+    @apply border border-light-600/20 p-0.5 rounded-lg;
+  }
+
+  /* Forms */
+  .form {
+    @apply w-full space-y-4;
+  }
+
+  .form .label {
+    @apply block text-sm font-medium text-light-100 mb-1;
+  }
+
+  .form .input {
+    @apply w-full px-4 py-2.5 bg-dark-300 border border-light-600/30 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-primary-300/50 focus:border-primary-300;
+  }
+
+  .form .btn {
+    @apply w-full mt-6 bg-primary-300 hover:bg-primary-400 text-white py-2.5 px-4 rounded-md transition-colors font-medium;
+  }
+
+  /* Layout */
+  .auth-layout {
+    @apply flex min-h-screen items-center justify-center bg-dark-100;
+  }
+
+  .root-layout {
+    @apply flex mx-auto max-w-7xl flex-col gap-12 my-12 px-16 max-sm:px-4 max-sm:my-8;
+  }
+
+  /* Interview */
+  .card-interview {
+    @apply bg-dark-200 rounded-lg p-6 relative overflow-hidden flex flex-col gap-6 justify-between;
+  }
+
+  .interview-text {
+    @apply text-lg text-center text-white;
+  }
+
+  .call-view {
+    @apply flex sm:flex-row flex-col gap-10 items-center justify-between w-full;
+  }
+
+  .avatar {
+    @apply z-10 flex items-center justify-center bg-primary-300/20 rounded-full w-24 h-24 relative;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .dark-gradient {
+    background: linear-gradient(to bottom, #1A1C20, #08090D);
+  }
+
+  .border-gradient {
+    background: linear-gradient(to bottom, rgba(75, 77, 79, 1), rgba(75, 77, 79, 0.2));
+  }
+
+  .pattern {
+    background-image: url('/pattern.png');
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+
+  .blue-gradient-dark {
+    background: linear-gradient(to bottom, #171532, #08090D);
+  }
+
+  .blue-gradient {
+    background: linear-gradient(to left, #FFFFFF, #CAC5FE);
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  /* Animations */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-popup {
+    animation: popup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .animate-message {
+    animation: message 0.3s ease-out;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes message {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-dark-300);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-primary-300);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-400);
+}

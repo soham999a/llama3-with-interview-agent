@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary-100: #dddfff;
+  --color-primary-200: #cac5fe;
+  --color-primary-300: #7c3aed;
+  --color-primary-400: #6d28d9;
+  
+  --color-light-100: #d6e0ff;
+  --color-light-400: #6870a6;
+  
+  --color-dark-100: #121212;
+  --color-dark-200: #1e1e1e;
+  --color-dark-300: #242633;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-dark-100);
+    color: white;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: var(--color-light-100);
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    color: var(--color-primary-300);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-300 text-white px-4 py-2 rounded-md hover:bg-primary-400 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-dark-200 text-primary-300 px-4 py-2 rounded-md border border-primary-300/30 hover:bg-dark-300 transition-colors;
+  }
+  
+  .card {
+    @apply bg-dark-200 rounded-lg p-6 shadow-lg;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-2 bg-dark-300 border border-light-400/30 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-primary-300/50;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-light-100 mb-1;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
