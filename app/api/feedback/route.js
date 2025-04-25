@@ -1,18 +1,21 @@
 import { db } from "@/firebase/admin";
 import { replicateAdapter } from "@/lib/replicate-integration";
 
-export async function POST(request: Request) {
+export async function POST(request) {
   const requestData = await request.json();
-  const { interviewId, userId, transcript, feedbackId } = requestData;
+  const interviewId = requestData.interviewId;
+  const userId = requestData.userId;
+  const transcript = requestData.transcript;
+  const existingFeedbackId = requestData.feedbackId;
 
   try {
     // Format the transcript for the prompt
     const formattedTranscript = transcript
-      .map((sentence: { role: string; content: string }) => `- ${sentence.role}: ${sentence.content}\n`)
+      .map((sentence) => `- ${sentence.role}: ${sentence.content}\n`)
       .join("");
 
     // Generate feedback using Replicate adapter
-    const { object: feedback } = await replicateAdapter.generateObject({
+    const result = await replicateAdapter.generateObject({
       prompt: `
         You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
         Transcript:
@@ -47,6 +50,8 @@ export async function POST(request: Request) {
       `,
     });
 
+    const feedback = result.object;
+
     // Ensure we have a valid feedback object
     const validatedFeedback = feedback || {
       overallScore: 7,
@@ -68,14 +73,14 @@ export async function POST(request: Request) {
     };
 
     // Handle existing feedback
-    if (feedbackId) {
-      await db.collection("feedback").doc(feedbackId).update({
+    if (existingFeedbackId) {
+      await db.collection("feedback").doc(existingFeedbackId).update({
         feedback: validatedFeedback,
         updatedAt: new Date().toISOString(),
       });
       
       return Response.json(
-        { success: true, feedbackId: feedbackId, feedback: validatedFeedback },
+        { success: true, feedbackId: existingFeedbackId, feedback: validatedFeedback },
         { status: 200 }
       );
     } 
