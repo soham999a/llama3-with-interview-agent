@@ -99,5 +99,6 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
+  // Added comment to force Git to recognize the file as modified
   return Response.json({ success: true, data: "Feedback API is working!" }, { status: 200 });
 }
