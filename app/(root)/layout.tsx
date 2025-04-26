@@ -106,10 +106,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 bg-black relative">
+      <div className="flex-1 bg-gradient-to-b from-gray-900 to-black relative">
         {/* Header */}
         <div className="flex justify-between items-center p-4">
-          <h1 className="text-red-500 text-3xl font-bold">LLAMA3 DASHBOARD</h1>
+          <h1 className="text-gradient text-3xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
 
           <div className="flex items-center gap-3">
             {/* Chat Button */}
@@ -122,7 +122,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             {/* Logout Button */}
             <button
               onClick={handleLogout}
-              className="purple-gradient text-white px-4 py-2 rounded-md font-medium transition-all duration-200 hover:opacity-90 shadow-md"
+              className="bg-purple-600 text-white px-4 py-2 rounded-md font-medium transition-all duration-200 hover:bg-purple-700 shadow-md"
             >
               Logout
             </button>
