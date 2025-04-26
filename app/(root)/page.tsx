@@ -7,13 +7,58 @@ import dynamic from "next/dynamic";
 
 import { Button } from "@/components/ui/button";
 import InterviewCard from "@/components/InterviewCard";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
-// Comment out 3D components to avoid client-side errors
-// const Background3D = dynamic(() => import("@/components/3d/Background3D"), { ssr: false });
-// const Card3D = dynamic(() => import("@/components/3d/Card3D"), { ssr: false });
-// const Button3D = dynamic(() => import("@/components/3d/Button3D"), { ssr: false });
-// const FloatingParticles3D = dynamic(() => import("@/components/3d/FloatingParticles3D"), { ssr: false });
-// const InteractiveCode3D = dynamic(() => import("@/components/3d/InteractiveCode3D"), { ssr: false });
+// Dynamically import 3D components with error handling
+const Background3D = dynamic(() =>
+  import("@/components/3d/Background3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load Background3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const Card3D = dynamic(() =>
+  import("@/components/3d/Card3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load Card3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const Button3D = dynamic(() =>
+  import("@/components/3d/Button3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load Button3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const FloatingParticles3D = dynamic(() =>
+  import("@/components/3d/FloatingParticles3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load FloatingParticles3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const InteractiveCode3D = dynamic(() =>
+  import("@/components/3d/InteractiveCode3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load InteractiveCode3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
 
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewsByUserId } from "@/lib/actions/general.action";
@@ -25,8 +70,14 @@ function Home() {
   const [show3D, setShow3D] = useState(false);
 
   useEffect(() => {
-    // Disable 3D to avoid client-side errors
-    setShow3D(false);
+    try {
+      // Enable 3D after a short delay to ensure smooth page load
+      const timer = setTimeout(() => setShow3D(true), 500);
+      return () => clearTimeout(timer);
+    } catch (error) {
+      console.error("Error enabling 3D:", error);
+      setShow3D(false);
+    }
   }, []);
 
   // Load user preferences for 3D
@@ -122,6 +173,13 @@ function Home() {
 
   return (
     <div className="flex flex-col gap-8 relative">
+      {/* 3D Background */}
+      {show3D && (
+        <ErrorBoundary fallback={null}>
+          <Background3D />
+        </ErrorBoundary>
+      )}
+
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-white">Dashboard</h1>
       </div>
@@ -150,20 +208,50 @@ function Home() {
             Practice real interview questions & get instant AI feedback to improve your skills.
           </p>
 
-          <Button asChild className="btn-primary max-sm:w-full">
-            <Link href="/interview">Start an Interview</Link>
-          </Button>
+          {show3D ? (
+            <ErrorBoundary fallback={
+              <Button asChild className="btn-primary max-sm:w-full">
+                <Link href="/interview">Start an Interview</Link>
+              </Button>
+            }>
+              <Button3D className="btn-primary max-sm:w-full">
+                <Link href="/interview" className="px-4 py-2 block">
+                  Start an Interview
+                </Link>
+              </Button3D>
+            </ErrorBoundary>
+          ) : (
+            <Button asChild className="btn-primary max-sm:w-full">
+              <Link href="/interview">Start an Interview</Link>
+            </Button>
+          )}
         </div>
 
         <div className="flex items-center justify-center">
           <div className="relative">
-            <Image
-              src="/robot.png"
-              alt="AI Interview Assistant"
-              width={200}
-              height={200}
-              className="rounded-full"
-            />
+            {show3D ? (
+              <ErrorBoundary fallback={
+                <Image
+                  src="/robot.png"
+                  alt="AI Interview Assistant"
+                  width={200}
+                  height={200}
+                  className="rounded-full"
+                />
+              }>
+                <div className="w-[250px] h-[250px] max-sm:w-[180px] max-sm:h-[180px] animate-float">
+                  <InteractiveCode3D />
+                </div>
+              </ErrorBoundary>
+            ) : (
+              <Image
+                src="/robot.png"
+                alt="AI Interview Assistant"
+                width={200}
+                height={200}
+                className="rounded-full"
+              />
+            )}
           </div>
         </div>
       </section>
@@ -178,24 +266,68 @@ function Home() {
               key={type.id}
               className="group"
             >
-              <div className="relative overflow-hidden rounded-xl bg-dark-200 p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(202,197,254,0.15)] group-hover:translate-y-[-5px]">
-                <div className="flex items-start justify-between">
-                  <div className="rounded-full bg-primary-200/20 p-3 text-primary-200">
-                    <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={24} height={24} />
+              {show3D ? (
+                <ErrorBoundary fallback={
+                  <div className="relative overflow-hidden rounded-xl bg-dark-200 p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(202,197,254,0.15)] group-hover:translate-y-[-5px]">
+                    <div className="flex items-start justify-between">
+                      <div className="rounded-full bg-primary-200/20 p-3 text-primary-200">
+                        <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={24} height={24} />
+                      </div>
+                    </div>
+
+                    <h3 className="mt-4 text-xl font-semibold text-white">{type.title}</h3>
+                    <p className="mt-2 text-sm text-light-400">{type.description}</p>
+
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium text-primary-200 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <span>Start interview</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                }>
+                  <Card3D className="rounded-xl bg-dark-200 p-6 h-full" intensity={5}>
+                    <div className="relative overflow-hidden">
+                      <div className="flex items-start justify-between">
+                        <div className="rounded-full bg-primary-200/20 p-3 text-primary-200">
+                          <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={24} height={24} />
+                        </div>
+                      </div>
+
+                      <h3 className="mt-4 text-xl font-semibold text-white">{type.title}</h3>
+                      <p className="mt-2 text-sm text-light-400">{type.description}</p>
+
+                      <div className="mt-4 flex items-center gap-2 text-sm font-medium text-primary-200 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <span>Start interview</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </Card3D>
+                </ErrorBoundary>
+              ) : (
+                <div className="relative overflow-hidden rounded-xl bg-dark-200 p-6 transition-all duration-300 hover:shadow-[0_0_20px_rgba(202,197,254,0.15)] group-hover:translate-y-[-5px]">
+                  <div className="flex items-start justify-between">
+                    <div className="rounded-full bg-primary-200/20 p-3 text-primary-200">
+                      <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={24} height={24} />
+                    </div>
+                  </div>
+
+                  <h3 className="mt-4 text-xl font-semibold text-white">{type.title}</h3>
+                  <p className="mt-2 text-sm text-light-400">{type.description}</p>
+
+                  <div className="mt-4 flex items-center gap-2 text-sm font-medium text-primary-200 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span>Start interview</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
                   </div>
                 </div>
-
-                <h3 className="mt-4 text-xl font-semibold text-white">{type.title}</h3>
-                <p className="mt-2 text-sm text-light-400">{type.description}</p>
-
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-primary-200 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span>Start interview</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </div>
-              </div>
+              )}
             </Link>
           ))}
         </div>
@@ -220,19 +352,50 @@ function Home() {
             ))
           ) : (
             <div className="flex flex-col items-center justify-center gap-4 rounded-xl bg-dark-200 p-8 text-center col-span-2">
-              <div className="rounded-full bg-primary-200/20 p-4 mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-              </div>
+              {show3D ? (
+                <ErrorBoundary fallback={
+                  <div className="rounded-full bg-primary-200/20 p-4 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                  </div>
+                }>
+                  <div className="h-24 w-24 mb-2">
+                    <FloatingParticles3D />
+                  </div>
+                </ErrorBoundary>
+              ) : (
+                <div className="rounded-full bg-primary-200/20 p-4 mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </div>
+              )}
               <h3 className="text-xl font-medium text-white">No interviews yet</h3>
               <p className="text-light-400 max-w-md">Complete your first interview to see your history and performance analytics here</p>
-              <Button asChild className="btn-primary mt-2">
-                <Link href="/interview">Start an Interview</Link>
-              </Button>
+              {show3D ? (
+                <ErrorBoundary fallback={
+                  <Button asChild className="btn-primary mt-2">
+                    <Link href="/interview">Start an Interview</Link>
+                  </Button>
+                }>
+                  <Button3D className="btn-primary mt-2">
+                    <Link href="/interview" className="px-4 py-2 block">
+                      Start an Interview
+                    </Link>
+                  </Button3D>
+                </ErrorBoundary>
+              ) : (
+                <Button asChild className="btn-primary mt-2">
+                  <Link href="/interview">Start an Interview</Link>
+                </Button>
+              )}
             </div>
           )}
         </div>
@@ -240,15 +403,36 @@ function Home() {
 
       {/* Upcoming Features */}
       <section className="mt-8 rounded-xl bg-gradient-to-r from-primary-200/20 to-blue-500/20 p-6 relative overflow-hidden">
+        {show3D && (
+          <ErrorBoundary fallback={null}>
+            <div className="absolute inset-0 opacity-30 pointer-events-none">
+              <div className="absolute top-0 right-0 w-64 h-64 transform translate-x-1/4 -translate-y-1/4">
+                <FloatingParticles3D />
+              </div>
+            </div>
+          </ErrorBoundary>
+        )}
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between relative z-10">
           <div>
             <h3 className="text-xl font-semibold text-white">Coming Soon: Interview Scheduling</h3>
             <p className="mt-1 text-light-100">Schedule mock interviews with AI interviewers at your convenience</p>
           </div>
 
-          <Button className="btn-secondary w-fit">
-            Join Waitlist
-          </Button>
+          {show3D ? (
+            <ErrorBoundary fallback={
+              <Button className="btn-secondary w-fit">
+                Join Waitlist
+              </Button>
+            }>
+              <Button3D className="btn-secondary w-fit">
+                <span className="px-4 py-2 block">Join Waitlist</span>
+              </Button3D>
+            </ErrorBoundary>
+          ) : (
+            <Button className="btn-secondary w-fit">
+              Join Waitlist
+            </Button>
+          )}
         </div>
       </section>
     </div>
