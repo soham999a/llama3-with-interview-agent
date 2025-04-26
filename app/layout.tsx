@@ -2,15 +2,15 @@ import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import "./basic.css";
+import "./modern-styles.css";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Interview Agent",
-  description: "An AI-powered platform for preparing for mock interviews",
+  title: "LLAMA3 Interview Agent",
+  description: "An AI-powered platform for preparing for mock interviews with LLAMA3",
 };
 
 export default function RootLayout({
