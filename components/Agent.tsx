@@ -207,89 +207,164 @@ const Agent = ({
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="bg-dark-200 rounded-xl p-8">
-        <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+      <div className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-8 border border-white/5 shadow-xl">
+        {/* Background elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+        <div className="flex flex-col md:flex-row gap-8 items-center justify-center relative z-10">
           {/* AI Interviewer Card */}
-          <div className="bg-dark-300 rounded-xl p-6 flex flex-col items-center gap-4 w-full md:w-1/3">
-            <div className="relative">
-              <Image
-                src="/ai-avatar.png"
-                alt="AI Interviewer"
-                width={120}
-                height={120}
-                className="rounded-full object-cover border-2 border-primary-200/30"
-              />
+          <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-purple-900/20 rounded-xl p-6 flex flex-col items-center gap-4 w-full md:w-1/3 border border-white/5 shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-blue-600/5 opacity-50"></div>
+
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-full blur-md"></div>
+                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-1 rounded-full border border-white/10 shadow-xl">
+                  <Image
+                    src="/ai-avatar.png"
+                    alt="AI Interviewer"
+                    width={120}
+                    height={120}
+                    className="rounded-full object-cover"
+                  />
+                </div>
+                {isSpeaking && (
+                  <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-2 shadow-lg animate-pulse">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                      <line x1="12" x2="12" y1="19" y2="22"></line>
+                    </svg>
+                  </div>
+                )}
+              </div>
+
+              <h3 className="text-xl font-semibold text-white mt-4">AI Interviewer</h3>
+              <div className="mt-2 bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm font-medium">
+                {callStatus === CallStatus.ACTIVE ? "Speaking..." :
+                 callStatus === CallStatus.CONNECTING ? "Connecting..." :
+                 callStatus === CallStatus.FINISHED ? "Interview completed" :
+                 "Ready for interview"}
+              </div>
+
+              {/* Audio visualization */}
               {isSpeaking && (
-                <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-2 animate-pulse">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                    <line x1="12" x2="12" y1="19" y2="22"></line>
-                  </svg>
+                <div className="flex items-center gap-1 mt-3 h-4">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-1 bg-purple-500 rounded-full animate-sound-wave"
+                      style={{
+                        height: `${Math.random() * 16 + 4}px`,
+                        animationDelay: `${i * 0.1}s`
+                      }}
+                    ></div>
+                  ))}
                 </div>
               )}
             </div>
-            <h3 className="text-xl font-medium text-white">AI Interviewer</h3>
-            <p className="text-light-400 text-center text-sm">
-              {callStatus === CallStatus.ACTIVE ? "Speaking..." :
-               callStatus === CallStatus.CONNECTING ? "Connecting..." :
-               callStatus === CallStatus.FINISHED ? "Interview completed" :
-               "Ready for interview"}
-            </p>
           </div>
 
           {/* User Profile Card */}
-          <div className="bg-dark-300 rounded-xl p-6 flex flex-col items-center gap-4 w-full md:w-1/3">
-            <div className="relative">
-              <Image
-                src="/user-avatar.png"
-                alt="User"
-                width={120}
-                height={120}
-                className="rounded-full object-cover border-2 border-primary-200/30"
-              />
+          <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-blue-900/20 rounded-xl p-6 flex flex-col items-center gap-4 w-full md:w-1/3 border border-white/5 shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 opacity-50"></div>
+
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur-md"></div>
+                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-1 rounded-full border border-white/10 shadow-xl">
+                  <Image
+                    src="/user-avatar.png"
+                    alt="User"
+                    width={120}
+                    height={120}
+                    className="rounded-full object-cover"
+                  />
+                </div>
+                {callStatus === CallStatus.ACTIVE && !isSpeaking && (
+                  <div className="absolute -bottom-1 -right-1 bg-blue-500 rounded-full p-2 shadow-lg animate-pulse">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                      <line x1="12" x2="12" y1="19" y2="22"></line>
+                    </svg>
+                  </div>
+                )}
+              </div>
+
+              <h3 className="text-xl font-semibold text-white mt-4">{userName}</h3>
+              <div className="mt-2 bg-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-sm font-medium">
+                {callStatus === CallStatus.ACTIVE && !isSpeaking ? "Your turn to speak" : "Listening..."}
+              </div>
+
+              {/* Audio visualization */}
               {callStatus === CallStatus.ACTIVE && !isSpeaking && (
-                <div className="absolute -bottom-1 -right-1 bg-blue-500 rounded-full p-2 animate-pulse">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                    <line x1="12" x2="12" y1="19" y2="22"></line>
-                  </svg>
+                <div className="flex items-center gap-1 mt-3 h-4">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-1 bg-blue-500 rounded-full animate-sound-wave"
+                      style={{
+                        height: `${Math.random() * 16 + 4}px`,
+                        animationDelay: `${i * 0.1}s`
+                      }}
+                    ></div>
+                  ))}
                 </div>
               )}
             </div>
-            <h3 className="text-xl font-medium text-white">{userName}</h3>
-            <p className="text-light-400 text-center text-sm">
-              {callStatus === CallStatus.ACTIVE && !isSpeaking ? "Your turn to speak" : "Listening..."}
-            </p>
           </div>
         </div>
 
         {/* Transcript */}
         {messages.length > 0 && (
-          <div className="mt-8 bg-dark-300 rounded-xl p-6">
-            <h3 className="text-lg font-medium text-white mb-4">Conversation</h3>
-            <div className="max-h-[300px] overflow-y-auto custom-scrollbar">
+          <div className="mt-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border border-white/5 shadow-lg relative z-10">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                Conversation
+              </h3>
+
+              <div className="bg-gray-800/50 text-gray-400 px-3 py-1 rounded-full text-xs font-medium">
+                {messages.length} messages
+              </div>
+            </div>
+
+            <div className="max-h-[350px] overflow-y-auto custom-scrollbar pr-2">
               {messages.map((message, index) => (
-                <div key={index} className="mb-4">
-                  <div className="flex items-start gap-3">
-                    <div className={`rounded-full size-8 flex-shrink-0 flex items-center justify-center ${message.role === 'assistant' ? 'bg-primary-200/20' : 'bg-blue-500/20'}`}>
+                <div key={index} className={`mb-4 ${message.role === 'assistant' ? 'mr-12' : 'ml-12'}`}>
+                  <div className={`flex items-start gap-3 ${message.role === 'assistant' ? 'flex-row' : 'flex-row-reverse'}`}>
+                    <div className={`rounded-xl size-10 flex-shrink-0 flex items-center justify-center shadow-md ${
+                      message.role === 'assistant'
+                        ? 'bg-gradient-to-br from-purple-600/30 to-purple-800/30 border border-purple-500/20'
+                        : 'bg-gradient-to-br from-blue-600/30 to-blue-800/30 border border-blue-500/20'
+                    }`}>
                       {message.role === 'assistant' ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
                           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
                       ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400">
                           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                           <circle cx="12" cy="7" r="4"></circle>
                         </svg>
                       )}
                     </div>
-                    <div>
+
+                    <div className={`flex-1 ${message.role === 'assistant' ? 'text-left' : 'text-right'}`}>
                       <div className="text-sm font-medium text-white mb-1">
                         {message.role === 'assistant' ? 'AI Interviewer' : userName}
                       </div>
-                      <p className="text-light-100">{message.content}</p>
+                      <div className={`p-3 rounded-xl ${
+                        message.role === 'assistant'
+                          ? 'bg-gray-800/50 text-gray-300 rounded-tl-none'
+                          : 'bg-blue-900/20 text-gray-200 rounded-tr-none'
+                      }`}>
+                        <p>{message.content}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -299,7 +374,7 @@ const Agent = ({
                   key={lastMessage}
                   className={cn(
                     "transition-opacity duration-500 opacity-0",
-                    "animate-fadeIn opacity-100 text-light-100"
+                    "animate-fadeIn opacity-100 text-gray-300 p-3 bg-gray-800/50 rounded-xl mt-4"
                   )}
                 >
                   {lastMessage}
@@ -355,34 +430,70 @@ const Agent = ({
       </div>
 
       {/* Interview Tips */}
-      <div className="bg-gradient-to-r from-primary-200/20 to-blue-500/20 rounded-xl p-6">
-        <h3 className="text-lg font-medium text-white mb-4">Interview Tips</h3>
-        <ul className="space-y-3">
-          <li className="text-light-100 flex items-start gap-3">
-            <div className="bg-primary-200/20 rounded-full p-1 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
-                <path d="M20 6 9 17l-5-5"></path>
+      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20 rounded-xl p-8 border border-white/5 shadow-xl">
+        {/* Background elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+        <div className="relative z-10">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-purple-600/20 rounded-lg p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
               </svg>
             </div>
-            <span>Speak clearly and at a moderate pace</span>
-          </li>
-          <li className="text-light-100 flex items-start gap-3">
-            <div className="bg-primary-200/20 rounded-full p-1 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
-                <path d="M20 6 9 17l-5-5"></path>
-              </svg>
+            <h3 className="text-xl font-semibold text-white">Interview Tips</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-5 border border-white/5 shadow-lg">
+              <div className="bg-purple-600/20 rounded-lg p-2 w-fit mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" x2="12" y1="19" y2="22"></line>
+                </svg>
+              </div>
+              <h4 className="text-white font-semibold mb-2">Clear Communication</h4>
+              <p className="text-gray-300">Speak clearly and at a moderate pace. Articulate your thoughts and avoid filler words like "um" and "uh".</p>
             </div>
-            <span>Use the STAR method (Situation, Task, Action, Result) for behavioral questions</span>
-          </li>
-          <li className="text-light-100 flex items-start gap-3">
-            <div className="bg-primary-200/20 rounded-full p-1 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
-                <path d="M20 6 9 17l-5-5"></path>
-              </svg>
+
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-5 border border-white/5 shadow-lg">
+              <div className="bg-blue-600/20 rounded-lg p-2 w-fit mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+              </div>
+              <h4 className="text-white font-semibold mb-2">STAR Method</h4>
+              <p className="text-gray-300">Use the STAR method (Situation, Task, Action, Result) for behavioral questions to structure your responses effectively.</p>
             </div>
-            <span>Provide specific examples from your experience</span>
-          </li>
-        </ul>
+
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-5 border border-white/5 shadow-lg">
+              <div className="bg-green-600/20 rounded-lg p-2 w-fit mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-400">
+                  <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
+                </svg>
+              </div>
+              <h4 className="text-white font-semibold mb-2">Specific Examples</h4>
+              <p className="text-gray-300">Provide specific examples from your experience to demonstrate your skills and achievements rather than making general claims.</p>
+            </div>
+          </div>
+
+          <div className="mt-6 bg-gray-800/50 rounded-xl p-4 border border-white/5">
+            <div className="flex items-center gap-2 text-yellow-400 mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span className="font-medium">Pro Tip</span>
+            </div>
+            <p className="text-gray-300">Remember to listen carefully to the interviewer's questions and take a moment to organize your thoughts before responding.</p>
+          </div>
+        </div>
       </div>
     </div>
   );

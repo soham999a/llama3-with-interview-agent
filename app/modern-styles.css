@@ -61,18 +61,18 @@
 
   .form {
     @apply w-full;
+  }
 
-    .label {
-      @apply !text-gray-300 !font-medium !text-sm !mb-1.5;
-    }
+  .form-label {
+    @apply !text-gray-300 !font-medium !text-sm !mb-1.5;
+  }
 
-    .input {
-      @apply !bg-gray-800 !rounded-md !py-2.5 !px-4 !border !border-white/10 !text-white placeholder:!text-gray-500 focus:!border-purple-500/50 focus:!ring-1 focus:!ring-purple-500/30 transition-all;
-    }
+  .form-input {
+    @apply !bg-gray-800 !rounded-md !py-2.5 !px-4 !border !border-white/10 !text-white placeholder:!text-gray-500 focus:!border-purple-500/50 focus:!ring-1 focus:!ring-purple-500/30 transition-all;
+  }
 
-    .btn {
-      @apply !w-full !bg-purple-600 !text-white hover:!opacity-90 !rounded-md !py-2.5 !font-medium !px-5 cursor-pointer !shadow-md !transition-all !duration-200;
-    }
+  .form-btn {
+    @apply !w-full !bg-purple-600 !text-white hover:!opacity-90 !rounded-md !py-2.5 !font-medium !px-5 cursor-pointer !shadow-md !transition-all !duration-200;
   }
 
   .interview-card {

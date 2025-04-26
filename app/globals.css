@@ -296,6 +296,10 @@
     animation: message 0.3s ease-out;
   }
 
+  .animate-sound-wave {
+    animation: sound-wave 1s ease-in-out infinite;
+  }
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#7c3aed] to-[#a78bfa];
   }
@@ -352,6 +356,18 @@
   }
   50% {
     opacity: 0.5;
+  }
+}
+
+@keyframes sound-wave {
+  0% {
+    height: 4px;
+  }
+  50% {
+    height: 16px;
+  }
+  100% {
+    height: 4px;
   }
 }
 

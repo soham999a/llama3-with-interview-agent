@@ -230,33 +230,46 @@ export default function ChatBot() {
 
   return (
     <div className="relative z-50">
-      {/* Chat toggle button */}
+      {/* Modern Chat toggle button */}
       <button
         onClick={toggleChat}
-        className="flex items-center justify-center bg-gradient-to-r from-primary-200 to-blue-500 text-white rounded-full p-3 hover:opacity-90 transition-opacity shadow-lg relative z-50"
+        className="group flex items-center justify-center bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-full p-4 hover:from-violet-500 hover:to-indigo-500 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.5)] hover:shadow-[0_0_20px_rgba(124,58,237,0.7)] relative z-50 overflow-hidden"
         aria-label="Open chat"
       >
-        <MessageSquare size={20} />
-        {!isOpen && <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+        <div className="relative z-10 flex items-center justify-center">
+          <MessageSquare size={22} className="group-hover:scale-110 transition-transform duration-300" />
+        </div>
+        {!isOpen && (
+          <>
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping opacity-75"></span>
+          </>
+        )}
       </button>
 
-      {/* Chat window */}
+      {/* Modern Chat window */}
       {isOpen && (
-        <div className="fixed bottom-20 right-8 w-80 sm:w-96 bg-dark-200 rounded-lg shadow-xl overflow-hidden animate-popup z-50">
-          {/* Chat header */}
-          <div className="bg-gradient-to-r from-primary-200 to-blue-500 p-3 flex justify-between items-center">
-            <h3 className="text-white font-medium">Interview Assistant</h3>
+        <div className="fixed bottom-20 right-8 w-80 sm:w-96 bg-dark-200 rounded-xl shadow-2xl overflow-hidden animate-popup z-50 border border-violet-500/20 backdrop-blur-sm">
+          {/* Modern Chat header */}
+          <div className="bg-gradient-to-r from-violet-600 to-indigo-600 p-4 flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <div className="bg-white/20 p-1.5 rounded-full">
+                <MessageSquare size={16} className="text-white" />
+              </div>
+              <h3 className="text-white font-medium text-lg">Interview Assistant</h3>
+            </div>
             <button
               onClick={toggleChat}
-              className="text-white hover:text-dark-100 transition-colors"
+              className="text-white/80 hover:text-white transition-colors hover:bg-white/10 p-1.5 rounded-full"
               aria-label="Close chat"
             >
               <X size={18} />
             </button>
           </div>
 
-          {/* Chat messages */}
-          <div className="h-96 overflow-y-auto p-4 bg-dark-300 custom-scrollbar">
+          {/* Modern Chat messages */}
+          <div className="h-96 overflow-y-auto p-4 bg-dark-300 custom-scrollbar bg-gradient-to-b from-dark-300 to-dark-200">
             {messages.map((message, index) => (
               <div
                 key={message.id}
@@ -264,13 +277,17 @@ export default function ChatBot() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {message.isTyping ? (
-                  <div className="flex items-center space-x-2 bg-dark-200 rounded-lg p-3 shadow-md">
-                    <Loader2 size={16} className="animate-spin text-primary-200" />
-                    <span className="text-light-100">Typing...</span>
+                  <div className="flex items-center space-x-2 bg-dark-200 rounded-lg p-3.5 shadow-md border border-violet-500/20">
+                    <Loader2 size={16} className="animate-spin text-violet-400" />
+                    <span className="text-light-100">Typing<span className="animate-pulse">...</span></span>
                   </div>
                 ) : (
                   <div
-                    className={`max-w-[80%] rounded-lg p-3 shadow-md ${message.sender === 'user' ? 'bg-primary-200 text-dark-100' : 'bg-dark-200 text-white'}`}
+                    className={`max-w-[80%] rounded-lg p-3.5 shadow-md ${
+                      message.sender === 'user'
+                        ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white'
+                        : 'bg-dark-200 text-white border border-violet-500/20'
+                    }`}
                   >
                     <p className="font-medium">{message.text}</p>
 
@@ -283,16 +300,16 @@ export default function ChatBot() {
                               <Link href={action.url}>
                                 <Button
                                   size="sm"
-                                  className="bg-dark-300 hover:bg-dark-400 text-white flex items-center gap-1.5 text-xs py-1 h-auto border border-primary-200/30 hover:border-primary-200"
+                                  className="bg-dark-300 hover:bg-violet-700 text-white flex items-center gap-1.5 text-xs py-1.5 h-auto border border-violet-500/30 hover:border-violet-400 rounded-full px-3 transition-all duration-300 hover:shadow-[0_0_10px_rgba(124,58,237,0.3)]"
                                 >
-                                  {action.icon}
+                                  <span className="text-violet-400">{action.icon}</span>
                                   {action.label}
                                 </Button>
                               </Link>
                             ) : (
                               <Button
                                 size="sm"
-                                className="bg-dark-300 hover:bg-dark-400 text-white flex items-center gap-1.5 text-xs py-1 h-auto border border-primary-200/30 hover:border-primary-200"
+                                className="bg-dark-300 hover:bg-violet-700 text-white flex items-center gap-1.5 text-xs py-1.5 h-auto border border-violet-500/30 hover:border-violet-400 rounded-full px-3 transition-all duration-300 hover:shadow-[0_0_10px_rgba(124,58,237,0.3)]"
                                 onClick={() => {
                                   // Handle action button click
                                   if (action.action) {
@@ -309,7 +326,7 @@ export default function ChatBot() {
                                   }
                                 }}
                               >
-                                {action.icon}
+                                <span className="text-violet-400">{action.icon}</span>
                                 {action.label}
                               </Button>
                             )}
@@ -328,28 +345,28 @@ export default function ChatBot() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Chat input */}
-          <div className="p-3 bg-dark-200 border-t border-dark-300">
+          {/* Modern Chat input */}
+          <div className="p-4 bg-dark-200 border-t border-violet-500/10">
             <div className="flex items-center gap-2">
               <textarea
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 onKeyDown={handleKeyPress}
                 placeholder="Ask me anything about interviews..."
-                className="flex-1 bg-dark-300 text-white rounded-md p-3 min-h-10 max-h-32 outline-none resize-none focus:ring-2 focus:ring-primary-200 transition-all border border-dark-400 focus:border-primary-200"
+                className="flex-1 bg-dark-300 text-white rounded-lg p-3 min-h-10 max-h-32 outline-none resize-none focus:ring-2 focus:ring-violet-500 transition-all border border-violet-500/20 focus:border-violet-500/50 placeholder-gray-500"
                 rows={1}
                 autoFocus={isOpen}
               />
               <Button
                 onClick={handleSendMessage}
                 disabled={!newMessage.trim()}
-                className="bg-gradient-to-r from-primary-200 to-blue-500 text-white rounded-full p-2 hover:opacity-90 transition-opacity shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-full p-2.5 hover:from-violet-500 hover:to-indigo-500 transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed group"
                 aria-label="Send message"
               >
-                <Send size={18} />
+                <Send size={18} className="group-hover:scale-110 transition-transform duration-300" />
               </Button>
             </div>
-            <div className="mt-2 text-xs text-light-400 text-center">
+            <div className="mt-2 text-xs text-violet-300/70 text-center font-light">
               Try asking about interview tips, coding problems, or technical questions
             </div>
           </div>

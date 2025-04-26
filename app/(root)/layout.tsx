@@ -58,73 +58,101 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <div className="w-[220px] bg-dark-100 min-h-screen p-4 flex flex-col border-r border-white/5">
+      <div className="w-[240px] bg-gray-900 min-h-screen p-6 flex flex-col border-r border-white/5 shadow-xl">
         <Link href="/" className="flex items-center gap-2 mb-8">
-          <div className="bg-red-500 rounded-full p-1.5">
-            <Image src="/logo.svg" alt="Interview Agent Logo" width={24} height={24} />
+          <div className="purple-gradient rounded-full p-2 shadow-lg">
+            <Image src="/logo.svg" alt="Interview Agent Logo" width={24} height={24} className="text-white" />
           </div>
-          <h2 className="text-white text-lg font-semibold">LLAMA3<br/>INTERVIEW</h2>
+          <div className="flex flex-col">
+            <h2 className="text-gradient text-xl font-bold">LLAMA3</h2>
+            <span className="text-white text-sm font-medium">INTERVIEW AGENT</span>
+          </div>
         </Link>
 
         {/* User Profile */}
-        <div className="flex items-center gap-2 mb-6 px-2">
-          <span className="text-light-400 text-sm">{userName}</span>
+        <div className="flex items-center gap-3 mb-8 p-3 bg-black/30 rounded-lg border border-white/5">
+          <div className="bg-purple-600/20 rounded-full p-2">
+            <User size={18} className="text-purple-400" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-white text-sm font-medium">{userName}</span>
+            <span className="text-gray-400 text-xs">AI Interview User</span>
+          </div>
         </div>
 
         {/* Navigation Links */}
-        <div className="flex flex-col space-y-1">
-          <Link href="/" className="text-light-300 hover:bg-dark-200 px-3 py-2.5 rounded-md transition-colors flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-light-500">
-              <rect x="3" y="3" width="7" height="9"></rect>
-              <rect x="14" y="3" width="7" height="5"></rect>
-              <rect x="14" y="12" width="7" height="9"></rect>
-              <rect x="3" y="16" width="7" height="5"></rect>
-            </svg>
-            Dashboard
+        <div className="flex flex-col space-y-1.5">
+          <Link href="/" className="text-gray-300 hover:text-white px-4 py-3 rounded-lg transition-all flex items-center gap-3 hover:bg-purple-600/10 group">
+            <div className="bg-gray-800 group-hover:bg-purple-600/20 p-2 rounded-lg transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-purple-400 transition-colors">
+                <rect x="3" y="3" width="7" height="9"></rect>
+                <rect x="14" y="3" width="7" height="5"></rect>
+                <rect x="14" y="12" width="7" height="9"></rect>
+                <rect x="3" y="16" width="7" height="5"></rect>
+              </svg>
+            </div>
+            <span className="font-medium">Dashboard</span>
           </Link>
-          <Link href="/interview" className="text-light-300 hover:bg-dark-200 px-3 py-2.5 rounded-md transition-colors flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-light-500">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            New Interview
+          <Link href="/interview" className="text-gray-300 hover:text-white px-4 py-3 rounded-lg transition-all flex items-center gap-3 hover:bg-purple-600/10 group">
+            <div className="bg-gray-800 group-hover:bg-purple-600/20 p-2 rounded-lg transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-purple-400 transition-colors">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <span className="font-medium">New Interview</span>
           </Link>
-          <Link href="/history" className="text-light-300 hover:bg-dark-200 px-3 py-2.5 rounded-md transition-colors flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-light-500">
-              <path d="M12 8v4l3 3"></path>
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            History
+          <Link href="/history" className="text-gray-300 hover:text-white px-4 py-3 rounded-lg transition-all flex items-center gap-3 hover:bg-purple-600/10 group">
+            <div className="bg-gray-800 group-hover:bg-purple-600/20 p-2 rounded-lg transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-purple-400 transition-colors">
+                <path d="M12 8v4l3 3"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+            </div>
+            <span className="font-medium">History</span>
           </Link>
-          <Link href="/settings" className="text-light-300 hover:bg-dark-200 px-3 py-2.5 rounded-md transition-colors flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-light-500">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-            Settings
-          </Link>
+
         </div>
+
+        {/* Spacer to push logout to the bottom */}
+        <div className="mt-auto"></div>
+
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          className="mt-6 flex items-center gap-3 text-gray-300 hover:text-white px-4 py-3 rounded-lg transition-all hover:bg-red-500/10 group"
+        >
+          <div className="bg-gray-800 group-hover:bg-red-500/20 p-2 rounded-lg transition-colors">
+            <LogOut size={16} className="text-gray-400 group-hover:text-red-400 transition-colors" />
+          </div>
+          <span className="font-medium">Logout</span>
+        </button>
       </div>
 
       {/* Main Content */}
       <div className="flex-1 bg-gradient-to-b from-gray-900 to-black relative">
+        {/* Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
         {/* Header */}
-        <div className="flex justify-between items-center p-4">
-          <h1 className="text-gradient text-3xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
+        <div className="sticky top-0 z-10 backdrop-blur-md bg-black/30 border-b border-white/5 px-6 py-4 flex justify-between items-center">
+          <h1 className="text-gradient text-2xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
 
           <div className="flex items-center gap-3">
             {/* Chat Button */}
-            <button className="glass-effect p-2.5 rounded-md hover:bg-white/10 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-100">
+            <button className="glass-effect p-2.5 rounded-lg hover:bg-white/10 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
             </button>
 
-            {/* Logout Button */}
-            <button
-              onClick={handleLogout}
-              className="bg-purple-600 text-white px-4 py-2 rounded-md font-medium transition-all duration-200 hover:bg-purple-700 shadow-md"
-            >
-              Logout
+            {/* Help Button */}
+            <button className="glass-effect p-2.5 rounded-lg hover:bg-white/10 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
             </button>
           </div>
         </div>
