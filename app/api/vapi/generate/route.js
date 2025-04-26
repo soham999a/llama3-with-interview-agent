@@ -1,12 +1,12 @@
 import { db } from "@/firebase/admin";
 import { getRandomInterviewCover } from "@/lib/utils";
-import { replicateAdapter } from "@/lib/replicate-integration";
+import { simpleDeepseekAdapter } from "@/lib/simple-deepseek";
 
 export async function POST(request) {
   const { type, role, level, techstack, amount, userid } = await request.json();
 
   try {
-    console.log("Generating interview questions with Replicate...");
+    console.log("Generating interview questions with DeepSeek...");
     console.log("Parameters:", { type, role, level, techstack, amount, userid });
 
     // Generate default questions in case the API call fails
@@ -21,8 +21,8 @@ export async function POST(request) {
     let questions = defaultQuestions;
 
     try {
-      // Use the Replicate adapter
-      const { text: questionsText } = await replicateAdapter.generateText({
+      // Use the DeepSeek adapter
+      const { text: questionsText } = await simpleDeepseekAdapter.generateText({
         prompt: `Prepare questions for a job interview.
           The job role is ${role}.
           The job experience level is ${level}.
@@ -38,7 +38,7 @@ export async function POST(request) {
         `
       });
 
-      console.log("Raw response from Replicate:", questionsText);
+      console.log("Raw response from DeepSeek:", questionsText);
 
       // Clean up the response to ensure it's valid JSON
       let cleanedResponse = questionsText.trim();
@@ -90,7 +90,7 @@ export async function POST(request) {
         }
       }
     } catch (apiError) {
-      console.error("Error calling Replicate API:", apiError);
+      console.error("Error calling DeepSeek API:", apiError);
       console.log("Using default questions due to API error");
     }
 
