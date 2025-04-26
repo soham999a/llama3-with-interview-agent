@@ -313,7 +313,7 @@ const Agent = ({
         <div className="w-full flex justify-center mt-8">
           {callStatus !== CallStatus.ACTIVE ? (
             <button
-              className={`relative px-6 py-3 rounded-full ${callStatus === CallStatus.CONNECTING ? 'bg-yellow-500' : 'bg-green-500'} text-white font-medium flex items-center gap-2 hover:opacity-90 transition-opacity`}
+              className={`relative px-6 py-3 rounded-md ${callStatus === CallStatus.CONNECTING ? 'bg-yellow-500' : 'purple-gradient'} text-white font-medium flex items-center gap-2 hover:opacity-90 transition-opacity shadow-md`}
               onClick={() => handleCall()}
               disabled={callStatus === CallStatus.CONNECTING}
             >
@@ -341,7 +341,7 @@ const Agent = ({
             </button>
           ) : (
             <button
-              className="px-6 py-3 rounded-full bg-red-500 text-white font-medium flex items-center gap-2 hover:opacity-90 transition-opacity"
+              className="px-6 py-3 rounded-md bg-red-500 text-white font-medium flex items-center gap-2 hover:opacity-90 transition-opacity shadow-md"
               onClick={() => handleDisconnect()}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
