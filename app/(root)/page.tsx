@@ -179,19 +179,19 @@ function Home() {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-          <div className="flex flex-col gap-6 max-w-lg">
+          <div className="flex flex-col gap-6 max-w-lg w-full">
             <div className="inline-flex items-center gap-2 bg-purple-600/20 rounded-full px-4 py-1.5 w-fit">
               <span className="animate-pulse size-2 bg-purple-500 rounded-full"></span>
               <span className="text-purple-300 text-sm font-medium">AI-Powered Interview Practice</span>
             </div>
 
-            <h2 className="text-4xl font-bold text-gradient">Welcome, {user?.name || 'User'}!</h2>
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient">Welcome, {user?.name || 'User'}!</h2>
+            <p className="text-gray-300 text-base md:text-lg leading-relaxed">
               Practice real interview questions with our LLAMA3-powered AI interviewer and receive personalized feedback to enhance your skills.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <button className="purple-gradient text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-200 hover:opacity-90 hover:shadow-purple-500/20 hover:shadow-lg shadow-md w-fit flex items-center gap-2 group">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
+              <button className="purple-gradient text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-200 hover:opacity-90 hover:shadow-purple-500/20 hover:shadow-lg shadow-md w-full sm:w-fit flex items-center justify-center gap-2 group">
                 <Link href="/interview" className="flex items-center gap-2">
                   Start an Interview
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
@@ -201,7 +201,7 @@ function Home() {
                 </Link>
               </button>
 
-              <button className="glass-effect text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-200 hover:bg-white/10 w-fit flex items-center gap-2">
+              <button className="glass-effect text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-200 hover:bg-white/10 w-full sm:w-fit flex items-center justify-center gap-2">
                 <Link href="/history" className="flex items-center gap-2">
                   View History
                 </Link>
@@ -240,13 +240,13 @@ function Home() {
 
       {/* Interview Types Grid */}
       <section className="mb-8">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3 sm:gap-0">
           <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold text-white">Interview Types</h2>
-            <p className="text-gray-400">Select the type of interview you want to practice</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Interview Types</h2>
+            <p className="text-gray-400 text-sm sm:text-base">Select the type of interview you want to practice</p>
           </div>
 
-          <button className="glass-effect text-purple-400 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-white/10 flex items-center gap-2 text-sm">
+          <button className="glass-effect text-purple-400 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-white/10 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
             View All
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14"></path>
@@ -255,7 +255,7 @@ function Home() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {interviewTypes.map((type) => (
             <Link
               href={`/interview?type=${type.id}`}
@@ -295,15 +295,15 @@ function Home() {
 
       {/* Recent Interviews */}
       <section className="mb-8">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3 sm:gap-0">
           <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold text-white">Your Recent Interviews</h2>
-            <p className="text-gray-400">Review your past interview sessions and feedback</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Your Recent Interviews</h2>
+            <p className="text-gray-400 text-sm sm:text-base">Review your past interview sessions and feedback</p>
           </div>
 
           {hasPastInterviews && (
-            <button className="glass-effect text-purple-400 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-white/10 flex items-center gap-2 text-sm">
-              <Link href="/history">
+            <button className="glass-effect text-purple-400 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-white/10 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
+              <Link href="/history" className="flex items-center gap-2">
                 View All History
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14"></path>
@@ -314,7 +314,7 @@ function Home() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {hasPastInterviews ? (
             userInterviews?.map((interview) => (
               <InterviewCard
@@ -372,31 +372,31 @@ function Home() {
       </section>
 
       {/* Upcoming Features */}
-      <section className="rounded-2xl bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20 p-8 relative overflow-hidden border border-white/5 shadow-xl">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <section className="rounded-2xl bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20 p-4 sm:p-8 relative overflow-hidden border border-white/5 shadow-xl">
+        <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-purple-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         {/* Decorative elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-purple-600/5 to-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute top-0 right-0 size-24 bg-purple-600/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-0 left-0 size-32 bg-blue-600/10 rounded-full blur-xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-full max-h-[500px] bg-gradient-to-r from-purple-600/5 to-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 size-16 sm:size-24 bg-purple-600/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-0 left-0 size-20 sm:size-32 bg-blue-600/10 rounded-full blur-xl"></div>
 
-        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between relative z-10">
+        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between relative z-10">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-purple-600/20 rounded-full px-4 py-1.5 w-fit mb-4">
+            <div className="inline-flex items-center gap-2 bg-purple-600/20 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 w-fit mb-3 sm:mb-4">
               <span className="animate-pulse size-2 bg-purple-500 rounded-full"></span>
-              <span className="text-purple-300 text-sm font-medium">Coming Soon</span>
+              <span className="text-purple-300 text-xs sm:text-sm font-medium">Coming Soon</span>
             </div>
 
-            <h3 className="text-2xl font-bold text-gradient mb-3">Advanced Interview Features</h3>
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-gradient mb-2 sm:mb-3">Advanced Interview Features</h3>
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
               We're working on exciting new features to enhance your interview preparation experience. Stay tuned for these upcoming additions:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-              <div className="flex items-start gap-3">
-                <div className="bg-purple-600/20 rounded-lg p-2 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-4">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <div className="bg-purple-600/20 rounded-lg p-1.5 sm:p-2 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400 sm:w-[18px] sm:h-[18px]">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                     <line x1="16" y1="2" x2="16" y2="6"></line>
                     <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -404,8 +404,8 @@ function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-white font-semibold">Interview Scheduling</h4>
-                  <p className="text-gray-400 text-sm mt-1">Schedule mock interviews at your convenience</p>
+                  <h4 className="text-white font-semibold text-sm sm:text-base">Interview Scheduling</h4>
+                  <p className="text-gray-400 text-xs sm:text-sm mt-0.5 sm:mt-1">Schedule mock interviews at your convenience</p>
                 </div>
               </div>
 
@@ -451,16 +451,16 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <button className="purple-gradient text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-200 hover:opacity-90 hover:shadow-purple-500/20 hover:shadow-lg shadow-md flex items-center gap-2 whitespace-nowrap group">
+          <div className="flex flex-col gap-3 sm:gap-4 w-full md:w-auto">
+            <button className="purple-gradient text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-200 hover:opacity-90 hover:shadow-purple-500/20 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full md:w-auto">
               <span>Join Waitlist</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform sm:w-[18px] sm:h-[18px]">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
             </button>
 
-            <button className="glass-effect text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-200 hover:bg-white/10 flex items-center gap-2 whitespace-nowrap">
+            <button className="glass-effect text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-200 hover:bg-white/10 flex items-center justify-center gap-2 whitespace-nowrap w-full md:w-auto">
               <span>Learn More</span>
             </button>
           </div>

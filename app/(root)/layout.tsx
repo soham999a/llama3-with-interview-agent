@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LogOut, User } from "lucide-react";
+import { LogOut, User, Menu, X } from "lucide-react";
 
 import { isAuthenticated, signOut, getCurrentUser } from "@/lib/actions/auth.action";
 import ChatBot from "@/components/ChatBot";
@@ -13,6 +13,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const [userName, setUserName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -56,9 +57,25 @@ const Layout = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen relative">
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="mobile-overlay"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
+
       {/* Sidebar */}
-      <div className="w-[240px] bg-gray-900 min-h-screen p-6 flex flex-col border-r border-white/5 shadow-xl">
+      <div className={`w-[240px] bg-gray-900 min-h-screen p-6 flex flex-col border-r border-white/5 shadow-xl mobile-sidebar ${isMobileMenuOpen ? 'mobile-menu-open' : 'mobile-menu-closed'}`}>
+        {/* Mobile Close Button */}
+        <button
+          className="absolute top-4 right-4 p-1 rounded-full bg-gray-800 text-white md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <X size={18} />
+        </button>
+
         <Link href="/" className="flex items-center gap-2 mb-8">
           <div className="purple-gradient rounded-full p-2 shadow-lg">
             <Image src="/logo.svg" alt="Interview Agent Logo" width={24} height={24} className="text-white" />
@@ -134,8 +151,27 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
-        {/* Header */}
-        <div className="sticky top-0 z-10 backdrop-blur-md bg-black/30 border-b border-white/5 px-6 py-4 flex justify-between items-center">
+        {/* Mobile Header */}
+        <div className="mobile-header">
+          <button
+            className="mobile-nav-button"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <Menu size={20} />
+          </button>
+
+          <div className="flex items-center gap-2">
+            <div className="purple-gradient rounded-full p-1.5 shadow-lg">
+              <Image src="/logo.svg" alt="Interview Agent Logo" width={18} height={18} className="text-white" />
+            </div>
+            <h2 className="text-gradient text-lg font-bold">LLAMA3</h2>
+          </div>
+
+          <ChatBot />
+        </div>
+
+        {/* Desktop Header */}
+        <div className="hidden md:flex sticky top-0 z-10 backdrop-blur-md bg-black/30 border-b border-white/5 px-6 py-4 justify-between items-center">
           <h1 className="text-gradient text-2xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
 
           <div className="flex items-center gap-3">
@@ -158,7 +194,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Page Content */}
-        <div className="p-6">
+        <div className="p-4 md:p-6">
           {children}
         </div>
       </div>
