@@ -136,8 +136,8 @@ function Home() {
             </svg>
           </div>
           <div>
-            <h3 className="text-green-400 font-medium">DeepSeek Integration Active</h3>
-            <p className="text-gray-300 text-sm">This application now uses DeepSeek AI for generating questions and providing feedback.</p>
+            <h3 className="text-green-400 font-medium">Llama3 Model Activated</h3>
+            <p className="text-gray-300 text-sm">This application now uses Llama3 AI for generating questions and providing feedback.</p>
           </div>
         </div>
       </section>
