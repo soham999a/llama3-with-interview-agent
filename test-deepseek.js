@@ -1,15 +1,19 @@
 // Test script for DeepSeek integration
 // This script tests both question generation and feedback generation with DeepSeek
 
-require('dotenv').config({ path: '.env.local' });
-const { deepseekAdapter } = require('./lib/deepseek-adapter');
-const fs = require('fs').promises;
+import dotenv from 'dotenv';
+import { deepseekAdapter } from './lib/deepseek-integration.js';
+import { simpleDeepseekAdapter } from './lib/simple-deepseek.js';
+import fs from 'fs/promises';
+
+// Load environment variables
+dotenv.config({ path: '.env.local' });
 
 // Test question generation
 async function testQuestionGeneration() {
   try {
     console.log('=== Testing Question Generation with DeepSeek ===\n');
-    
+
     const params = {
       type: 'technical',
       role: 'Frontend Developer',
@@ -17,7 +21,7 @@ async function testQuestionGeneration() {
       techstack: 'React, TypeScript, CSS',
       amount: 5
     };
-    
+
     const prompt = `Prepare questions for a job interview.
       The job role is ${params.role}.
       The job experience level is ${params.level}.
@@ -29,27 +33,27 @@ async function testQuestionGeneration() {
       Return the questions formatted like this:
       ["Question 1", "Question 2", "Question 3"]
     `;
-    
+
     console.log('Sending prompt to DeepSeek...');
     const { text: questions } = await deepseekAdapter.generateText({
       prompt: prompt,
       model: process.env.DEEPSEEK_QUESTION_MODEL
     });
-    
+
     console.log('Raw response:', questions);
-    
+
     // Parse the questions
     const parsedQuestions = JSON.parse(questions);
-    
+
     console.log('\n✅ Successfully generated interview questions:');
     parsedQuestions.forEach((q, i) => {
       console.log(`${i + 1}. ${q}`);
     });
-    
+
     return parsedQuestions;
   } catch (error) {
     console.error('❌ Error testing question generation:', error);
-    
+
     // Try with Llama as fallback
     try {
       console.log('\n⚠️ Falling back to Llama 3...');
@@ -57,17 +61,17 @@ async function testQuestionGeneration() {
         prompt: prompt,
         model: process.env.LLAMA_QUESTION_MODEL
       });
-      
+
       console.log('Raw response:', questions);
-      
+
       // Parse the questions
       const parsedQuestions = JSON.parse(questions);
-      
+
       console.log('\n✅ Successfully generated interview questions with Llama 3:');
       parsedQuestions.forEach((q, i) => {
         console.log(`${i + 1}. ${q}`);
       });
-      
+
       return parsedQuestions;
     } catch (fallbackError) {
       console.error('❌ Error with fallback to Llama 3:', fallbackError);
@@ -80,7 +84,7 @@ async function testQuestionGeneration() {
 async function testFeedbackGeneration() {
   try {
     console.log('\n=== Testing Feedback Generation with DeepSeek ===\n');
-    
+
     // Sample transcript
     const transcript = [
       { role: "interviewer", content: "Can you explain how React's virtual DOM works?" },
@@ -90,12 +94,12 @@ async function testFeedbackGeneration() {
       { role: "interviewer", content: "What's the difference between controlled and uncontrolled components in React?" },
       { role: "candidate", content: "Controlled components are those where React controls the state of the form elements. The form data is handled by React component state. Uncontrolled components are those where the form data is handled by the DOM itself. You use refs to get form values from the DOM instead of using event handlers." }
     ];
-    
+
     // Format the transcript for the prompt
     const formattedTranscript = transcript
       .map(sentence => `- ${sentence.role}: ${sentence.content}\n`)
       .join("");
-    
+
     // Create the prompt for feedback generation
     const prompt = `
       You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
@@ -127,37 +131,37 @@ async function testFeedbackGeneration() {
         "summary": "string"
       }
     `;
-    
+
     console.log('Sending transcript to DeepSeek...');
     const { object: feedback } = await deepseekAdapter.generateObject({
       prompt: prompt,
       model: process.env.DEEPSEEK_FEEDBACK_MODEL
     });
-    
+
     console.log('\n✅ Successfully generated interview feedback:');
     console.log(`Overall Score: ${feedback.overallScore}/10`);
     console.log(`Technical Knowledge: ${feedback.technicalKnowledge.score}/10`);
     console.log(`Communication Skills: ${feedback.communicationSkills.score}/10`);
     console.log(`Problem-Solving: ${feedback.problemSolving.score}/10`);
-    
+
     console.log('\nStrengths:');
     feedback.strengths.forEach(s => console.log(`- ${s}`));
-    
+
     console.log('\nAreas for Improvement:');
     feedback.areasForImprovement.forEach(a => console.log(`- ${a}`));
-    
+
     console.log('\nSummary:', feedback.summary);
-    
+
     // Save the feedback to a file
     await fs.writeFile(
       'deepseek-results.json',
       JSON.stringify(feedback, null, 2)
     );
-    
+
     return feedback;
   } catch (error) {
     console.error('❌ Error testing feedback generation:', error);
-    
+
     // Try with Llama as fallback
     try {
       console.log('\n⚠️ Falling back to Llama 3...');
@@ -165,27 +169,27 @@ async function testFeedbackGeneration() {
         prompt: prompt,
         model: process.env.LLAMA_FEEDBACK_MODEL
       });
-      
+
       console.log('\n✅ Successfully generated interview feedback with Llama 3:');
       console.log(`Overall Score: ${feedback.overallScore}/10`);
       console.log(`Technical Knowledge: ${feedback.technicalKnowledge.score}/10`);
       console.log(`Communication Skills: ${feedback.communicationSkills.score}/10`);
       console.log(`Problem-Solving: ${feedback.problemSolving.score}/10`);
-      
+
       console.log('\nStrengths:');
       feedback.strengths.forEach(s => console.log(`- ${s}`));
-      
+
       console.log('\nAreas for Improvement:');
       feedback.areasForImprovement.forEach(a => console.log(`- ${a}`));
-      
+
       console.log('\nSummary:', feedback.summary);
-      
+
       // Save the feedback to a file
       await fs.writeFile(
         'llama-results.json',
         JSON.stringify(feedback, null, 2)
       );
-      
+
       return feedback;
     } catch (fallbackError) {
       console.error('❌ Error with fallback to Llama 3:', fallbackError);
@@ -197,10 +201,10 @@ async function testFeedbackGeneration() {
 // Run the tests
 async function runTests() {
   console.log('=== DeepSeek Integration Test ===\n');
-  
+
   const questions = await testQuestionGeneration();
   const feedback = await testFeedbackGeneration();
-  
+
   if (questions && feedback) {
     console.log('\n✅ All tests passed! DeepSeek integration is working correctly.');
   } else {
