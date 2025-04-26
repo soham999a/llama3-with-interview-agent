@@ -176,7 +176,7 @@ function Home() {
       {/* Welcome Section */}
       <section className="flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col gap-4 max-w-lg">
-          <h2 className="text-3xl font-bold text-white">Welcome back, {user?.name || 'User'}!</h2>
+          <h2 className="text-3xl font-bold text-red-500">👋 WELCOME TO LLAMA3 INTERVIEW, {user?.name || 'User'}!</h2>
           <p className="text-light-400 text-lg">
             Practice real interview questions & get instant AI feedback to improve your skills.
           </p>

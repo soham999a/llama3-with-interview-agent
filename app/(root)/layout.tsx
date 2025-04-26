@@ -60,10 +60,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
       {/* Sidebar */}
       <div className="w-[220px] bg-dark-100 min-h-screen p-4 flex flex-col border-r border-white/5">
         <Link href="/" className="flex items-center gap-2 mb-8">
-          <div className="bg-primary-200 rounded-full p-1.5">
+          <div className="bg-red-500 rounded-full p-1.5">
             <Image src="/logo.svg" alt="Interview Agent Logo" width={24} height={24} />
           </div>
-          <h2 className="text-white text-lg font-semibold">Interview<br/>Agent</h2>
+          <h2 className="text-white text-lg font-semibold">LLAMA3<br/>INTERVIEW</h2>
         </Link>
 
         {/* User Profile */}
@@ -106,10 +106,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 bg-dark-100 relative">
+      <div className="flex-1 bg-black relative">
         {/* Header */}
         <div className="flex justify-between items-center p-4">
-          <h1 className="text-white text-2xl font-bold">Dashboard</h1>
+          <h1 className="text-red-500 text-3xl font-bold">LLAMA3 DASHBOARD</h1>
 
           <div className="flex items-center gap-3">
             {/* Chat Button */}
