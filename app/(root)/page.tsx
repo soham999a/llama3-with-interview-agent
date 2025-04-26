@@ -7,13 +7,58 @@ import dynamic from "next/dynamic";
 
 import { Button } from "@/components/ui/button";
 import InterviewCard from "@/components/InterviewCard";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
-// Dynamically import 3D components to avoid SSR issues
-const Background3D = dynamic(() => import("@/components/3d/Background3D"), { ssr: false });
-const Card3D = dynamic(() => import("@/components/3d/Card3D"), { ssr: false });
-const Button3D = dynamic(() => import("@/components/3d/Button3D"), { ssr: false });
-const FloatingParticles3D = dynamic(() => import("@/components/3d/FloatingParticles3D"), { ssr: false });
-const InteractiveCode3D = dynamic(() => import("@/components/3d/InteractiveCode3D"), { ssr: false });
+// Dynamically import 3D components with error handling
+const Background3D = dynamic(() =>
+  import("@/components/3d/Background3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load Background3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const Card3D = dynamic(() =>
+  import("@/components/3d/Card3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load Card3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const Button3D = dynamic(() =>
+  import("@/components/3d/Button3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load Button3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const FloatingParticles3D = dynamic(() =>
+  import("@/components/3d/FloatingParticles3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load FloatingParticles3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
+
+const InteractiveCode3D = dynamic(() =>
+  import("@/components/3d/InteractiveCode3D")
+    .then(mod => mod.default)
+    .catch(err => {
+      console.error("Failed to load InteractiveCode3D:", err);
+      return () => null;
+    }),
+  { ssr: false }
+);
 
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewsByUserId } from "@/lib/actions/general.action";
@@ -25,8 +70,14 @@ function Home() {
   const [show3D, setShow3D] = useState(false);
 
   useEffect(() => {
-    // Disable 3D to avoid errors
-    setShow3D(false);
+    try {
+      // Enable 3D after a short delay to ensure smooth page load
+      const timer = setTimeout(() => setShow3D(true), 500);
+      return () => clearTimeout(timer);
+    } catch (error) {
+      console.error("Error enabling 3D:", error);
+      setShow3D(false);
+    }
   }, []);
 
   // Load user preferences for 3D
@@ -121,37 +172,17 @@ function Home() {
   }
 
   return (
-    <div className="flex flex-col gap-8 relative">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-white">Dashboard</h1>
-      </div>
-
-      {/* DeepSeek Integration Notice */}
-      <section className="bg-green-900/20 border border-green-500/30 rounded-lg p-4 mb-4">
-        <div className="flex items-center gap-3">
-          <div className="bg-green-500/20 p-2 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
-              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-              <path d="m9 12 2 2 4-4"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-green-400 font-medium">DeepSeek Integration Active</h3>
-            <p className="text-gray-300 text-sm">This application now uses DeepSeek AI for generating questions and providing feedback.</p>
-          </div>
-        </div>
-      </section>
-
+    <div className="flex flex-col gap-6 relative">
       {/* Welcome Section */}
       <section className="bg-[#1e1e1e] rounded-lg p-8 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex flex-col gap-6 max-w-lg">
+        <div className="flex flex-col gap-4 max-w-lg">
           <h2 className="text-2xl font-bold text-white">Welcome back, {user?.name || 'User'}!</h2>
           <p className="text-gray-300">
             Practice real interview questions & get instant AI feedback to improve your skills.
           </p>
 
           <Link href="/interview">
-            <button className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white px-5 py-2.5 rounded-md font-medium transition-colors max-sm:w-full">
+            <button className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white px-5 py-2.5 rounded-md font-medium transition-colors max-sm:w-full mt-2">
               Start an Interview
             </button>
           </Link>
@@ -171,8 +202,8 @@ function Home() {
       </section>
 
       {/* Interview Types Grid */}
-      <section className="mt-8">
-        <h2 className="text-xl font-bold text-white mb-6">Interview Types</h2>
+      <section>
+        <h2 className="text-xl font-bold text-white mb-4">Interview Types</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {interviewTypes.map((type) => (
             <Link
@@ -204,7 +235,7 @@ function Home() {
       </section>
 
       {/* Recent Interviews */}
-      <section className="flex flex-col gap-6 mt-8">
+      <section className="flex flex-col gap-4 mt-6">
         <h2 className="text-xl font-bold text-white">Your Recent Interviews</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -243,7 +274,7 @@ function Home() {
       </section>
 
       {/* Upcoming Features */}
-      <section className="mt-8 rounded-lg bg-gradient-to-r from-[#7c3aed]/10 to-[#4f46e5]/10 p-6 relative overflow-hidden">
+      <section className="mt-6 rounded-lg bg-gradient-to-r from-[#7c3aed]/10 to-[#4f46e5]/10 p-6 relative overflow-hidden">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between relative z-10">
           <div>
             <h3 className="text-lg font-semibold text-white">Coming Soon: Interview Scheduling</h3>
