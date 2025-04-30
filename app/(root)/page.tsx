@@ -115,43 +115,73 @@ function Home() {
       id: 'technical',
       title: 'Technical Interview',
       description: 'Practice coding problems and system design questions',
-      color: 'bg-blue-500',
+      color: 'yellow',
       icon: '/icons/code.svg',
+      rating: 5,
+      popular: true,
+      bgColor: 'bg-yellow-100',
+      textColor: 'text-yellow-800',
+      companies: ['Google', 'Microsoft', 'Amazon', 'Meta']
     },
     {
       id: 'behavioral',
       title: 'Behavioral Interview',
       description: 'Prepare for questions about your past experiences',
-      color: 'bg-purple-500',
+      color: 'teal',
       icon: '/icons/chat.svg',
+      rating: 4.5,
+      popular: true,
+      bgColor: 'bg-teal-100',
+      textColor: 'text-teal-800',
+      companies: ['Goldman Sachs', 'Walmart', 'Amazon', 'Microsoft']
     },
     {
       id: 'problem-solving',
-      title: 'Problem Solving',
+      title: 'Last 2 Years\' Startup & Mid-Company Tech Interview',
       description: 'Demonstrate your analytical and critical thinking skills',
-      color: 'bg-green-500',
+      color: 'green',
       icon: '/icons/brain.svg',
+      rating: 4.5,
+      popular: false,
+      bgColor: 'bg-green-100',
+      textColor: 'text-green-800',
+      companies: ['Startups', 'Mid-size companies']
     },
     {
       id: 'system-design',
       title: 'System Design',
       description: 'Practice designing scalable systems and architectures',
-      color: 'bg-orange-500',
+      color: 'blue',
       icon: '/icons/design.svg',
+      rating: 5,
+      popular: true,
+      bgColor: 'bg-blue-100',
+      textColor: 'text-blue-800',
+      companies: ['Frontend', 'Backend', 'Full Stack']
     },
     {
       id: 'leadership',
       title: 'Leadership',
       description: 'Prepare for questions about your leadership experience',
-      color: 'bg-red-500',
+      color: 'purple',
       icon: '/icons/leadership.svg',
+      rating: 4.5,
+      popular: false,
+      bgColor: 'bg-purple-100',
+      textColor: 'text-purple-800',
+      companies: ['Management', 'Team Lead']
     },
     {
       id: 'product-management',
       title: 'Product Management',
       description: 'Practice product management interview questions',
-      color: 'bg-yellow-500',
+      color: 'red',
       icon: '/icons/product.svg',
+      rating: 4.5,
+      popular: true,
+      bgColor: 'bg-red-100',
+      textColor: 'text-red-800',
+      companies: ['Product', 'UX', 'Strategy']
     },
   ];
 
@@ -241,53 +271,94 @@ function Home() {
       </section>
 
       {/* Interview Types Grid */}
-      <section className="mb-8">
+      <section className="mb-8 bg-teal-50/50 p-8 rounded-2xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3 sm:gap-0">
           <div className="flex flex-col gap-1">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Interview Types</h2>
-            <p className="text-gray-600 text-sm sm:text-base">Select the type of interview you want to practice</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Digital Products</h2>
           </div>
 
-          <button className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-teal-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
-            View All
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </button>
+          <div className="flex items-center gap-3">
+            <button className="bg-teal-500 text-white px-4 py-2 rounded-full font-medium transition-all duration-200 text-sm">
+              All
+            </button>
+            <button className="bg-white text-gray-600 px-4 py-2 rounded-full font-medium transition-all duration-200 hover:bg-gray-100 text-sm">
+              Resume
+            </button>
+            <button className="bg-white text-gray-600 px-4 py-2 rounded-full font-medium transition-all duration-200 hover:bg-gray-100 text-sm">
+              Resource
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {interviewTypes.map((type) => (
             <Link
               href={`/interview?type=${type.id}`}
               key={type.id}
               className="group"
             >
-              <div className="relative overflow-hidden rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border border-gray-200">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                <div className="flex items-start justify-between relative z-10">
-                  <div className={`w-14 h-14 rounded-xl bg-${type.color.replace('bg-', '')}/10 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                    <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={28} height={28} className="text-gray-800" />
+              <div className={`relative overflow-hidden rounded-xl ${type.bgColor} p-0 shadow-md hover:shadow-lg transition-all duration-300 h-full border border-gray-200`}>
+                {/* Card Header */}
+                <div className="p-3 relative">
+                  <div className="absolute top-3 left-3 bg-gray-800/80 text-white text-xs px-2 py-1 rounded">
+                    Digital Product
                   </div>
 
-                  <div className="size-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500 group-hover:text-white transition-colors duration-300">
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
+                  {/* Card Image/Banner */}
+                  <div className="h-48 rounded-lg overflow-hidden relative">
+                    <div className={`absolute inset-0 ${type.bgColor} flex items-center justify-center`}>
+                      <h3 className={`text-2xl font-bold ${type.textColor} text-center px-4`}>{type.title}</h3>
+                    </div>
+
+                    {type.companies && type.companies.length > 0 && (
+                      <div className="absolute bottom-0 left-0 right-0 bg-white/90 p-2 text-xs text-gray-700">
+                        {type.companies.join(' • ')}
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <h3 className="mt-5 text-xl font-semibold text-gray-800 group-hover:text-teal-600 transition-colors duration-300">{type.title}</h3>
-                <p className="mt-2 text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{type.description}</p>
+                {/* Card Content */}
+                <div className="bg-white p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center">
+                      <div className="text-yellow-500 mr-1 text-lg font-bold">{type.rating}</div>
+                      <div className="flex">
+                        {[...Array(Math.floor(type.rating))].map((_, i) => (
+                          <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-yellow-500">
+                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                          </svg>
+                        ))}
+                        {type.rating % 1 !== 0 && (
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-yellow-500">
+                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                      </div>
+                    </div>
 
-                <div className="mt-6 flex items-center gap-2">
-                  <div className="h-1 flex-grow rounded-full bg-gray-100 overflow-hidden">
-                    <div className="h-full bg-teal-500 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                    {type.popular && (
+                      <div className="bg-gray-200 text-gray-800 px-2 py-1 rounded text-xs font-medium">
+                        Popular
+                      </div>
+                    )}
                   </div>
-                  <span className="text-xs font-medium text-gray-500 group-hover:text-teal-600 transition-colors duration-300">Start</span>
+
+                  <p className="text-gray-700 text-sm mb-4">{type.description}</p>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-500">Amount</span>
+                      <div className="flex items-center">
+                        <span className="text-xs text-gray-500 line-through">₹99</span>
+                        <span className="text-gray-800 font-bold ml-1">₹49</span>
+                      </div>
+                    </div>
+
+                    <button className="bg-white text-teal-600 border border-teal-500 px-3 py-1.5 rounded-md text-sm font-medium hover:bg-teal-50 transition-colors">
+                      Purchase Now
+                    </button>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -296,7 +367,7 @@ function Home() {
       </section>
 
       {/* Recent Interviews */}
-      <section className="mb-8">
+      <section className="mb-8 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3 sm:gap-0">
           <div className="flex flex-col gap-1">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Your Recent Interviews</h2>
@@ -304,7 +375,7 @@ function Home() {
           </div>
 
           {hasPastInterviews && (
-            <button className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-teal-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
+            <button className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-full font-medium transition-all duration-200 hover:bg-teal-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
               <Link href="/history" className="flex items-center gap-2">
                 View All History
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
