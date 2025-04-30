@@ -115,42 +115,42 @@ function Home() {
       id: 'technical',
       title: 'Technical Interview',
       description: 'Practice coding problems and system design questions',
-      color: 'bg-blue-600',
+      color: 'bg-[#0070f3]',
       icon: '/icons/code.svg',
     },
     {
       id: 'behavioral',
       title: 'Behavioral Interview',
       description: 'Prepare for questions about your past experiences',
-      color: 'bg-indigo-600',
+      color: 'bg-[#1e40af]',
       icon: '/icons/chat.svg',
     },
     {
       id: 'problem-solving',
       title: 'Problem Solving',
       description: 'Demonstrate your analytical and critical thinking skills',
-      color: 'bg-blue-500',
+      color: 'bg-[#0070f3]',
       icon: '/icons/brain.svg',
     },
     {
       id: 'system-design',
       title: 'System Design',
       description: 'Practice designing scalable systems and architectures',
-      color: 'bg-indigo-500',
+      color: 'bg-[#1e40af]',
       icon: '/icons/design.svg',
     },
     {
       id: 'leadership',
       title: 'Leadership',
       description: 'Prepare for questions about your leadership experience',
-      color: 'bg-blue-600',
+      color: 'bg-[#0070f3]',
       icon: '/icons/leadership.svg',
     },
     {
       id: 'product-management',
       title: 'Product Management',
       description: 'Practice product management interview questions',
-      color: 'bg-indigo-600',
+      color: 'bg-[#1e40af]',
       icon: '/icons/product.svg',
     },
   ];
@@ -167,7 +167,7 @@ function Home() {
           </div>
         </div>
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#0070f3]"></div>
         </div>
       </div>
     );
@@ -193,7 +193,7 @@ function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
-              <button className="bg-amber-500 text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-amber-200 hover:shadow-lg shadow-md w-full sm:w-fit flex items-center justify-center gap-2 group hover:-translate-y-1">
+              <button className="bg-[#f97316] text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-orange-200 hover:shadow-lg shadow-md w-full sm:w-fit flex items-center justify-center gap-2 group hover:-translate-y-1">
                 <Link href="/interview" className="flex items-center gap-2">
                   Start an Interview
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
@@ -231,7 +231,7 @@ function Home() {
                 className="animate-float rounded-full"
               />
             </div>
-            <div className="absolute -bottom-4 -right-4 bg-amber-500 rounded-full p-3 shadow-lg">
+            <div className="absolute -bottom-4 -right-4 bg-[#f97316] rounded-full p-3 shadow-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
@@ -272,7 +272,7 @@ function Home() {
                     <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={28} height={28} className={`${type.color.replace('bg-', 'text-')}`} />
                   </div>
 
-                  <div className="size-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-amber-500 transition-colors duration-300">
+                  <div className="size-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-[#f97316] transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500 group-hover:text-white transition-colors duration-300">
                       <path d="M5 12h14"></path>
                       <path d="m12 5 7 7-7 7"></path>
@@ -285,9 +285,9 @@ function Home() {
 
                 <div className="mt-6 flex items-center gap-2">
                   <div className="h-1 flex-grow rounded-full bg-gray-100 overflow-hidden">
-                    <div className="h-full bg-amber-500 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                    <div className="h-full bg-[#f97316] w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
                   </div>
-                  <span className="text-xs font-medium text-gray-500 group-hover:text-amber-600 transition-colors duration-300">Start</span>
+                  <span className="text-xs font-medium text-gray-500 group-hover:text-[#f97316] transition-colors duration-300">Start</span>
                 </div>
               </div>
             </Link>
@@ -355,10 +355,10 @@ function Home() {
                 <div className="flex flex-wrap gap-3 mt-4 justify-center">
                   <div className="bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-blue-100 transition-all duration-300 hover:-translate-y-0.5">Personalized Feedback</div>
                   <div className="bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-indigo-100 transition-all duration-300 hover:-translate-y-0.5">Performance Analytics</div>
-                  <div className="bg-amber-50 text-amber-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-amber-100 transition-all duration-300 hover:-translate-y-0.5">Skill Assessment</div>
+                  <div className="bg-orange-50 text-[#f97316] px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-orange-100 transition-all duration-300 hover:-translate-y-0.5">Skill Assessment</div>
                 </div>
 
-                <button className="bg-amber-500 text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-amber-200 hover:shadow-lg shadow-md mt-6 group hover:-translate-y-1">
+                <button className="bg-[#f97316] text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-orange-200 hover:shadow-lg shadow-md mt-6 group hover:-translate-y-1">
                   <Link href="/interview" className="flex items-center gap-2">
                     Start Your First Interview
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
@@ -398,7 +398,7 @@ function Home() {
             <div className="grid grid-cols-2 gap-4 mt-6">
               <ColorCard
                 title="Fresher's Jobs"
-                color="amber"
+                color="orange"
                 href="/interview"
                 icon={<FreshersJobsIcon />}
               />
@@ -416,7 +416,7 @@ function Home() {
               />
               <ColorCard
                 title="MAANG"
-                color="amber"
+                color="orange"
                 href="/interview"
                 icon={<MaangIcon />}
               />
@@ -425,7 +425,7 @@ function Home() {
 
           <div className="flex flex-col gap-3 sm:gap-4 w-full md:w-auto">
             <Link href="/interview" className="w-full md:w-auto">
-              <button className="bg-amber-500 text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-amber-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1">
+              <button className="bg-[#f97316] text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-orange-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1">
                 <span>Start Interview</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform sm:w-[18px] sm:h-[18px]">
                   <path d="M5 12h14"></path>
