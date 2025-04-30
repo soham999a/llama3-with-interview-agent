@@ -115,42 +115,42 @@ function Home() {
       id: 'technical',
       title: 'Technical Interview',
       description: 'Practice coding problems and system design questions',
-      color: 'bg-teal-500',
+      color: 'bg-blue-600',
       icon: '/icons/code.svg',
     },
     {
       id: 'behavioral',
       title: 'Behavioral Interview',
       description: 'Prepare for questions about your past experiences',
-      color: 'bg-teal-600',
+      color: 'bg-indigo-600',
       icon: '/icons/chat.svg',
     },
     {
       id: 'problem-solving',
       title: 'Problem Solving',
       description: 'Demonstrate your analytical and critical thinking skills',
-      color: 'bg-teal-400',
+      color: 'bg-blue-500',
       icon: '/icons/brain.svg',
     },
     {
       id: 'system-design',
       title: 'System Design',
       description: 'Practice designing scalable systems and architectures',
-      color: 'bg-teal-500',
+      color: 'bg-indigo-500',
       icon: '/icons/design.svg',
     },
     {
       id: 'leadership',
       title: 'Leadership',
       description: 'Prepare for questions about your leadership experience',
-      color: 'bg-teal-600',
+      color: 'bg-blue-600',
       icon: '/icons/leadership.svg',
     },
     {
       id: 'product-management',
       title: 'Product Management',
       description: 'Practice product management interview questions',
-      color: 'bg-teal-400',
+      color: 'bg-indigo-600',
       icon: '/icons/product.svg',
     },
   ];
@@ -176,15 +176,15 @@ function Home() {
   return (
     <div className="flex flex-col gap-8 relative">
       {/* Welcome Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-teal-50 to-teal-100/20 rounded-2xl p-8 mb-8 border border-teal-100 shadow-md">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-indigo-100/20 rounded-2xl p-8 mb-8 border border-blue-100 shadow-md">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-300/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
           <div className="flex flex-col gap-6 max-w-lg w-full">
-            <div className="inline-flex items-center gap-2 bg-teal-100 rounded-full px-4 py-1.5 w-fit">
-              <span className="animate-pulse size-2 bg-teal-500 rounded-full"></span>
-              <span className="text-teal-600 text-sm font-medium">AI-Powered Interview Practice</span>
+            <div className="inline-flex items-center gap-2 bg-blue-100 rounded-full px-4 py-1.5 w-fit">
+              <span className="animate-pulse size-2 bg-blue-500 rounded-full"></span>
+              <span className="text-blue-600 text-sm font-medium">AI-Powered Interview Practice</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Welcome, {user?.name || 'User'}!</h2>
@@ -193,7 +193,7 @@ function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
-              <button className="bg-teal-500 text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full sm:w-fit flex items-center justify-center gap-2 group hover:-translate-y-1">
+              <button className="bg-amber-500 text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-amber-200 hover:shadow-lg shadow-md w-full sm:w-fit flex items-center justify-center gap-2 group hover:-translate-y-1">
                 <Link href="/interview" className="flex items-center gap-2">
                   Start an Interview
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
@@ -203,7 +203,7 @@ function Home() {
                 </Link>
               </button>
 
-              <button className="bg-white text-teal-600 border border-teal-200 px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:bg-teal-50 w-full sm:w-fit flex items-center justify-center gap-2 hover:-translate-y-1">
+              <button className="bg-white text-blue-600 border border-blue-200 px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:bg-blue-50 w-full sm:w-fit flex items-center justify-center gap-2 hover:-translate-y-1">
                 <Link href="/history" className="flex items-center gap-2">
                   View History
                 </Link>
@@ -212,17 +212,17 @@ function Home() {
 
             <div className="flex items-center gap-4 mt-2">
               <div className="flex -space-x-2">
-                <div className="size-8 rounded-full bg-teal-600 flex items-center justify-center text-white text-xs font-bold">AI</div>
-                <div className="size-8 rounded-full bg-teal-500 flex items-center justify-center text-white text-xs font-bold">ML</div>
-                <div className="size-8 rounded-full bg-teal-400 flex items-center justify-center text-white text-xs font-bold">NLP</div>
+                <div className="size-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">AI</div>
+                <div className="size-8 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">ML</div>
+                <div className="size-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">NLP</div>
               </div>
               <span className="text-gray-500 text-sm">Powered by advanced AI technologies</span>
             </div>
           </div>
 
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-teal-300/20 to-teal-400/20 rounded-full blur-xl"></div>
-            <div className="relative bg-gradient-to-br from-white to-teal-50 p-1 rounded-full border border-teal-100 shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-300/20 to-indigo-400/20 rounded-full blur-xl"></div>
+            <div className="relative bg-gradient-to-br from-white to-blue-50 p-1 rounded-full border border-blue-100 shadow-lg">
               <Image
                 src="/robot.png"
                 alt="AI Interview Assistant"
@@ -231,7 +231,7 @@ function Home() {
                 className="animate-float rounded-full"
               />
             </div>
-            <div className="absolute -bottom-4 -right-4 bg-teal-500 rounded-full p-3 shadow-lg">
+            <div className="absolute -bottom-4 -right-4 bg-amber-500 rounded-full p-3 shadow-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
@@ -248,7 +248,7 @@ function Home() {
             <p className="text-gray-600 text-sm sm:text-base">Select the type of interview you want to practice</p>
           </div>
 
-          <button className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-teal-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
+          <button className="bg-white text-blue-600 border border-blue-200 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-blue-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
             View All
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14"></path>
@@ -265,14 +265,14 @@ function Home() {
               className="group"
             >
               <div className="relative overflow-hidden rounded-xl bg-white p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border border-gray-200">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                 <div className="flex items-start justify-between relative z-10">
                   <div className={`w-14 h-14 rounded-xl ${type.color.replace('bg-', 'bg-')}/10 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                    <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={28} height={28} className="text-gray-800" />
+                    <Image src={type.icon || '/icons/default.svg'} alt={type.title} width={28} height={28} className={`${type.color.replace('bg-', 'text-')}`} />
                   </div>
 
-                  <div className="size-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+                  <div className="size-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-amber-500 transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500 group-hover:text-white transition-colors duration-300">
                       <path d="M5 12h14"></path>
                       <path d="m12 5 7 7-7 7"></path>
@@ -280,14 +280,14 @@ function Home() {
                   </div>
                 </div>
 
-                <h3 className="mt-5 text-xl font-semibold text-gray-800 group-hover:text-teal-600 transition-colors duration-300">{type.title}</h3>
+                <h3 className="mt-5 text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">{type.title}</h3>
                 <p className="mt-2 text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{type.description}</p>
 
                 <div className="mt-6 flex items-center gap-2">
                   <div className="h-1 flex-grow rounded-full bg-gray-100 overflow-hidden">
-                    <div className="h-full bg-teal-500 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                    <div className="h-full bg-amber-500 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
                   </div>
-                  <span className="text-xs font-medium text-gray-500 group-hover:text-teal-600 transition-colors duration-300">Start</span>
+                  <span className="text-xs font-medium text-gray-500 group-hover:text-amber-600 transition-colors duration-300">Start</span>
                 </div>
               </div>
             </Link>
@@ -304,7 +304,7 @@ function Home() {
           </div>
 
           {hasPastInterviews && (
-            <button className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-full font-medium transition-all duration-200 hover:bg-teal-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
+            <button className="bg-white text-blue-600 border border-blue-200 px-4 py-2 rounded-full font-medium transition-all duration-200 hover:bg-blue-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
               <Link href="/history" className="flex items-center gap-2">
                 View All History
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -331,12 +331,12 @@ function Home() {
             ))
           ) : (
             <div className="relative overflow-hidden rounded-xl bg-white p-8 text-center col-span-2 border border-gray-200 shadow-md">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
               <div className="flex flex-col items-center justify-center gap-4 relative z-10">
-                <div className="w-20 h-20 rounded-2xl bg-teal-100 flex items-center justify-center mb-4 shadow-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-600">
+                <div className="w-20 h-20 rounded-2xl bg-blue-100 flex items-center justify-center mb-4 shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                     <line x1="16" y1="2" x2="16" y2="6"></line>
                     <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -344,21 +344,21 @@ function Home() {
                   </svg>
                 </div>
 
-                <div className="inline-flex items-center gap-2 bg-teal-100 rounded-full px-4 py-1.5 w-fit mb-2">
-                  <span className="animate-pulse size-2 bg-teal-500 rounded-full"></span>
-                  <span className="text-teal-600 text-sm font-medium">No Interview History</span>
+                <div className="inline-flex items-center gap-2 bg-blue-100 rounded-full px-4 py-1.5 w-fit mb-2">
+                  <span className="animate-pulse size-2 bg-blue-500 rounded-full"></span>
+                  <span className="text-blue-600 text-sm font-medium">No Interview History</span>
                 </div>
 
                 <h3 className="text-2xl font-semibold text-gray-800">Start Your First Interview</h3>
                 <p className="text-gray-600 max-w-md mt-2">Complete your first interview to see your history and performance analytics here. Get personalized feedback to improve your skills.</p>
 
                 <div className="flex flex-wrap gap-3 mt-4 justify-center">
-                  <div className="bg-teal-50 text-teal-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-teal-100 transition-all duration-300 hover:-translate-y-0.5">Personalized Feedback</div>
-                  <div className="bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-blue-100 transition-all duration-300 hover:-translate-y-0.5">Performance Analytics</div>
-                  <div className="bg-green-50 text-green-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-green-100 transition-all duration-300 hover:-translate-y-0.5">Skill Assessment</div>
+                  <div className="bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-blue-100 transition-all duration-300 hover:-translate-y-0.5">Personalized Feedback</div>
+                  <div className="bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-indigo-100 transition-all duration-300 hover:-translate-y-0.5">Performance Analytics</div>
+                  <div className="bg-amber-50 text-amber-600 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:shadow-amber-100 transition-all duration-300 hover:-translate-y-0.5">Skill Assessment</div>
                 </div>
 
-                <button className="bg-teal-500 text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md mt-6 group hover:-translate-y-1">
+                <button className="bg-amber-500 text-white px-6 py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-amber-200 hover:shadow-lg shadow-md mt-6 group hover:-translate-y-1">
                   <Link href="/interview" className="flex items-center gap-2">
                     Start Your First Interview
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
@@ -375,19 +375,19 @@ function Home() {
 
       {/* Job Opportunities */}
       <section className="rounded-2xl bg-white p-4 sm:p-8 relative overflow-hidden border border-gray-200 shadow-md">
-        <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-blue-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         {/* Decorative elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-full max-h-[500px] bg-gradient-to-r from-teal-50 to-teal-100/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute top-0 right-0 size-16 sm:size-24 bg-teal-100/30 rounded-full blur-xl"></div>
-        <div className="absolute bottom-0 left-0 size-20 sm:size-32 bg-teal-200/20 rounded-full blur-xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-full max-h-[500px] bg-gradient-to-r from-blue-50 to-indigo-100/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 size-16 sm:size-24 bg-blue-100/30 rounded-full blur-xl"></div>
+        <div className="absolute bottom-0 left-0 size-20 sm:size-32 bg-indigo-200/20 rounded-full blur-xl"></div>
 
         <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between relative z-10">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-teal-100 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 w-fit mb-3 sm:mb-4">
-              <span className="animate-pulse size-2 bg-teal-500 rounded-full"></span>
-              <span className="text-teal-600 text-xs sm:text-sm font-medium">Now Available</span>
+            <div className="inline-flex items-center gap-2 bg-blue-100 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 w-fit mb-3 sm:mb-4">
+              <span className="animate-pulse size-2 bg-blue-500 rounded-full"></span>
+              <span className="text-blue-600 text-xs sm:text-sm font-medium">Now Available</span>
             </div>
 
             <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-800">Find Your Dream Job</h3>
@@ -398,7 +398,7 @@ function Home() {
             <div className="grid grid-cols-2 gap-4 mt-6">
               <ColorCard
                 title="Fresher's Jobs"
-                color="yellow"
+                color="amber"
                 href="/interview"
                 icon={<FreshersJobsIcon />}
               />
@@ -410,13 +410,13 @@ function Home() {
               />
               <ColorCard
                 title="Easy Apply"
-                color="green"
+                color="indigo"
                 href="/interview"
                 icon={<EasyApplyIcon />}
               />
               <ColorCard
                 title="MAANG"
-                color="peach"
+                color="amber"
                 href="/interview"
                 icon={<MaangIcon />}
               />
@@ -425,7 +425,7 @@ function Home() {
 
           <div className="flex flex-col gap-3 sm:gap-4 w-full md:w-auto">
             <Link href="/interview" className="w-full md:w-auto">
-              <button className="bg-teal-500 text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1">
+              <button className="bg-amber-500 text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-amber-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1">
                 <span>Start Interview</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform sm:w-[18px] sm:h-[18px]">
                   <path d="M5 12h14"></path>
@@ -435,7 +435,7 @@ function Home() {
             </Link>
 
             <Link href="/about" className="w-full md:w-auto">
-              <button className="bg-white text-teal-600 border border-teal-200 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:bg-teal-50 hover:shadow-teal-100 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap w-full hover:-translate-y-1">
+              <button className="bg-white text-blue-600 border border-blue-200 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:bg-blue-50 hover:shadow-blue-100 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap w-full hover:-translate-y-1">
                 <span>Learn More</span>
               </button>
             </Link>
