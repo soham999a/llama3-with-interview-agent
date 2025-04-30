@@ -2,7 +2,7 @@ import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import "./modern-styles.css";
+import "./engineerhub-styles.css";
 
 const inter = Inter({
   subsets: ["latin"],

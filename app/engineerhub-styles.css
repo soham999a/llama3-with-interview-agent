@@ -1,0 +1,332 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* EngineerHub Color Palette */
+  --color-teal-100: #E6F4F1;  /* Lightest teal - background */
+  --color-teal-200: #C2E8E5;  /* Light teal */
+  --color-teal-300: #8ECDC9;  /* Medium teal */
+  --color-teal-400: #5BACA7;  /* Medium-dark teal */
+  --color-teal-500: #2A8A84;  /* Dark teal - primary accent */
+  --color-teal-600: #1D6F6A;  /* Darker teal */
+
+  /* Card background colors */
+  --color-card-yellow: #FFF8E1;  /* Light yellow for cards */
+  --color-card-blue: #E1F5FE;    /* Light blue for cards */
+  --color-card-green: #E8F5E9;   /* Light green for cards */
+  --color-card-peach: #FFEBEE;   /* Light peach/pink for cards */
+
+  /* Text colors */
+  --color-text-dark: #333333;    /* Dark text */
+  --color-text-medium: #666666;  /* Medium text */
+  --color-text-light: #999999;   /* Light text */
+
+  /* Success/Error colors */
+  --color-success-100: #4CAF50;
+  --color-success-200: #388E3C;
+  --color-destructive-100: #F44336;
+  --color-destructive-200: #D32F2F;
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-white text-gray-800;
+  }
+  p {
+    @apply text-gray-600;
+  }
+  h2 {
+    @apply text-3xl font-semibold text-gray-800;
+  }
+  h3 {
+    @apply text-2xl font-semibold text-gray-800;
+  }
+  ul {
+    @apply list-disc list-inside;
+  }
+  li {
+    @apply text-gray-600;
+  }
+}
+
+@layer components {
+  .btn-call {
+    @apply inline-block px-7 py-3 font-bold text-sm leading-5 text-white transition-colors duration-150 bg-green-500 border border-transparent rounded-full shadow-sm focus:outline-none focus:shadow-2xl active:bg-green-600 hover:bg-green-600 min-w-28 cursor-pointer items-center justify-center overflow-visible;
+  }
+
+  .btn-disconnect {
+    @apply inline-block px-7 py-3 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-red-500 border border-transparent rounded-full shadow-sm focus:outline-none focus:shadow-2xl active:bg-red-600 hover:bg-red-600 min-w-28;
+  }
+
+  .btn-upload {
+    @apply flex min-h-14 w-full items-center justify-center gap-1.5 rounded-md;
+  }
+
+  .btn-primary {
+    @apply w-fit bg-teal-500 text-white hover:opacity-90 rounded-md font-medium px-5 py-2.5 cursor-pointer shadow-md transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply w-fit bg-gray-100 text-teal-500 border border-teal-500 hover:bg-gray-200 rounded-md font-medium px-5 py-2.5 cursor-pointer transition-colors;
+  }
+
+  .btn-outline {
+    @apply w-fit bg-transparent text-teal-500 border border-teal-500/50 hover:bg-teal-50 rounded-md font-medium px-5 py-2.5 cursor-pointer transition-colors;
+  }
+
+  .card-border {
+    @apply border border-gray-200 rounded-lg w-fit overflow-hidden;
+  }
+
+  .card {
+    @apply bg-white rounded-lg min-h-full shadow-md border border-gray-100;
+  }
+
+  .form {
+    @apply w-full;
+  }
+
+  .form-label {
+    @apply !text-gray-700 !font-medium !text-sm !mb-1.5;
+  }
+
+  .form-input {
+    @apply !bg-white !rounded-md !py-2.5 !px-4 !border !border-gray-300 !text-gray-800 placeholder:!text-gray-400 focus:!border-teal-500/50 focus:!ring-1 focus:!ring-teal-500/30 transition-all;
+  }
+
+  .form-btn {
+    @apply !w-full !bg-teal-500 !text-white hover:!opacity-90 !rounded-md !py-2.5 !font-medium !px-5 cursor-pointer !shadow-md !transition-all !duration-200;
+  }
+
+  .interview-card {
+    @apply bg-white rounded-lg p-6 w-full border border-gray-200 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .tech-tag {
+    @apply bg-teal-100 text-teal-600 px-2.5 py-1 rounded-full text-xs;
+  }
+
+  .score-badge {
+    @apply flex items-center gap-1 bg-teal-100 px-3 py-1.5 rounded-full text-teal-600;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-gray-800 mb-6;
+  }
+
+  .welcome-section {
+    @apply flex flex-col md:flex-row justify-between items-center gap-8;
+  }
+
+  .feature-card {
+    @apply relative overflow-hidden rounded-lg bg-white p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border border-gray-200;
+  }
+
+  .cta-section {
+    @apply mt-8 rounded-lg bg-gradient-to-r from-teal-50 to-teal-100 p-8 relative overflow-hidden border border-teal-200 shadow-md;
+  }
+
+  /* Mobile responsive components */
+  .mobile-nav-button {
+    @apply flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-teal-500 hover:bg-teal-500 hover:text-white transition-colors;
+  }
+
+  .mobile-nav-menu {
+    @apply fixed top-0 left-0 w-[280px] h-full bg-white z-50 transform transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto;
+  }
+
+  .mobile-header {
+    @apply sticky top-0 z-10 w-full flex items-center justify-between px-4 py-3 bg-white/80 backdrop-blur-md border-b border-gray-200 md:hidden;
+  }
+
+  .teal-gradient {
+    @apply bg-gradient-to-r from-teal-400 to-teal-600;
+  }
+
+  .teal-gradient-subtle {
+    @apply bg-gradient-to-r from-teal-50 to-teal-100;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md border border-gray-200;
+  }
+
+  .card-shadow {
+    @apply shadow-[0_4px_12px_rgb(0,0,0,0.05)];
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(42,138,132,0.2)] hover:-translate-y-1;
+  }
+
+  /* Card color variations */
+  .card-yellow {
+    @apply bg-[var(--color-card-yellow)] border-yellow-200;
+  }
+
+  .card-blue {
+    @apply bg-[var(--color-card-blue)] border-blue-200;
+  }
+
+  .card-green {
+    @apply bg-[var(--color-card-green)] border-green-200;
+  }
+
+  .card-peach {
+    @apply bg-[var(--color-card-peach)] border-red-200;
+  }
+
+  /* Avatar styles */
+  .avatar-circle {
+    @apply bg-teal-600 text-white rounded-full flex items-center justify-center font-medium;
+  }
+}
+
+@layer utilities {
+  .light-gradient {
+    @apply bg-gradient-to-b from-white to-gray-50;
+  }
+
+  .border-gradient {
+    @apply bg-gradient-to-b from-gray-100 to-gray-200;
+  }
+
+  .pattern {
+    @apply bg-[url('/pattern.png')] bg-top bg-no-repeat bg-white;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  /* Mobile utilities */
+  .mobile-menu-closed {
+    @apply -translate-x-full md:translate-x-0;
+  }
+
+  .mobile-menu-open {
+    @apply translate-x-0;
+  }
+
+  .mobile-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-30 z-40 md:hidden;
+  }
+
+  .mobile-sidebar {
+    @apply fixed top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out md:relative md:translate-x-0;
+  }
+
+  .mobile-main-shift {
+    @apply md:ml-0;
+  }
+
+  .hide-on-mobile {
+    @apply hidden md:flex;
+  }
+
+  .show-on-mobile {
+    @apply flex md:hidden;
+  }
+
+  /* Animation utilities */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-popup {
+    animation: popup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .animate-message {
+    animation: message 0.3s ease-out;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-teal-400;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes message {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-teal-300);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal-400);
+}
