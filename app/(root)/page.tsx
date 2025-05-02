@@ -231,11 +231,7 @@ function Home() {
                 className="animate-float rounded-full"
               />
             </div>
-            <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-[#0070f3] rounded-full p-2 sm:p-3 shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </div>
+
           </div>
         </div>
       </section>
