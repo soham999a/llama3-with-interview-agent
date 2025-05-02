@@ -187,7 +187,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Page Content */}
-        <div className="p-3 sm:p-4 md:p-6 pt-16 md:pt-20">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8 pt-16 md:pt-20 max-w-[1600px] mx-auto">
           {children}
         </div>
       </div>

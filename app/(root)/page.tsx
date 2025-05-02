@@ -192,7 +192,7 @@ function Home() {
         <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#0070f3]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#1e40af]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10 max-w-[1400px] mx-auto">
           <div className="flex flex-col gap-6 max-w-lg w-full">
             <div className="inline-flex items-center gap-2 bg-[#0070f3]/10 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 w-fit">
               <span className="animate-pulse size-2 bg-[#0070f3] rounded-full"></span>
@@ -265,7 +265,7 @@ function Home() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 sm:gap-6">
           {interviewTypes.map((type) => (
             <Link
               href={`/interview?type=${type.id}`}
@@ -325,7 +325,7 @@ function Home() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {hasPastInterviews ? (
             <>
               {currentInterviews?.map((interview) => (
@@ -342,7 +342,7 @@ function Home() {
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
-                <div className="col-span-1 sm:col-span-2 flex justify-center items-center gap-2 mt-4">
+                <div className="col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4 flex justify-center items-center gap-2 mt-4">
                   <button
                     onClick={prevPage}
                     disabled={currentPage === 1}
@@ -433,7 +433,7 @@ function Home() {
         <div className="absolute top-0 right-0 size-16 sm:size-24 bg-teal-100/30 rounded-full blur-xl"></div>
         <div className="absolute bottom-0 left-0 size-20 sm:size-32 bg-teal-200/20 rounded-full blur-xl"></div>
 
-        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between relative z-10">
+        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between relative z-10">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-teal-100 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 w-fit mb-3 sm:mb-4">
               <span className="animate-pulse size-2 bg-teal-500 rounded-full"></span>
@@ -445,7 +445,7 @@ function Home() {
               Explore different job opportunities and prepare for your interviews:
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mt-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
               <ColorCard
                 title="Fresher's Jobs"
                 color="yellow"
