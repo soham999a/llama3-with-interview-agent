@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 
-import "./engineerhub-styles.css";
+import "./fixed-styles.css";
 
 const ChatBot = dynamic(() => import("@/components/ChatBot"), { ssr: false });
 

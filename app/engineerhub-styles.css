@@ -17,6 +17,14 @@
   --color-card-green: #E8F5E9;   /* Light green for cards */
   --color-card-peach: #FFEBEE;   /* Light peach/pink for cards */
 
+  /* Interview type card colors (pastel) */
+  --color-interview-technical: #FFF8E1;  /* Pastel yellow */
+  --color-interview-behavioral: #E1F5FE; /* Pastel blue */
+  --color-interview-problem: #E8F5E9;    /* Pastel green */
+  --color-interview-system: #FFF8E1;     /* Pastel yellow */
+  --color-interview-leadership: #E1F5FE; /* Pastel blue */
+  --color-interview-product: #FFEBEE;    /* Pastel pink */
+
   /* Text colors */
   --color-text-dark: #333333;    /* Dark text */
   --color-text-medium: #666666;  /* Medium text */
@@ -178,6 +186,31 @@
 
   .card-peach {
     @apply bg-[var(--color-card-peach)] border-red-200;
+  }
+
+  /* Interview card color variations */
+  .interview-technical {
+    @apply bg-[#FFF8E1] border-yellow-100;
+  }
+
+  .interview-behavioral {
+    @apply bg-[#E1F5FE] border-blue-100;
+  }
+
+  .interview-problem {
+    @apply bg-[#E8F5E9] border-green-100;
+  }
+
+  .interview-system {
+    @apply bg-[#FFF8E1] border-yellow-100;
+  }
+
+  .interview-leadership {
+    @apply bg-[#E1F5FE] border-blue-100;
+  }
+
+  .interview-product {
+    @apply bg-[#FFEBEE] border-red-100;
   }
 
   /* Avatar styles */
