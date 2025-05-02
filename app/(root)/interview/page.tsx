@@ -169,8 +169,8 @@ const InterviewPage = () => {
       </div>
 
       {/* Workflow Steps */}
-      <div className="relative bg-white rounded-xl p-6 border border-gray-200 shadow-md mb-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-50 rounded-xl"></div>
+      <div className="relative bg-white rounded-[2rem] p-6 border border-gray-200 shadow-md mb-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-50 rounded-[2rem]"></div>
 
         <div className="relative z-10 flex items-center justify-between">
           <div className="flex flex-col items-center gap-2">
@@ -250,12 +250,12 @@ const InterviewPage = () => {
                 {interviewTypes.map((option) => (
                   <button
                     key={option.id}
-                    className={`relative overflow-hidden rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white flex items-center gap-5 border ${selectedType === option.id ? 'border-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.3)]' : 'border-gray-200'}`}
+                    className={`relative overflow-hidden rounded-[1.5rem] p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white flex items-center gap-5 border ${selectedType === option.id ? 'border-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.3)]' : 'border-gray-200'}`}
                     onClick={() => handleTypeSelect(option.id)}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
 
-                    <div className={`rounded-xl ${
+                    <div className={`rounded-[1.25rem] ${
                       option.id === 'technical' ? 'bg-teal-100' :
                       option.id === 'behavioral' ? 'bg-blue-100' :
                       'bg-green-100'
@@ -311,7 +311,7 @@ const InterviewPage = () => {
                 {roleOptions.map((role) => (
                   <button
                     key={role}
-                    className={`relative overflow-hidden rounded-xl p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white flex flex-col items-center gap-4 border ${selectedRole === role ? 'border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)]' : 'border-gray-200'}`}
+                    className={`relative overflow-hidden rounded-[1.5rem] p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white flex flex-col items-center gap-4 border ${selectedRole === role ? 'border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)]' : 'border-gray-200'}`}
                     onClick={() => handleRoleSelect(role)}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-teal-50 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
@@ -352,7 +352,7 @@ const InterviewPage = () => {
               </div>
               <p className="text-gray-600 mb-6">Choose the technologies you want to be interviewed on (select multiple)</p>
 
-              <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-md mb-6">
+              <div className="bg-white rounded-[1.5rem] p-6 border border-gray-200 shadow-md mb-6">
                 <div className="flex items-center justify-between mb-4">
                   <p className="text-gray-800 font-medium">Selected: <span className="text-green-600">{selectedTechStack.length}</span> technologies</p>
 
@@ -392,7 +392,7 @@ const InterviewPage = () => {
                 {techStackOptions.map((tech) => (
                   <button
                     key={tech}
-                    className={`relative overflow-hidden rounded-xl p-4 transition-all duration-200 bg-white flex items-center justify-center border ${
+                    className={`relative overflow-hidden rounded-[1.25rem] p-4 transition-all duration-200 bg-white flex items-center justify-center border ${
                       selectedTechStack.includes(tech)
                         ? 'border-green-500 shadow-[0_0_10px_rgba(34,197,94,0.2)]'
                         : 'border-gray-200 hover:border-gray-300'
@@ -418,7 +418,7 @@ const InterviewPage = () => {
           <div className="flex justify-end mt-8">
             <Button
               onClick={handleNext}
-              className={`bg-teal-500 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex items-center gap-2 group ${
+              className={`bg-teal-500 text-white px-6 py-3 rounded-[1.25rem] font-medium transition-all duration-200 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex items-center gap-2 group ${
                 (step === 1 && !selectedType) ||
                 (step === 2 && !selectedRole) ||
                 (step === 3 && selectedTechStack.length === 0)
@@ -437,7 +437,7 @@ const InterviewPage = () => {
         </div>
 
         {/* Right Column - AI Assistant */}
-        <div className="relative overflow-hidden bg-white rounded-xl p-8 border border-gray-200 shadow-md flex flex-col h-full">
+        <div className="relative overflow-hidden bg-white rounded-[2rem] p-8 border border-gray-200 shadow-md flex flex-col h-full">
           <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
