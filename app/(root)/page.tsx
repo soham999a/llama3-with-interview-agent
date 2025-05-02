@@ -192,7 +192,7 @@ function Home() {
         <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#0070f3]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#1e40af]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10 max-w-[1400px] mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
           <div className="flex flex-col gap-6 max-w-lg w-full">
             <div className="inline-flex items-center gap-2 bg-[#0070f3]/10 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 w-fit">
               <span className="animate-pulse size-2 bg-[#0070f3] rounded-full"></span>
@@ -204,22 +204,24 @@ function Home() {
               Practice real interview questions with our LLAMA3-powered AI interviewer and receive personalized feedback to enhance your skills.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
-              <button className="bg-[#0070f3] text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-[#0070f3]/20 hover:shadow-lg shadow-md w-full sm:w-fit flex items-center justify-center gap-2 group hover:-translate-y-1">
-                <Link href="/interview" className="flex items-center gap-2">
-                  Start an Interview
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </Link>
-              </button>
+            <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 mt-2 w-full sm:w-auto">
+              <Link href="/interview" className="w-full xs:w-auto">
+                <button className="bg-[#0070f3] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium transition-all duration-300 hover:opacity-90 hover:shadow-[#0070f3]/20 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
+                  <span className="flex items-center gap-2">
+                    Start an Interview
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </span>
+                </button>
+              </Link>
 
-              <button className="bg-white text-[#0070f3] border border-[#0070f3]/20 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-all duration-300 hover:bg-[#0070f3]/5 w-full sm:w-fit flex items-center justify-center gap-2 hover:-translate-y-1">
-                <Link href="/history" className="flex items-center gap-2">
-                  View History
-                </Link>
-              </button>
+              <Link href="/history" className="w-full xs:w-auto">
+                <button className="bg-white text-[#0070f3] border border-[#0070f3]/20 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium transition-all duration-300 hover:bg-[#0070f3]/5 w-full flex items-center justify-center gap-2 hover:-translate-y-1 active:scale-95">
+                  <span>View History</span>
+                </button>
+              </Link>
             </div>
 
             <div className="flex items-center gap-3 sm:gap-4 mt-2">
@@ -232,7 +234,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative w-full max-w-[280px] sm:max-w-[320px]">
+          <div className="relative w-full max-w-[220px] xs:max-w-[250px] sm:max-w-[280px] md:max-w-[320px]">
             <div className="absolute inset-0 bg-gradient-to-r from-[#0070f3]/20 to-[#1e40af]/20 rounded-full blur-xl"></div>
             <div className="relative bg-gradient-to-br from-white to-blue-50 p-1 rounded-full border border-blue-100 shadow-lg">
               <Image
@@ -241,9 +243,9 @@ function Home() {
                 width={320}
                 height={320}
                 className="animate-float rounded-full"
+                priority
               />
             </div>
-
           </div>
         </div>
       </section>
@@ -265,7 +267,7 @@ function Home() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {interviewTypes.map((type) => (
             <Link
               href={`/interview?type=${type.id}`}
@@ -325,7 +327,7 @@ function Home() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {hasPastInterviews ? (
             <>
               {currentInterviews?.map((interview) => (
@@ -342,7 +344,7 @@ function Home() {
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
-                <div className="col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4 flex justify-center items-center gap-2 mt-4">
+                <div className="col-span-1 sm:col-span-2 flex justify-center items-center gap-2 mt-4">
                   <button
                     onClick={prevPage}
                     disabled={currentPage === 1}
@@ -433,7 +435,7 @@ function Home() {
         <div className="absolute top-0 right-0 size-16 sm:size-24 bg-teal-100/30 rounded-full blur-xl"></div>
         <div className="absolute bottom-0 left-0 size-20 sm:size-32 bg-teal-200/20 rounded-full blur-xl"></div>
 
-        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between relative z-10">
+        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between relative z-10">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-teal-100 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 w-fit mb-3 sm:mb-4">
               <span className="animate-pulse size-2 bg-teal-500 rounded-full"></span>
@@ -445,7 +447,7 @@ function Home() {
               Explore different job opportunities and prepare for your interviews:
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+            <div className="grid grid-cols-2 gap-4 mt-6">
               <ColorCard
                 title="Fresher's Jobs"
                 color="yellow"
@@ -473,9 +475,9 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 sm:gap-4 w-full md:w-auto">
+          <div className="flex flex-col xs:flex-row md:flex-col gap-3 sm:gap-4 w-full md:w-auto">
             <Link href="/interview" className="w-full md:w-auto">
-              <button className="bg-teal-500 text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1">
+              <button className="bg-teal-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1 active:scale-95">
                 <span>Start Interview</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform sm:w-[18px] sm:h-[18px]">
                   <path d="M5 12h14"></path>
@@ -485,7 +487,7 @@ function Home() {
             </Link>
 
             <Link href="/about" className="w-full md:w-auto">
-              <button className="bg-white text-teal-600 border border-teal-200 px-4 sm:px-6 py-3 sm:py-3.5 rounded-[1.25rem] font-medium transition-all duration-300 hover:bg-teal-50 hover:shadow-teal-100 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap w-full hover:-translate-y-1">
+              <button className="bg-white text-teal-600 border border-teal-200 px-4 sm:px-6 py-2.5 sm:py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:bg-teal-50 hover:shadow-teal-100 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap w-full hover:-translate-y-1 active:scale-95">
                 <span>Learn More</span>
               </button>
             </Link>

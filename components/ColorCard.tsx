@@ -36,7 +36,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ title, color = 'dark', icon, href
   return (
     <Link href={href} className={`block ${className}`}>
       <div
-        className={`${colorMap[color]} rounded-[2rem] p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden`}
+        className={`${colorMap[color]} rounded-[2rem] p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden`}
       >
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>

@@ -66,7 +66,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
       )}
 
       {/* Sidebar */}
-      <div className={`w-[280px] md:w-[240px] bg-[#1EBBA3] min-h-screen p-6 flex flex-col border-r border-white/10 shadow-xl fixed md:sticky top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+      <div className={`w-[280px] md:w-[240px] bg-[#1EBBA3] min-h-screen p-6 flex flex-col border-r border-white/10 shadow-xl fixed md:sticky top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+           onClick={(e) => e.target === e.currentTarget && setIsMobileMenuOpen(false)}>
         {/* Mobile Close Button */}
         <button
           className="absolute top-4 right-4 p-2 rounded-full bg-white/20 text-white md:hidden hover:bg-white/30 transition-colors"
@@ -151,10 +152,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         {/* Mobile Header */}
-        <div className="sticky top-0 z-20 w-full flex items-center justify-between px-4 py-3 bg-white/90 backdrop-blur-md border-b border-gray-200 md:hidden">
+        <div className="sticky top-0 z-20 w-full flex items-center justify-between px-4 py-3 bg-white/95 backdrop-blur-md border-b border-gray-200 md:hidden shadow-sm">
           <button
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#1EBBA3] hover:bg-[#1EBBA3] hover:text-white transition-colors shadow-sm"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#1EBBA3] hover:bg-[#1EBBA3] hover:text-white transition-colors shadow-sm active:scale-95"
             onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open menu"
           >
             <Menu size={20} />
           </button>
@@ -165,6 +167,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
             </div>
             <h2 className="text-[#1EBBA3] text-lg font-bold">LLAMA3</h2>
           </div>
+
+          <Link href="/interview" aria-label="Start Interview">
+            <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1EBBA3] text-white hover:bg-[#18A08B] transition-colors shadow-sm active:scale-95">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </Link>
         </div>
 
         {/* Desktop Header */}
@@ -187,7 +198,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Page Content */}
-        <div className="p-3 sm:p-4 md:p-6 lg:p-8 pt-16 md:pt-20 max-w-[1600px] mx-auto">
+        <div className="p-3 sm:p-4 md:p-6 pt-16 md:pt-20">
           {children}
         </div>
       </div>
