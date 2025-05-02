@@ -66,7 +66,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       )}
 
       {/* Sidebar */}
-      <div className={`w-[280px] md:w-[240px] bg-[#0070f3] min-h-screen p-6 flex flex-col border-r border-white/10 shadow-xl fixed md:sticky top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+      <div className={`w-[280px] md:w-[240px] bg-[#1EBBA3] min-h-screen p-6 flex flex-col border-r border-white/10 shadow-xl fixed md:sticky top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
         {/* Mobile Close Button */}
         <button
           className="absolute top-4 right-4 p-2 rounded-full bg-white/20 text-white md:hidden hover:bg-white/30 transition-colors"
@@ -86,7 +86,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </Link>
 
         {/* User Profile */}
-        <div className="flex items-center gap-3 mb-8 p-3 bg-white/20 rounded-xl border border-white/10">
+        <div className="flex items-center gap-3 mb-8 p-3 bg-white/20 rounded-3xl border border-white/10">
           <div className="bg-white/30 rounded-full p-2">
             <User size={18} className="text-white" />
           </div>
@@ -98,8 +98,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
         {/* Navigation Links */}
         <div className="flex flex-col space-y-1.5">
-          <Link href="/" className="text-white hover:text-white px-4 py-3 rounded-xl transition-all flex items-center gap-3 hover:bg-[#1e40af] group">
-            <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-lg transition-colors">
+          <Link href="/" className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group">
+            <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white transition-colors">
                 <rect x="3" y="3" width="7" height="9"></rect>
                 <rect x="14" y="3" width="7" height="5"></rect>
@@ -109,16 +109,16 @@ const Layout = ({ children }: { children: ReactNode }) => {
             </div>
             <span className="font-medium">Dashboard</span>
           </Link>
-          <Link href="/interview" className="text-white hover:text-white px-4 py-3 rounded-xl transition-all flex items-center gap-3 hover:bg-[#1e40af] group">
-            <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-lg transition-colors">
+          <Link href="/interview" className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group">
+            <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white transition-colors">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
             </div>
             <span className="font-medium">New Interview</span>
           </Link>
-          <Link href="/history" className="text-white hover:text-white px-4 py-3 rounded-xl transition-all flex items-center gap-3 hover:bg-[#1e40af] group">
-            <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-lg transition-colors">
+          <Link href="/history" className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group">
+            <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white transition-colors">
                 <path d="M12 8v4l3 3"></path>
                 <circle cx="12" cy="12" r="10"></circle>
@@ -135,9 +135,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
         {/* Logout Button */}
         <button
           onClick={handleLogout}
-          className="mt-6 flex items-center gap-3 text-white hover:text-white px-4 py-3 rounded-xl transition-all hover:bg-[#f97316] group"
+          className="mt-6 flex items-center gap-3 text-white hover:text-white px-4 py-3 rounded-3xl transition-all hover:bg-[#f97316] group"
         >
-          <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-lg transition-colors">
+          <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
             <LogOut size={16} className="text-white group-hover:text-white transition-colors" />
           </div>
           <span className="font-medium">Logout</span>
@@ -153,31 +153,31 @@ const Layout = ({ children }: { children: ReactNode }) => {
         {/* Mobile Header */}
         <div className="sticky top-0 z-20 w-full flex items-center justify-between px-4 py-3 bg-white/90 backdrop-blur-md border-b border-gray-200 md:hidden">
           <button
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#0070f3] hover:bg-[#0070f3] hover:text-white transition-colors"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#1EBBA3] hover:bg-[#1EBBA3] hover:text-white transition-colors shadow-sm"
             onClick={() => setIsMobileMenuOpen(true)}
           >
             <Menu size={20} />
           </button>
 
           <div className="flex items-center gap-2">
-            <div className="bg-[#0070f3] rounded-full p-1.5 shadow-lg">
+            <div className="bg-[#1EBBA3] rounded-full p-1.5 shadow-lg">
               <Image src="/logo.svg" alt="Interview Agent Logo" width={18} height={18} className="text-white" />
             </div>
-            <h2 className="text-[#0070f3] text-lg font-bold">LLAMA3</h2>
+            <h2 className="text-[#1EBBA3] text-lg font-bold">LLAMA3</h2>
           </div>
         </div>
 
         {/* Desktop Header */}
         <div className="hidden md:flex sticky top-0 z-10 backdrop-blur-md bg-white/90 border-b border-gray-200 px-4 lg:px-6 py-3 lg:py-4 justify-between items-center">
-          <h1 className="text-[#0070f3] text-xl lg:text-2xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
+          <h1 className="text-[#1EBBA3] text-xl lg:text-2xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
 
           <div className="flex items-center gap-3">
             {/* Help Button */}
             <button
               onClick={() => window.open('/help', '_blank')}
-              className="bg-white p-2.5 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
+              className="bg-white p-2.5 rounded-2xl hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#0070f3]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1EBBA3]">
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                 <line x1="12" y1="17" x2="12.01" y2="17"></line>

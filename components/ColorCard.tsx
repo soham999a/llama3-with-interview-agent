@@ -36,7 +36,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ title, color = 'dark', icon, href
   return (
     <Link href={href} className={`block ${className}`}>
       <div
-        className={`${colorMap[color]} rounded-xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden`}
+        className={`${colorMap[color]} rounded-3xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden`}
       >
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -48,7 +48,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ title, color = 'dark', icon, href
           <div className="mt-auto">
             {icon && (
               <div className="flex justify-end">
-                <div className="bg-teal-500/20 rounded-full p-4">
+                <div className="bg-teal-500/20 rounded-2xl p-4">
                   {icon}
                 </div>
               </div>

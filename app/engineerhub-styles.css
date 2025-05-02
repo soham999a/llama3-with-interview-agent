@@ -4,12 +4,12 @@
 
 :root {
   /* EngineerHub Color Palette */
-  --color-teal-100: #E6F4F1;  /* Lightest teal - background */
-  --color-teal-200: #C2E8E5;  /* Light teal */
-  --color-teal-300: #8ECDC9;  /* Medium teal */
-  --color-teal-400: #5BACA7;  /* Medium-dark teal */
-  --color-teal-500: #2A8A84;  /* Dark teal - primary accent */
-  --color-teal-600: #1D6F6A;  /* Darker teal */
+  --color-teal-100: #E6F9F6;  /* Lightest teal - background */
+  --color-teal-200: #B3F0E9;  /* Light teal */
+  --color-teal-300: #7FE6D9;  /* Medium teal */
+  --color-teal-400: #4BDBC9;  /* Medium-dark teal */
+  --color-teal-500: #1EBBA3;  /* Dark teal - primary accent (from image) */
+  --color-teal-600: #18A08B;  /* Darker teal */
 
   /* Card background colors */
   --color-card-yellow: #FFF8E1;  /* Light yellow for cards */
@@ -67,19 +67,19 @@
   }
 
   .btn-primary {
-    @apply w-fit bg-teal-500 text-white hover:opacity-90 rounded-md font-medium px-5 py-2.5 cursor-pointer shadow-md transition-all duration-200;
+    @apply w-fit bg-[#1EBBA3] text-white hover:opacity-90 rounded-2xl font-medium px-5 py-2.5 cursor-pointer shadow-md transition-all duration-200;
   }
 
   .btn-secondary {
-    @apply w-fit bg-gray-100 text-teal-500 border border-teal-500 hover:bg-gray-200 rounded-md font-medium px-5 py-2.5 cursor-pointer transition-colors;
+    @apply w-fit bg-gray-100 text-[#1EBBA3] border border-[#1EBBA3] hover:bg-gray-200 rounded-2xl font-medium px-5 py-2.5 cursor-pointer transition-colors;
   }
 
   .btn-outline {
-    @apply w-fit bg-transparent text-teal-500 border border-teal-500/50 hover:bg-teal-50 rounded-md font-medium px-5 py-2.5 cursor-pointer transition-colors;
+    @apply w-fit bg-transparent text-[#1EBBA3] border border-[#1EBBA3]/50 hover:bg-teal-50 rounded-2xl font-medium px-5 py-2.5 cursor-pointer transition-colors;
   }
 
   .card-border {
-    @apply border border-gray-200 rounded-lg w-fit overflow-hidden;
+    @apply border border-gray-200 rounded-3xl w-fit overflow-hidden;
   }
 
   .card {
@@ -95,11 +95,11 @@
   }
 
   .form-input {
-    @apply !bg-white !rounded-md !py-2.5 !px-4 !border !border-gray-300 !text-gray-800 placeholder:!text-gray-400 focus:!border-teal-500/50 focus:!ring-1 focus:!ring-teal-500/30 transition-all;
+    @apply !bg-white !rounded-2xl !py-2.5 !px-4 !border !border-gray-300 !text-gray-800 placeholder:!text-gray-400 focus:!border-[#1EBBA3]/50 focus:!ring-1 focus:!ring-[#1EBBA3]/30 transition-all;
   }
 
   .form-btn {
-    @apply !w-full !bg-teal-500 !text-white hover:!opacity-90 !rounded-md !py-2.5 !font-medium !px-5 cursor-pointer !shadow-md !transition-all !duration-200;
+    @apply !w-full !bg-[#1EBBA3] !text-white hover:!opacity-90 !rounded-2xl !py-2.5 !font-medium !px-5 cursor-pointer !shadow-md !transition-all !duration-200;
   }
 
   .interview-card {
@@ -107,11 +107,11 @@
   }
 
   .tech-tag {
-    @apply bg-teal-100 text-teal-600 px-2.5 py-1 rounded-full text-xs;
+    @apply bg-[#1EBBA3]/10 text-[#1EBBA3] px-2.5 py-1 rounded-full text-xs;
   }
 
   .score-badge {
-    @apply flex items-center gap-1 bg-teal-100 px-3 py-1.5 rounded-full text-teal-600;
+    @apply flex items-center gap-1 bg-[#1EBBA3]/10 px-3 py-1.5 rounded-full text-[#1EBBA3];
   }
 
   .section-title {
@@ -123,16 +123,16 @@
   }
 
   .feature-card {
-    @apply relative overflow-hidden rounded-3xl bg-blue-50 p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border border-blue-100;
+    @apply relative overflow-hidden rounded-3xl bg-[#1EBBA3]/5 p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border border-[#1EBBA3]/10;
   }
 
   .cta-section {
-    @apply mt-8 rounded-3xl bg-gradient-to-r from-teal-50 to-teal-100 p-4 sm:p-6 md:p-8 relative overflow-hidden border border-teal-200 shadow-md;
+    @apply mt-8 rounded-3xl bg-gradient-to-r from-[#1EBBA3]/5 to-[#1EBBA3]/10 p-4 sm:p-6 md:p-8 relative overflow-hidden border border-[#1EBBA3]/20 shadow-md;
   }
 
   /* Mobile responsive components */
   .mobile-nav-button {
-    @apply flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#0070f3] hover:bg-[#0070f3] hover:text-white transition-colors;
+    @apply flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#1EBBA3] hover:bg-[#1EBBA3] hover:text-white transition-colors;
   }
 
   .mobile-nav-menu {
@@ -144,11 +144,11 @@
   }
 
   .teal-gradient {
-    @apply bg-gradient-to-r from-teal-400 to-teal-600;
+    @apply bg-gradient-to-r from-[#4BDBC9] to-[#1EBBA3];
   }
 
   .teal-gradient-subtle {
-    @apply bg-gradient-to-r from-teal-50 to-teal-100;
+    @apply bg-gradient-to-r from-[#1EBBA3]/5 to-[#1EBBA3]/20;
   }
 
   .glass-effect {
@@ -160,7 +160,7 @@
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(42,138,132,0.2)] hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(30,187,163,0.2)] hover:-translate-y-1;
   }
 
   /* Card color variations */
@@ -182,7 +182,7 @@
 
   /* Avatar styles */
   .avatar-circle {
-    @apply bg-teal-600 text-white rounded-full flex items-center justify-center font-medium;
+    @apply bg-[#1EBBA3] text-white rounded-full flex items-center justify-center font-medium;
   }
 }
 
@@ -274,7 +274,7 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-teal-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#1EBBA3] to-[#4BDBC9];
   }
 }
 
@@ -343,10 +343,10 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--color-teal-300);
+  background: #7FE6D9;
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--color-teal-400);
+  background: #4BDBC9;
 }
