@@ -34,7 +34,7 @@
     @apply border-gray-200;
   }
   body {
-    @apply bg-white text-gray-800;
+    @apply bg-gray-100 text-gray-800;
   }
   p {
     @apply text-gray-600;
@@ -83,7 +83,7 @@
   }
 
   .card {
-    @apply bg-white rounded-lg min-h-full shadow-md border border-gray-100;
+    @apply bg-white rounded-3xl min-h-full shadow-md border border-gray-100;
   }
 
   .form {
@@ -103,7 +103,7 @@
   }
 
   .interview-card {
-    @apply bg-white rounded-lg p-6 w-full border border-gray-200 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+    @apply bg-white rounded-3xl p-4 sm:p-6 w-full border border-gray-200 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
   }
 
   .tech-tag {
@@ -119,20 +119,20 @@
   }
 
   .welcome-section {
-    @apply flex flex-col md:flex-row justify-between items-center gap-8;
+    @apply flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 md:gap-8;
   }
 
   .feature-card {
-    @apply relative overflow-hidden rounded-lg bg-white p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border border-gray-200;
+    @apply relative overflow-hidden rounded-3xl bg-blue-50 p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border border-blue-100;
   }
 
   .cta-section {
-    @apply mt-8 rounded-lg bg-gradient-to-r from-teal-50 to-teal-100 p-8 relative overflow-hidden border border-teal-200 shadow-md;
+    @apply mt-8 rounded-3xl bg-gradient-to-r from-teal-50 to-teal-100 p-4 sm:p-6 md:p-8 relative overflow-hidden border border-teal-200 shadow-md;
   }
 
   /* Mobile responsive components */
   .mobile-nav-button {
-    @apply flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-teal-500 hover:bg-teal-500 hover:text-white transition-colors;
+    @apply flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#0070f3] hover:bg-[#0070f3] hover:text-white transition-colors;
   }
 
   .mobile-nav-menu {
@@ -140,7 +140,7 @@
   }
 
   .mobile-header {
-    @apply sticky top-0 z-10 w-full flex items-center justify-between px-4 py-3 bg-white/80 backdrop-blur-md border-b border-gray-200 md:hidden;
+    @apply sticky top-0 z-20 w-full flex items-center justify-between px-4 py-3 bg-white/90 backdrop-blur-md border-b border-gray-200 md:hidden;
   }
 
   .teal-gradient {
@@ -213,7 +213,7 @@
   }
 
   .mobile-overlay {
-    @apply fixed inset-0 bg-black bg-opacity-30 z-40 md:hidden;
+    @apply fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden;
   }
 
   .mobile-sidebar {
@@ -230,6 +230,26 @@
 
   .show-on-mobile {
     @apply flex md:hidden;
+  }
+
+  .hide-on-tablet {
+    @apply hidden lg:flex;
+  }
+
+  .show-on-tablet {
+    @apply flex lg:hidden;
+  }
+
+  .responsive-padding {
+    @apply p-3 sm:p-4 md:p-6;
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+
+  .responsive-flex {
+    @apply flex flex-col sm:flex-row gap-4;
   }
 
   /* Animation utilities */
