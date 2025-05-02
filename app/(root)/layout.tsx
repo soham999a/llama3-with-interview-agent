@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { LogOut, User, Menu, X } from "lucide-react";
 
 import { isAuthenticated, signOut, getCurrentUser } from "@/lib/actions/auth.action";
-import ChatBot from "@/components/ChatBot";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();

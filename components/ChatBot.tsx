@@ -383,18 +383,18 @@ export default function ChatBot() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {message.isTyping ? (
-                  <div className="flex items-center space-x-2 bg-white rounded-lg p-2.5 sm:p-3.5 shadow-md border border-[var(--color-primary-20)]">
-                    <Loader2 size={14} className="animate-spin text-[var(--color-primary)] sm:w-4 sm:h-4" />
-                    <span className="text-[var(--color-text)] text-sm sm:text-base">Typing<span className="animate-pulse">...</span></span>
+                  <div className="flex items-center space-x-2 bg-white rounded-lg p-2.5 sm:p-3.5 shadow-md border border-blue-200">
+                    <Loader2 size={14} className="animate-spin text-[#0070f3] sm:w-4 sm:h-4" />
+                    <span className="text-gray-800 text-sm sm:text-base">Typing<span className="animate-pulse">...</span></span>
                   </div>
                 ) : (
                   <div
                     className={`max-w-[85%] sm:max-w-[80%] rounded-lg p-2.5 sm:p-3.5 shadow-md ${
                       message.sender === 'user'
-                        ? 'primary-gradient text-white'
+                        ? 'bg-[#0070f3] text-white'
                         : message.sender === 'google'
-                        ? 'bg-white text-[var(--color-text)] border border-blue-200'
-                        : 'bg-white text-[var(--color-text)] border border-[var(--color-primary-20)]'
+                        ? 'bg-white text-gray-800 border border-blue-200'
+                        : 'bg-white text-gray-800 border border-blue-100'
                     }`}
                   >
                     {message.sender === 'google' && (
@@ -445,16 +445,16 @@ export default function ChatBot() {
                               <Link href={action.url}>
                                 <Button
                                   size="sm"
-                                  className="bg-white hover:bg-[var(--color-primary-10)] text-[var(--color-text)] flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs py-1 sm:py-1.5 h-auto border border-[var(--color-primary-20)] hover:border-[var(--color-primary)] rounded-full px-2 sm:px-3 transition-all duration-300 hover:shadow-[0_0_10px_var(--color-primary-20)] hover:-translate-y-0.5"
+                                  className="bg-white hover:bg-blue-50 text-gray-800 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs py-1 sm:py-1.5 h-auto border border-blue-200 hover:border-blue-400 rounded-full px-2 sm:px-3 transition-all duration-300 hover:shadow-[0_0_10px_rgba(0,112,243,0.2)] hover:-translate-y-0.5"
                                 >
-                                  <span className="text-[var(--color-primary)]">{action.icon}</span>
+                                  <span className="text-[#0070f3]">{action.icon}</span>
                                   {action.label}
                                 </Button>
                               </Link>
                             ) : (
                               <Button
                                 size="sm"
-                                className="bg-white hover:bg-[var(--color-primary-10)] text-[var(--color-text)] flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs py-1 sm:py-1.5 h-auto border border-[var(--color-primary-20)] hover:border-[var(--color-primary)] rounded-full px-2 sm:px-3 transition-all duration-300 hover:shadow-[0_0_10px_var(--color-primary-20)] hover:-translate-y-0.5"
+                                className="bg-white hover:bg-blue-50 text-gray-800 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs py-1 sm:py-1.5 h-auto border border-blue-200 hover:border-blue-400 rounded-full px-2 sm:px-3 transition-all duration-300 hover:shadow-[0_0_10px_rgba(0,112,243,0.2)] hover:-translate-y-0.5"
                                 onClick={() => {
                                   // Handle action button click
                                   if (action.action) {
@@ -481,7 +481,7 @@ export default function ChatBot() {
                                   }
                                 }}
                               >
-                                <span className="text-[var(--color-primary)]">{action.icon}</span>
+                                <span className="text-[#0070f3]">{action.icon}</span>
                                 {action.label}
                               </Button>
                             )}

@@ -560,17 +560,17 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: var(--color-primary-10);
+  background: rgba(0, 112, 243, 0.1);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: #0070f3;
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text);
+  background: #1e40af;
   transition: background 0.3s ease;
 }
 
