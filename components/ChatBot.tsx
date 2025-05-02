@@ -508,10 +508,10 @@ export default function ChatBot() {
                 onChange={(e) => setNewMessage(e.target.value)}
                 onKeyDown={handleKeyPress}
                 placeholder={isSearching ? "Enter your search query..." : "Ask me anything about interviews..."}
-                className={`flex-1 text-sm sm:text-base rounded-lg p-2 sm:p-3 min-h-9 sm:min-h-10 max-h-32 outline-none resize-none focus:ring-2 transition-all duration-300 border placeholder-[var(--color-text)]/50 shadow-sm hover:shadow-md ${
+                className={`flex-1 text-sm sm:text-base rounded-lg p-2 sm:p-3 min-h-9 sm:min-h-10 max-h-32 outline-none resize-none focus:ring-2 transition-all duration-300 border placeholder-gray-400 shadow-sm hover:shadow-md ${
                   isSearching
                     ? "bg-blue-50 text-blue-800 focus:ring-blue-500 border-blue-200 focus:border-blue-500 hover:shadow-blue-100"
-                    : "bg-[var(--color-background)] text-[var(--color-text)] focus:ring-[var(--color-primary)] border-[var(--color-primary-20)] focus:border-[var(--color-primary)] hover:shadow-[var(--color-primary-10)]"
+                    : "bg-white text-gray-800 focus:ring-[#1EBBA3] border-[#1EBBA3]/20 focus:border-[#1EBBA3] hover:shadow-[#1EBBA3]/10"
                 }`}
                 rows={1}
                 autoFocus={isOpen}
@@ -519,7 +519,7 @@ export default function ChatBot() {
               <Button
                 onClick={handleSendMessage}
                 disabled={!newMessage.trim()}
-                className={`${isSearching ? 'bg-blue-600' : 'primary-gradient'} text-white rounded-full p-2 sm:p-2.5 hover:opacity-90 transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed group hover:-translate-y-1`}
+                className={`${isSearching ? 'bg-blue-600' : 'bg-[#1EBBA3]'} text-white rounded-full p-2 sm:p-2.5 hover:opacity-90 transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed group hover:-translate-y-1`}
                 aria-label={isSearching ? "Search" : "Send message"}
               >
                 {isSearching ? (
