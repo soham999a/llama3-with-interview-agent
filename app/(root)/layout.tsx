@@ -166,8 +166,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
             </div>
             <h2 className="text-[#0070f3] text-lg font-bold">LLAMA3</h2>
           </div>
-
-          <ChatBot />
         </div>
 
         {/* Desktop Header */}
@@ -175,13 +173,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <h1 className="text-[#0070f3] text-xl lg:text-2xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
 
           <div className="flex items-center gap-3">
-            {/* Chat Button */}
-            <button className="bg-white p-2.5 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#0070f3]">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </button>
-
             {/* Help Button */}
             <button className="bg-white p-2.5 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#0070f3]">
