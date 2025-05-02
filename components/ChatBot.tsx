@@ -333,7 +333,7 @@ export default function ChatBot() {
       {/* Modern floating chat toggle button */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 group flex items-center justify-center bg-[#0070f3] text-white rounded-full p-3 sm:p-4 hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl z-50 overflow-hidden hover:-translate-y-1"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 group flex items-center justify-center bg-[#0070f3] text-white rounded-full p-3 sm:p-4 hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl z-[9999] overflow-hidden hover:-translate-y-1"
         aria-label="Open chat"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-[#1e40af]/20 to-[#0070f3]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
@@ -350,7 +350,7 @@ export default function ChatBot() {
 
       {/* Modern Chat window */}
       {isOpen && (
-        <div className="fixed bottom-16 sm:bottom-20 right-4 sm:right-8 w-[calc(100%-2rem)] sm:w-80 md:w-96 max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden animate-popup z-50 border border-[#0070f3]/20 backdrop-blur-sm">
+        <div className="fixed bottom-16 sm:bottom-20 right-4 sm:right-8 w-[calc(100%-2rem)] sm:w-80 md:w-96 max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden animate-popup z-[9999] border border-[#0070f3]/20 backdrop-blur-sm max-h-[80vh] sm:max-h-[600px] flex flex-col">
           {/* Modern Chat header */}
           <div className="bg-[#0070f3] p-3 sm:p-4 flex justify-between items-center">
             <div className="flex items-center gap-2">
@@ -375,7 +375,7 @@ export default function ChatBot() {
           </div>
 
           {/* Modern Chat messages */}
-          <div className="h-80 sm:h-96 overflow-y-auto p-3 sm:p-4 bg-gray-50 custom-scrollbar">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 bg-gray-50 custom-scrollbar">
             {messages.map((message, index) => (
               <div
                 key={message.id}
