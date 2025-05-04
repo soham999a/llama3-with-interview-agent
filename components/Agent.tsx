@@ -503,8 +503,8 @@ const Agent = ({
               className={`relative px-6 py-3 rounded-[1.25rem] ${
                 callStatus === CallStatus.CONNECTING
                   ? "bg-yellow-500"
-                  : "purple-gradient"
-              } text-white font-medium flex items-center gap-2 hover:opacity-90 transition-opacity shadow-md`}
+                  : "bg-[#1EBBA3]"
+              } text-white font-medium flex items-center gap-2 hover:opacity-90 hover:shadow-[#1EBBA3]/20 hover:shadow-lg shadow-md hover:-translate-y-1 transition-all duration-300`}
               onClick={() => handleCall()}
               disabled={callStatus === CallStatus.CONNECTING}
             >
@@ -552,7 +552,7 @@ const Agent = ({
             </button>
           ) : (
             <button
-              className="px-6 py-3 rounded-[1.25rem] bg-red-500 text-white font-medium flex items-center gap-2 hover:opacity-90 transition-opacity shadow-md"
+              className="px-6 py-3 rounded-[1.25rem] bg-red-500 text-white font-medium flex items-center gap-2 hover:opacity-90 hover:shadow-red-200 hover:shadow-lg shadow-md hover:-translate-y-1 transition-all duration-300"
               onClick={() => handleDisconnect()}
             >
               <svg
