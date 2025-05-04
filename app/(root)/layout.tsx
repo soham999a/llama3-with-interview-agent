@@ -53,14 +53,14 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-dark-100">
+      <div className="flex min-h-screen items-center justify-center bg-[#e6f7fa]">
         <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary-200"></div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen relative">
+    <div className="flex flex-col md:flex-row min-h-screen relative bg-[#e6f7fa]">
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
@@ -210,15 +210,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 bg-gray-100 relative w-full md:ml-[240px]">
+      <div className="flex-1 bg-[#e6f7fa] relative w-full md:ml-[240px]">
         {/* Background Elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         {/* Mobile Header */}
-        <div className="sticky top-0 z-20 w-full flex items-center justify-between px-4 py-3 bg-white/95 backdrop-blur-md border-b border-gray-200 md:hidden shadow-sm">
+        <div className="sticky top-0 z-20 w-full flex items-center justify-between px-4 py-3 bg-[#008080]/95 backdrop-blur-md border-b border-[#008080]/20 md:hidden shadow-sm">
           <button
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#1EBBA3] hover:bg-[#1EBBA3] hover:text-white transition-colors shadow-sm active:scale-95"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-[#008080] hover:bg-[#006666] hover:text-white transition-colors shadow-sm active:scale-95"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open menu"
           >
@@ -226,20 +226,20 @@ const Layout = ({ children }: { children: ReactNode }) => {
           </button>
 
           <div className="flex items-center gap-2">
-            <div className="bg-[#1EBBA3] rounded-full p-1.5 shadow-lg">
+            <div className="bg-white rounded-full p-1.5 shadow-lg">
               <Image
                 src="/logo.svg"
                 alt="Interview Agent Logo"
                 width={18}
                 height={18}
-                className="text-white"
+                className="text-[#008080]"
               />
             </div>
-            <h2 className="text-[#1EBBA3] text-lg font-bold">LLAMA3</h2>
+            <h2 className="text-white text-lg font-bold">LLAMA3</h2>
           </div>
 
           <Link href="/interview" aria-label="Start Interview">
-            <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1EBBA3] text-white hover:bg-[#18A08B] transition-colors shadow-sm active:scale-95">
+            <button className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-[#008080] hover:bg-[#006666] hover:text-white transition-colors shadow-sm active:scale-95">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -259,8 +259,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Desktop Header */}
-        <div className="hidden md:flex sticky top-0 z-10 backdrop-blur-md bg-white/90 border-b border-gray-200 px-4 lg:px-6 py-3 lg:py-4 justify-between items-center">
-          <h1 className="text-[#1EBBA3] text-xl lg:text-2xl font-bold">
+        <div className="hidden md:flex sticky top-0 z-10 backdrop-blur-md bg-[#008080]/90 border-b border-[#008080]/20 px-4 lg:px-6 py-3 lg:py-4 justify-between items-center">
+          <h1 className="text-white text-xl lg:text-2xl font-bold">
             LLAMA3 INTERVIEW DASHBOARD
           </h1>
 
@@ -268,7 +268,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             {/* Help Button */}
             <button
               onClick={() => window.open("/help", "_blank")}
-              className="bg-white p-2.5 rounded-[1.25rem] hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
+              className="bg-white p-2.5 rounded-[1.25rem] hover:bg-gray-50 transition-colors border border-[#008080]/20 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +280,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-[#1EBBA3]"
+                className="text-[#008080]"
               >
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>

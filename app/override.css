@@ -1,49 +1,55 @@
 /* Override styles to fix the blank screen issue */
 
 body {
-  background-color: #f8f9fa !important;
+  background-color: #e6f7fa !important;
   color: #333333 !important;
 }
 
 /* Override for interview type cards */
 .interview-technical {
-  background-color: #FFF8E1 !important;
-  border-color: #FFECB3 !important;
+  background-color: #fff8e1 !important;
+  border-color: #ffecb3 !important;
 }
 
 .interview-behavioral {
-  background-color: #E1F5FE !important;
-  border-color: #B3E5FC !important;
+  background-color: #e1f5fe !important;
+  border-color: #b3e5fc !important;
 }
 
 .interview-problem {
-  background-color: #E8F5E9 !important;
-  border-color: #C8E6C9 !important;
+  background-color: #e8f5e9 !important;
+  border-color: #c8e6c9 !important;
 }
 
 .interview-system {
-  background-color: #FFF8E1 !important;
-  border-color: #FFECB3 !important;
+  background-color: #fff8e1 !important;
+  border-color: #ffecb3 !important;
 }
 
 .interview-leadership {
-  background-color: #E1F5FE !important;
-  border-color: #B3E5FC !important;
+  background-color: #e1f5fe !important;
+  border-color: #b3e5fc !important;
 }
 
 .interview-product {
-  background-color: #FFEBEE !important;
-  border-color: #FFCDD2 !important;
+  background-color: #ffebee !important;
+  border-color: #ffcdd2 !important;
 }
 
 /* Card styles */
 .card {
   background-color: white !important;
-  border: 1px solid #e0e0e0 !important;
+  border: 1px solid #008080 !important;
+  border-radius: 0.75rem !important;
 }
 
 /* Text colors */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #333333 !important;
 }
 
@@ -59,13 +65,13 @@ button {
 }
 
 button.bg-teal-500 {
-  background-color: #1EBBA3 !important;
+  background-color: #1ebba3 !important;
   color: white !important;
 }
 
 /* Force light mode */
 :root {
-  --background-dark: #f8f9fa !important;
+  --background-dark: #e6f7fa !important;
   --background-card: #ffffff !important;
   --text-white: #333333 !important;
   --text-gray: #666666 !important;
