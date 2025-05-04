@@ -61,18 +61,18 @@
 
   .form {
     @apply w-full;
+  }
 
-    .label {
-      @apply !text-gray-300 !font-medium !text-sm !mb-1.5;
-    }
+  .form-label {
+    @apply !text-gray-300 !font-medium !text-sm !mb-1.5;
+  }
 
-    .input {
-      @apply !bg-gray-800 !rounded-md !py-2.5 !px-4 !border !border-white/10 !text-white placeholder:!text-gray-500 focus:!border-purple-500/50 focus:!ring-1 focus:!ring-purple-500/30 transition-all;
-    }
+  .form-input {
+    @apply !bg-gray-800 !rounded-md !py-2.5 !px-4 !border !border-white/10 !text-white placeholder:!text-gray-500 focus:!border-purple-500/50 focus:!ring-1 focus:!ring-purple-500/30 transition-all;
+  }
 
-    .btn {
-      @apply !w-full !bg-purple-600 !text-white hover:!opacity-90 !rounded-md !py-2.5 !font-medium !px-5 cursor-pointer !shadow-md !transition-all !duration-200;
-    }
+  .form-btn {
+    @apply !w-full !bg-purple-600 !text-white hover:!opacity-90 !rounded-md !py-2.5 !font-medium !px-5 cursor-pointer !shadow-md !transition-all !duration-200;
   }
 
   .interview-card {
@@ -101,6 +101,19 @@
 
   .cta-section {
     @apply mt-8 rounded-lg bg-gradient-to-r from-purple-600/10 to-purple-800/10 p-8 relative overflow-hidden border border-purple-500/20 shadow-lg;
+  }
+
+  /* Mobile responsive components */
+  .mobile-nav-button {
+    @apply flex md:hidden items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-white hover:bg-purple-600 transition-colors;
+  }
+
+  .mobile-nav-menu {
+    @apply fixed top-0 left-0 w-[280px] h-full bg-gray-900 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto;
+  }
+
+  .mobile-header {
+    @apply sticky top-0 z-10 w-full flex items-center justify-between px-4 py-3 bg-gray-900/80 backdrop-blur-md border-b border-white/5 md:hidden;
   }
 
   .purple-gradient {
@@ -141,6 +154,36 @@
     @apply flex items-center justify-center;
   }
 
+  /* Mobile utilities */
+  .mobile-menu-closed {
+    @apply -translate-x-full md:translate-x-0;
+  }
+
+  .mobile-menu-open {
+    @apply translate-x-0;
+  }
+
+  .mobile-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden;
+  }
+
+  .mobile-sidebar {
+    @apply fixed top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out md:relative md:translate-x-0;
+  }
+
+  .mobile-main-shift {
+    @apply md:ml-0;
+  }
+
+  .hide-on-mobile {
+    @apply hidden md:flex;
+  }
+
+  .show-on-mobile {
+    @apply flex md:hidden;
+  }
+
+  /* Animation utilities */
   .animate-fadeIn {
     animation: fadeIn 0.3s ease-in-out;
   }

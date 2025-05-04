@@ -98,61 +98,82 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const isSignIn = type === "sign-in";
 
   return (
-    <div className="card-border lg:min-w-[566px]">
-      <div className="flex flex-col gap-6 card py-14 px-10">
-        <div className="flex flex-row gap-2 justify-center">
-          <Image src="/logo.svg" alt="logo" height={32} width={38} />
-          <h2 className="text-primary-100">Interview Agent</h2>
+    <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gray-50">
+      <div className="w-full max-w-md">
+        {/* Header with logo */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="bg-teal-100 p-2 rounded-[1.25rem] shadow-sm">
+              <Image src="/logo.svg" alt="logo" height={36} width={42} className="h-9 w-auto" />
+            </div>
+            <h1 className="text-3xl font-bold text-teal-600">LLAMA3 INTERVIEW</h1>
+          </div>
+          <p className="text-gray-600">Practice job interviews with AI-powered feedback</p>
         </div>
 
-        <h3>Practice job interviews with AI</h3>
+        {/* Auth Card */}
+        <div className="bg-white rounded-[2rem] p-8 border border-gray-200 shadow-md">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            {isSignIn ? "Welcome Back" : "Create an Account"}
+          </h2>
 
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6 mt-4 form"
-          >
-            {!isSignIn && (
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5"
+            >
+              {!isSignIn && (
+                <FormField
+                  control={form.control}
+                  name="name"
+                  label="Full Name"
+                  placeholder="Enter your full name"
+                  type="text"
+                />
+              )}
+
               <FormField
                 control={form.control}
-                name="name"
-                label="Name"
-                placeholder="Your Name"
-                type="text"
+                name="email"
+                label="Email Address"
+                placeholder="Enter your email address"
+                type="email"
               />
-            )}
 
-            <FormField
-              control={form.control}
-              name="email"
-              label="Email"
-              placeholder="Your email address"
-              type="email"
-            />
+              <FormField
+                control={form.control}
+                name="password"
+                label="Password"
+                placeholder="Enter your password"
+                type="password"
+              />
 
-            <FormField
-              control={form.control}
-              name="password"
-              label="Password"
-              placeholder="Enter your password"
-              type="password"
-            />
+              <Button
+                className="w-full bg-teal-500 text-white px-6 py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md hover:-translate-y-1 active:scale-95 mt-4"
+                type="submit"
+              >
+                {isSignIn ? "Sign In" : "Create an Account"}
+              </Button>
+            </form>
+          </Form>
 
-            <Button className="btn" type="submit">
-              {isSignIn ? "Sign In" : "Create an Account"}
-            </Button>
-          </form>
-        </Form>
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-center text-gray-600">
+              {isSignIn ? "Don't have an account yet?" : "Already have an account?"}
+              <Link
+                href={!isSignIn ? "/sign-in" : "/sign-up"}
+                className="text-teal-600 font-medium ml-1 hover:underline transition-all"
+              >
+                {!isSignIn ? "Sign In" : "Sign Up"}
+              </Link>
+            </p>
+          </div>
+        </div>
 
-        <p className="text-center">
-          {isSignIn ? "No account yet?" : "Have an account already?"}
-          <Link
-            href={!isSignIn ? "/sign-in" : "/sign-up"}
-            className="font-bold text-user-primary ml-1"
-          >
-            {!isSignIn ? "Sign In" : "Sign Up"}
-          </Link>
-        </p>
+        {/* Footer */}
+        <div className="mt-8 text-center text-gray-500 text-sm">
+          <p>© 2023 LLAMA3 Interview Agent. All rights reserved.</p>
+        </div>
       </div>
     </div>
   );

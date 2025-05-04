@@ -26,35 +26,52 @@ const InterviewDetails = async ({ params }: RouteParams) => {
 
   return (
     <>
-      <div className="flex flex-row gap-4 justify-between">
-        <div className="flex flex-row gap-4 items-center max-sm:flex-col">
-          <div className="flex flex-row gap-4 items-center">
-            <Image
-              src={getRandomInterviewCover()}
-              alt="cover-image"
-              width={40}
-              height={40}
-              className="rounded-full object-cover size-[40px]"
-            />
-            <h3 className="capitalize">{interview.role} Interview</h3>
-          </div>
-
-          <DisplayTechIcons techStack={interview.techstack} />
+      <div className="flex flex-col gap-8">
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold text-teal-600">
+            LLAMA3 INTERVIEW DASHBOARD
+          </h1>
         </div>
 
-        <p className="bg-dark-200 px-4 py-2 rounded-lg h-fit">
-          {interview.type}
-        </p>
-      </div>
+        <div className="bg-white rounded-[1.25rem] p-6 border border-gray-200 shadow-md">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-[1.25rem] bg-teal-100 flex items-center justify-center shadow-md">
+                <Image
+                  src={getRandomInterviewCover()}
+                  alt="cover-image"
+                  width={28}
+                  height={28}
+                  className="rounded-full object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-gray-800 font-semibold text-lg capitalize">
+                  {interview.role} Interview
+                </h3>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="bg-teal-100 text-teal-600 px-2 py-0.5 rounded-[1.25rem] text-xs font-medium">
+                    {interview.type}
+                  </span>
+                </div>
+              </div>
+            </div>
 
-      <Agent
-        userName={user?.name!}
-        userId={user?.id}
-        interviewId={id}
-        type="interview"
-        questions={interview.questions}
-        feedbackId={feedback?.id}
-      />
+            <div className="flex flex-wrap gap-2">
+              <DisplayTechIcons techStack={interview.techstack} />
+            </div>
+          </div>
+
+          <Agent
+            userName={user?.name!}
+            userId={user?.id}
+            interviewId={id}
+            type="interview"
+            questions={interview.questions}
+            feedbackId={feedback?.id}
+          />
+        </div>
+      </div>
     </>
   );
 };

@@ -1,0 +1,41 @@
+"use client";
+
+import Link from "next/link";
+
+export default function SimplePage() {
+  return (
+    <div className="flex flex-col gap-8 p-8 bg-gray-100">
+      <h1 className="text-3xl font-bold text-gray-800">Interview Agent</h1>
+      
+      <section className="bg-white p-6 rounded-[2rem] shadow-md">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Interview Types</h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="bg-[#FFF8E1] p-6 rounded-[2rem] shadow-md">
+            <h3 className="text-xl font-semibold text-gray-800">Technical Interview</h3>
+            <p className="text-gray-600 mt-2">Practice coding problems and system design questions</p>
+          </div>
+          
+          <div className="bg-[#E1F5FE] p-6 rounded-[2rem] shadow-md">
+            <h3 className="text-xl font-semibold text-gray-800">Behavioral Interview</h3>
+            <p className="text-gray-600 mt-2">Prepare for questions about your past experiences</p>
+          </div>
+          
+          <div className="bg-[#E8F5E9] p-6 rounded-[2rem] shadow-md">
+            <h3 className="text-xl font-semibold text-gray-800">Problem Solving</h3>
+            <p className="text-gray-600 mt-2">Demonstrate your analytical and critical thinking skills</p>
+          </div>
+        </div>
+      </section>
+      
+      <section className="bg-white p-6 rounded-[2rem] shadow-md">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Recent Interviews</h2>
+        <p className="text-gray-600">You haven't completed any interviews yet.</p>
+        
+        <button className="mt-4 bg-teal-500 text-white px-4 py-2 rounded-[1.25rem] font-medium">
+          Start Your First Interview
+        </button>
+      </section>
+    </div>
+  );
+}

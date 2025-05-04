@@ -8,5 +8,9 @@
   ],
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "installCommand": "npm install --legacy-peer-deps"
+  "installCommand": "npm install --legacy-peer-deps",
+  "github": {
+    "enabled": true,
+    "silent": false
+  }
 }

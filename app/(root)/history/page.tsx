@@ -50,9 +50,9 @@ export default function History() {
         <h1 className="text-3xl font-bold text-white">Interview History</h1>
       </div>
 
-      <div className="bg-dark-200 rounded-xl p-8">
+      <div className="bg-dark-200 rounded-[2rem] p-8">
         <h2 className="text-xl font-semibold text-white mb-6">Your Past Interviews</h2>
-        
+
         {interviews.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {interviews.map((interview) => (
@@ -86,12 +86,12 @@ export default function History() {
         )}
       </div>
 
-      <div className="bg-dark-200 rounded-xl p-8">
+      <div className="bg-dark-200 rounded-[2rem] p-8">
         <h2 className="text-xl font-semibold text-white mb-6">Interview Statistics</h2>
-        
+
         {interviews.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-dark-300 rounded-xl p-6">
+            <div className="bg-dark-300 rounded-[1.5rem] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="rounded-full bg-primary-200/20 p-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
@@ -102,8 +102,8 @@ export default function History() {
               </div>
               <p className="text-3xl font-bold text-primary-200">{interviews.length}</p>
             </div>
-            
-            <div className="bg-dark-300 rounded-xl p-6">
+
+            <div className="bg-dark-300 rounded-[1.5rem] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="rounded-full bg-primary-200/20 p-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
@@ -114,8 +114,8 @@ export default function History() {
               </div>
               <p className="text-3xl font-bold text-primary-200">75</p>
             </div>
-            
-            <div className="bg-dark-300 rounded-xl p-6">
+
+            <div className="bg-dark-300 rounded-[1.5rem] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="rounded-full bg-primary-200/20 p-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-200">
