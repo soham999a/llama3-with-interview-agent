@@ -4,16 +4,16 @@
 
 :root {
   /* Colors from the dashboard screenshot */
-  --background-dark: #0F1218;    /* Dark navy/black background */
-  --background-card: #151A24;    /* Slightly lighter card background */
-  --accent-purple: #9D4EDD;      /* Purple accent color */
-  --text-white: #FFFFFF;         /* White text */
-  --text-gray: #A0AEC0;          /* Gray text for secondary content */
-  --border-color: #2D3748;       /* Border color for cards and dividers */
+  --background-dark: #0f1218; /* Dark navy/black background */
+  --background-card: #151a24; /* Slightly lighter card background */
+  --accent-purple: #9d4edd; /* Purple accent color */
+  --text-white: #ffffff; /* White text */
+  --text-gray: #a0aec0; /* Gray text for secondary content */
+  --border-color: #2d3748; /* Border color for cards and dividers */
 
   /* Button colors */
-  --button-primary: #9D4EDD;     /* Purple button */
-  --button-secondary: #2D3748;   /* Dark gray button */
+  --button-primary: #9d4edd; /* Purple button */
+  --button-secondary: #2d3748; /* Dark gray button */
 
   /* Legacy variables kept for compatibility */
   --color-background: var(--background-dark);
@@ -25,10 +25,10 @@
   --dark-text: var(--text-white);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(to right, #9D4EDD, #7B2CBF);
-  --gradient-accent: linear-gradient(to right, #9D4EDD, #C77DFF);
-  --gradient-secondary: linear-gradient(to right, #151A24, #1E293B);
-  --gradient-warm: linear-gradient(to right, #9D4EDD, #7B2CBF);
+  --gradient-primary: linear-gradient(to right, #9d4edd, #7b2cbf);
+  --gradient-accent: linear-gradient(to right, #9d4edd, #c77dff);
+  --gradient-secondary: linear-gradient(to right, #151a24, #1e293b);
+  --gradient-warm: linear-gradient(to right, #9d4edd, #7b2cbf);
 
   /* Transparency variants */
   --color-primary-10: rgba(157, 78, 221, 0.1);
@@ -39,26 +39,26 @@
   --color-accent-50: rgba(157, 78, 221, 0.5);
 
   /* Legacy colors - keeping for compatibility */
-  --color-success-100: #C1E6A1; /* Updated to secondary green */
+  --color-success-100: #c1e6a1; /* Updated to secondary green */
   --color-success-200: #22c55e;
   --color-destructive-100: #f87171;
   --color-destructive-200: #ef4444;
 
-  --color-primary-100: #A3D5E4; /* Secondary blue */
-  --color-primary-200: #1A9A8B; /* Primary teal */
-  --color-primary-300: #004D56; /* Dark teal */
+  --color-primary-100: #a3d5e4; /* Secondary blue */
+  --color-primary-200: #1a9a8b; /* Primary teal */
+  --color-primary-300: #004d56; /* Dark teal */
 
-  --color-light-100: #E6F4F1; /* Background mint */
-  --color-light-200: #F2F2F2;
-  --color-light-300: #E5E5E5;
-  --color-light-400: #CCCCCC;
+  --color-light-100: #e6f4f1; /* Background mint */
+  --color-light-200: #f2f2f2;
+  --color-light-300: #e5e5e5;
+  --color-light-400: #cccccc;
   --color-light-500: #999999;
   --color-light-600: #666666;
   --color-light-700: #444444;
   --color-light-800: #333333;
   --color-light-900: #111111;
 
-  --color-dark-100: #004D56; /* Updated to dark teal */
+  --color-dark-100: #004d56; /* Updated to dark teal */
   --color-dark-200: #1a1a1a;
   --color-dark-300: #262626;
   --color-dark-400: #333333;
@@ -67,7 +67,7 @@
 
   --bg-pattern: url("/pattern.png");
 
-  --radius: 0.5rem;
+  --radius: 1.25rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -189,27 +189,27 @@
   }
 
   .btn-primary {
-    @apply w-fit primary-gradient text-white rounded-xl font-medium px-5 py-2.5 cursor-pointer shadow-md transition-all duration-300 hover:-translate-y-0.5;
+    @apply w-fit primary-gradient text-white rounded-[1.25rem] font-medium px-5 py-2.5 cursor-pointer shadow-md transition-all duration-300 hover:-translate-y-0.5;
   }
 
   .btn-accent {
-    @apply w-fit accent-gradient rounded-xl font-medium px-5 py-2.5 cursor-pointer shadow-md transition-all duration-300 hover:-translate-y-0.5;
+    @apply w-fit accent-gradient rounded-[1.25rem] font-medium px-5 py-2.5 cursor-pointer shadow-md transition-all duration-300 hover:-translate-y-0.5;
   }
 
   .btn-secondary {
-    @apply w-fit bg-[var(--color-secondary-blue)] text-[var(--color-text)] hover:shadow-lg hover:shadow-[var(--color-secondary-blue)]/20 rounded-xl font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
+    @apply w-fit bg-[var(--color-secondary-blue)] text-[var(--color-text)] hover:shadow-lg hover:shadow-[var(--color-secondary-blue)]/20 rounded-[1.25rem] font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
   }
 
   .btn-success {
-    @apply w-fit bg-[var(--color-secondary-green)] text-[var(--color-text)] hover:shadow-lg hover:shadow-[var(--color-secondary-green)]/20 rounded-xl font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
+    @apply w-fit bg-[var(--color-secondary-green)] text-[var(--color-text)] hover:shadow-lg hover:shadow-[var(--color-secondary-green)]/20 rounded-[1.25rem] font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
   }
 
   .btn-outline {
-    @apply w-fit bg-transparent text-[var(--color-primary)] border border-[var(--color-primary)] hover:bg-[var(--color-primary-10)] rounded-xl font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
+    @apply w-fit bg-transparent text-[var(--color-primary)] border border-[var(--color-primary)] hover:bg-[var(--color-primary-10)] rounded-[1.25rem] font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
   }
 
   .btn-outline-accent {
-    @apply w-fit bg-transparent text-[var(--color-accent)] border border-[var(--color-accent)] hover:bg-[var(--color-accent-10)] rounded-xl font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
+    @apply w-fit bg-transparent text-[var(--color-accent)] border border-[var(--color-accent)] hover:bg-[var(--color-accent-10)] rounded-[1.25rem] font-medium px-5 py-2.5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5;
   }
 
   .btn-upload {
@@ -217,23 +217,23 @@
   }
 
   .card-border {
-    @apply border border-[var(--color-primary-20)] rounded-xl w-fit overflow-hidden transition-all duration-300 hover:border-[var(--color-primary-50)];
+    @apply border border-[var(--color-primary-20)] rounded-[1.25rem] w-fit overflow-hidden transition-all duration-300 hover:border-[var(--color-primary-50)];
   }
 
   .card {
-    @apply bg-[var(--color-background)] rounded-xl min-h-full card-shadow border border-[var(--color-primary-10)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary-10)];
+    @apply bg-[var(--color-background)] rounded-[1.25rem] min-h-full card-shadow border border-[var(--color-primary-10)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary-10)];
   }
 
   .card-primary {
-    @apply bg-[var(--color-background)] rounded-xl p-6 border border-[var(--color-primary-20)] shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary-20)] hover:-translate-y-1;
+    @apply bg-[var(--color-background)] rounded-[1.25rem] p-6 border border-[var(--color-primary-20)] shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary-20)] hover:-translate-y-1;
   }
 
   .card-accent {
-    @apply bg-[var(--color-background)] rounded-xl p-6 border border-[var(--color-accent-20)] shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-accent-20)] hover:-translate-y-1;
+    @apply bg-[var(--color-background)] rounded-[1.25rem] p-6 border border-[var(--color-accent-20)] shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-accent-20)] hover:-translate-y-1;
   }
 
   .card-secondary {
-    @apply bg-[var(--color-background)] rounded-xl p-6 border border-[var(--color-secondary-blue)]/20 shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-secondary-blue)]/20 hover:-translate-y-1;
+    @apply bg-[var(--color-background)] rounded-[1.25rem] p-6 border border-[var(--color-secondary-blue)]/20 shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-secondary-blue)]/20 hover:-translate-y-1;
   }
 
   .form {
@@ -244,27 +244,27 @@
     }
 
     .input {
-      @apply !bg-white !rounded-xl !py-3 !px-4 !border !border-[var(--color-primary-20)] !text-[var(--color-text)]
+      @apply !bg-white !rounded-[1.25rem] !py-3 !px-4 !border !border-[var(--color-primary-20)] !text-[var(--color-text)]
              placeholder:!text-[var(--color-text)]/50 focus:!border-[var(--color-primary)] focus:!ring-2
              focus:!ring-[var(--color-primary-20)] !transition-all !duration-300 !shadow-sm
              hover:!shadow-md hover:!shadow-[var(--color-primary-10)];
     }
 
     .textarea {
-      @apply !bg-white !rounded-xl !py-3 !px-4 !border !border-[var(--color-primary-20)] !text-[var(--color-text)]
+      @apply !bg-white !rounded-[1.25rem] !py-3 !px-4 !border !border-[var(--color-primary-20)] !text-[var(--color-text)]
              placeholder:!text-[var(--color-text)]/50 focus:!border-[var(--color-primary)] focus:!ring-2
              focus:!ring-[var(--color-primary-20)] !transition-all !duration-300 !shadow-sm
              hover:!shadow-md hover:!shadow-[var(--color-primary-10)] !resize-none;
     }
 
     .btn {
-      @apply !w-full primary-gradient !text-white !rounded-xl !py-3 !font-medium !px-5 cursor-pointer
+      @apply !w-full primary-gradient !text-white !rounded-[1.25rem] !py-3 !font-medium !px-5 cursor-pointer
              !shadow-md !transition-all !duration-300 hover:!-translate-y-0.5
              hover:!shadow-lg hover:!shadow-[var(--color-primary-20)];
     }
 
     .btn-accent {
-      @apply !w-full accent-gradient !text-[var(--color-text)] !rounded-xl !py-3 !font-medium !px-5 cursor-pointer
+      @apply !w-full accent-gradient !text-[var(--color-text)] !rounded-[1.25rem] !py-3 !font-medium !px-5 cursor-pointer
              !shadow-md !transition-all !duration-300 hover:!-translate-y-0.5
              hover:!shadow-lg hover:!shadow-[var(--color-accent-20)];
     }
@@ -327,7 +327,7 @@
   }
 
   .card-cta {
-    @apply flex flex-row purple-gradient-subtle rounded-lg px-8 py-6 items-center justify-between max-sm:px-4 border border-primary-200/20;
+    @apply flex flex-row purple-gradient-subtle rounded-[1.25rem] px-8 py-6 items-center justify-between max-sm:px-4 border border-primary-200/20;
   }
 
   .interviews-section {
@@ -347,7 +347,7 @@
   }
 
   .card-interview {
-    @apply bg-[var(--color-background)] rounded-xl min-h-full flex flex-col p-6 relative overflow-hidden gap-6 justify-between
+    @apply bg-[var(--color-background)] rounded-[1.25rem] min-h-full flex flex-col p-6 relative overflow-hidden gap-6 justify-between
            shadow-md border border-[var(--color-primary-20)] transition-all duration-300
            hover:shadow-lg hover:shadow-[var(--color-primary-20)] hover:-translate-y-1;
 
@@ -422,11 +422,19 @@
 
   /* Subtle variants */
   .primary-gradient-subtle {
-    background: linear-gradient(to right, var(--color-primary-10), var(--color-primary-20));
+    background: linear-gradient(
+      to right,
+      var(--color-primary-10),
+      var(--color-primary-20)
+    );
   }
 
   .accent-gradient-subtle {
-    background: linear-gradient(to right, var(--color-accent-10), var(--color-accent-20));
+    background: linear-gradient(
+      to right,
+      var(--color-accent-10),
+      var(--color-accent-20)
+    );
   }
 
   /* Glass effects */
@@ -534,7 +542,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {

@@ -6,11 +6,15 @@ import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LogOut, User, Menu, X } from "lucide-react";
 
-import { isAuthenticated, signOut, getCurrentUser } from "@/lib/actions/auth.action";
+import {
+  isAuthenticated,
+  signOut,
+  getCurrentUser,
+} from "@/lib/actions/auth.action";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
-  const [userName, setUserName] = useState<string>('');
+  const [userName, setUserName] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
@@ -19,17 +23,17 @@ const Layout = ({ children }: { children: ReactNode }) => {
       try {
         const isUserAuthenticated = await isAuthenticated();
         if (!isUserAuthenticated) {
-          router.push('/sign-in');
+          router.push("/sign-in");
           return;
         }
 
         const user = await getCurrentUser();
         if (user) {
-          setUserName(user.name || 'User');
+          setUserName(user.name || "User");
         }
       } catch (error) {
-        console.error('Authentication error:', error);
-        router.push('/sign-in');
+        console.error("Authentication error:", error);
+        router.push("/sign-in");
       } finally {
         setIsLoading(false);
       }
@@ -41,9 +45,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const handleLogout = async () => {
     try {
       await signOut();
-      router.push('/sign-in');
+      router.push("/sign-in");
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   };
 
@@ -66,8 +70,16 @@ const Layout = ({ children }: { children: ReactNode }) => {
       )}
 
       {/* Sidebar */}
-      <div className={`w-[280px] md:w-[240px] bg-[#1EBBA3] min-h-screen p-6 flex flex-col border-r border-white/10 shadow-xl fixed md:sticky top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
-           onClick={(e) => e.target === e.currentTarget && setIsMobileMenuOpen(false)}>
+      <div
+        className={`w-[280px] md:w-[240px] bg-[#1EBBA3] min-h-screen p-6 flex flex-col border-r border-white/10 shadow-xl fixed md:sticky top-0 left-0 h-full z-50 transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen
+            ? "translate-x-0"
+            : "-translate-x-full md:translate-x-0"
+        }`}
+        onClick={(e) =>
+          e.target === e.currentTarget && setIsMobileMenuOpen(false)
+        }
+      >
         {/* Mobile Close Button */}
         <button
           className="absolute top-4 right-4 p-2 rounded-full bg-white/20 text-white md:hidden hover:bg-white/30 transition-colors"
@@ -78,11 +90,19 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
         <Link href="/" className="flex items-center gap-2 mb-8">
           <div className="bg-white rounded-full p-2 shadow-lg">
-            <Image src="/logo.svg" alt="Interview Agent Logo" width={24} height={24} className="text-[#0070f3]" />
+            <Image
+              src="/logo.svg"
+              alt="Interview Agent Logo"
+              width={24}
+              height={24}
+              className="text-[#0070f3]"
+            />
           </div>
           <div className="flex flex-col">
             <h2 className="text-white text-xl font-bold">LLAMA3</h2>
-            <span className="text-white/80 text-sm font-medium">INTERVIEW AGENT</span>
+            <span className="text-white/80 text-sm font-medium">
+              INTERVIEW AGENT
+            </span>
           </div>
         </Link>
 
@@ -99,9 +119,23 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
         {/* Navigation Links */}
         <div className="flex flex-col space-y-1.5">
-          <Link href="/" className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group">
+          <Link
+            href="/"
+            className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group"
+          >
             <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white transition-colors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white group-hover:text-white transition-colors"
+              >
                 <rect x="3" y="3" width="7" height="9"></rect>
                 <rect x="14" y="3" width="7" height="5"></rect>
                 <rect x="14" y="12" width="7" height="9"></rect>
@@ -110,24 +144,51 @@ const Layout = ({ children }: { children: ReactNode }) => {
             </div>
             <span className="font-medium">Dashboard</span>
           </Link>
-          <Link href="/interview" className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group">
+          <Link
+            href="/interview"
+            className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group"
+          >
             <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white transition-colors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white group-hover:text-white transition-colors"
+              >
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
             </div>
             <span className="font-medium">New Interview</span>
           </Link>
-          <Link href="/history" className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group">
+          <Link
+            href="/history"
+            className="text-white hover:text-white px-4 py-3 rounded-3xl transition-all flex items-center gap-3 hover:bg-[#18A08B] group"
+          >
             <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white group-hover:text-white transition-colors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-white group-hover:text-white transition-colors"
+              >
                 <path d="M12 8v4l3 3"></path>
                 <circle cx="12" cy="12" r="10"></circle>
               </svg>
             </div>
             <span className="font-medium">History</span>
           </Link>
-
         </div>
 
         {/* Spacer to push logout to the bottom */}
@@ -139,7 +200,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
           className="mt-6 flex items-center gap-3 text-white hover:text-white px-4 py-3 rounded-3xl transition-all hover:bg-[#f97316] group"
         >
           <div className="bg-white/20 group-hover:bg-white/30 p-2 rounded-2xl transition-colors">
-            <LogOut size={16} className="text-white group-hover:text-white transition-colors" />
+            <LogOut
+              size={16}
+              className="text-white group-hover:text-white transition-colors"
+            />
           </div>
           <span className="font-medium">Logout</span>
         </button>
@@ -163,14 +227,30 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
           <div className="flex items-center gap-2">
             <div className="bg-[#1EBBA3] rounded-full p-1.5 shadow-lg">
-              <Image src="/logo.svg" alt="Interview Agent Logo" width={18} height={18} className="text-white" />
+              <Image
+                src="/logo.svg"
+                alt="Interview Agent Logo"
+                width={18}
+                height={18}
+                className="text-white"
+              />
             </div>
             <h2 className="text-[#1EBBA3] text-lg font-bold">LLAMA3</h2>
           </div>
 
           <Link href="/interview" aria-label="Start Interview">
             <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1EBBA3] text-white hover:bg-[#18A08B] transition-colors shadow-sm active:scale-95">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
@@ -180,15 +260,28 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
         {/* Desktop Header */}
         <div className="hidden md:flex sticky top-0 z-10 backdrop-blur-md bg-white/90 border-b border-gray-200 px-4 lg:px-6 py-3 lg:py-4 justify-between items-center">
-          <h1 className="text-[#1EBBA3] text-xl lg:text-2xl font-bold">LLAMA3 INTERVIEW DASHBOARD</h1>
+          <h1 className="text-[#1EBBA3] text-xl lg:text-2xl font-bold">
+            LLAMA3 INTERVIEW DASHBOARD
+          </h1>
 
           <div className="flex items-center gap-3">
             {/* Help Button */}
             <button
-              onClick={() => window.open('/help', '_blank')}
-              className="bg-white p-2.5 rounded-2xl hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
+              onClick={() => window.open("/help", "_blank")}
+              className="bg-white p-2.5 rounded-[1.25rem] hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1EBBA3]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-[#1EBBA3]"
+              >
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
@@ -198,9 +291,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Page Content */}
-        <div className="p-3 sm:p-4 md:p-6 pt-16 md:pt-20">
-          {children}
-        </div>
+        <div className="p-3 sm:p-4 md:p-6 pt-16 md:pt-20">{children}</div>
       </div>
     </div>
   );
