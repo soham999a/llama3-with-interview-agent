@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In - Interview Agent</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e6f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background-color: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .logo img {
+        width: 38px;
+        height: 32px;
+      }
+      .logo h2 {
+        color: #1ebba3;
+        margin: 0;
+      }
+      h1 {
+        text-align: center;
+        color: #1ebba3;
+        margin-bottom: 20px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #333;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #1ebba3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #189e8a;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+      .footer a {
+        color: #1ebba3;
+        text-decoration: none;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="/logo.svg" alt="Interview Agent Logo" />
+        <h2>Interview Agent</h2>
+      </div>
+      <h1>Sign In</h1>
+      <div id="form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" />
+          <div id="email-error" class="error">Please enter a valid email</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+          />
+          <div id="password-error" class="error">Password is required</div>
+        </div>
+        <div id="auth-error" class="error">Invalid email or password</div>
+        <button id="signin-button">Sign In</button>
+      </div>
+      <div class="footer">
+        Don't have an account? <a href="/sign-up.html">Sign Up</a>
+      </div>
+    </div>
+
+    <script>
+      // Check for error parameter in URL
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      // Display error message if present in URL
+      const errorMessage = getUrlParameter("error");
+      if (errorMessage) {
+        document.getElementById("auth-error").textContent = errorMessage;
+        document.getElementById("auth-error").style.display = "block";
+      }
+
+      document
+        .getElementById("signin-button")
+        .addEventListener("click", async function () {
+          // Simple validation
+          let isValid = true;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          if (!email || !email.includes("@")) {
+            document.getElementById("email-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("email-error").style.display = "none";
+          }
+
+          if (!password) {
+            document.getElementById("password-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("password-error").style.display = "none";
+          }
+
+          if (isValid) {
+            try {
+              // Redirect to the Next.js sign-in page
+              window.location.href = `/sign-in`;
+            } catch (error) {
+              document.getElementById("auth-error").textContent = error.message;
+              document.getElementById("auth-error").style.display = "block";
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Interview Agent</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e6f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background-color: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .logo img {
+        width: 38px;
+        height: 32px;
+      }
+      .logo h2 {
+        color: #1ebba3;
+        margin: 0;
+      }
+      h1 {
+        text-align: center;
+        color: #1ebba3;
+        margin-bottom: 20px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #333;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #1ebba3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #189e8a;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+      .footer a {
+        color: #1ebba3;
+        text-decoration: none;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="/logo.svg" alt="Interview Agent Logo" />
+        <h2>Interview Agent</h2>
+      </div>
+      <h1>Create Account</h1>
+      <div id="form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your full name" />
+          <div id="name-error" class="error">Name is required</div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" />
+          <div id="email-error" class="error">Please enter a valid email</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Create a password"
+          />
+          <div id="password-error" class="error">
+            Password must be at least 6 characters
+          </div>
+        </div>
+        <div id="auth-error" class="error">Error creating account</div>
+        <button id="signup-button">Sign Up</button>
+      </div>
+      <div class="footer">
+        Already have an account? <a href="/sign-in.html">Sign In</a>
+      </div>
+    </div>
+
+    <script>
+      // Check for error parameter in URL
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      // Display error message if present in URL
+      const errorMessage = getUrlParameter("error");
+      if (errorMessage) {
+        document.getElementById("auth-error").textContent = errorMessage;
+        document.getElementById("auth-error").style.display = "block";
+      }
+
+      document
+        .getElementById("signup-button")
+        .addEventListener("click", async function () {
+          // Simple validation
+          let isValid = true;
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          if (!name) {
+            document.getElementById("name-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("name-error").style.display = "none";
+          }
+
+          if (!email || !email.includes("@")) {
+            document.getElementById("email-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("email-error").style.display = "none";
+          }
+
+          if (!password || password.length < 6) {
+            document.getElementById("password-error").style.display = "block";
+            isValid = false;
+          } else {
+            document.getElementById("password-error").style.display = "none";
+          }
+
+          if (isValid) {
+            try {
+              // Create user with Firebase directly
+              try {
+                // Load Firebase SDK
+                const firebaseScript = document.createElement("script");
+                firebaseScript.src =
+                  "https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js";
+                document.head.appendChild(firebaseScript);
+
+                const authScript = document.createElement("script");
+                authScript.src =
+                  "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js";
+                document.head.appendChild(authScript);
+
+                authScript.onload = function () {
+                  // Initialize Firebase
+                  const firebaseConfig = {
+                    apiKey: "AIzaSyC_mYAk8rJwNXpJoMb_ZRHNpuWBwNgd9Iw",
+                    authDomain: "interview-agent-50c3b.firebaseapp.com",
+                    projectId: "interview-agent-50c3b",
+                    storageBucket: "interview-agent-50c3b.firebasestorage.app",
+                    messagingSenderId: "908064429361",
+                    appId: "1:908064429361:web:5cc5d8faa4cdfc9a3b0c10",
+                    measurementId: "G-S1YEFW1H2K",
+                  };
+
+                  firebase.initializeApp(firebaseConfig);
+
+                  // Create user
+                  firebase
+                    .auth()
+                    .createUserWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                      // Redirect to the Next.js sign-up page
+                      window.location.href = `/sign-up`;
+                    })
+                    .catch((error) => {
+                      document.getElementById("auth-error").textContent =
+                        error.message;
+                      document.getElementById("auth-error").style.display =
+                        "block";
+                    });
+                };
+              } catch (error) {
+                // If Firebase script loading fails, just redirect to the Next.js sign-up page
+                window.location.href = `/sign-up`;
+              }
+            } catch (error) {
+              document.getElementById("auth-error").textContent = error.message;
+              document.getElementById("auth-error").style.display = "block";
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

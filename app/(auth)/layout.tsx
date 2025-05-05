@@ -3,17 +3,21 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-import { isAuthenticated } from "@/lib/actions/auth.action";
+import { isAuthenticated } from "@/lib/actions/auth.server";
+import "./auth-styles.css";
 
-const AuthLayout = async ({ children }: { children: ReactNode }) => {
-  const isUserAuthenticated = await isAuthenticated();
-  if (isUserAuthenticated) redirect("/");
-
+// Create a separate component for the layout content
+function AuthLayoutContent({ children }: { children: ReactNode }) {
   return (
     <div className="auth-layout">
       <div className="absolute top-8 left-8 flex items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.svg" alt="Interview Agent Logo" width={38} height={32} />
+          <Image
+            src="/logo.svg"
+            alt="Interview Agent Logo"
+            width={38}
+            height={32}
+          />
           <h2 className="text-primary-100">Interview Agent</h2>
         </Link>
       </div>
@@ -25,6 +29,22 @@ const AuthLayout = async ({ children }: { children: ReactNode }) => {
       {children}
     </div>
   );
+}
+
+// Main layout component
+const AuthLayout = async ({ children }: { children: ReactNode }) => {
+  try {
+    const isUserAuthenticated = await isAuthenticated();
+    if (isUserAuthenticated) {
+      // Use a more gentle redirect approach to prevent Edge throttling
+      redirect("/");
+    }
+  } catch (error) {
+    console.error("Auth layout error:", error);
+    // Continue rendering the auth page if there's an error
+  }
+
+  return <AuthLayoutContent>{children}</AuthLayoutContent>;
 };
 
 export default AuthLayout;

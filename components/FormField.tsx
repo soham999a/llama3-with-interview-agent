@@ -29,7 +29,9 @@ const FormField = <T extends FieldValues>({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-gray-700 font-medium text-sm mb-1.5">{label}</FormLabel>
+          <FormLabel className="text-gray-700 font-medium text-sm mb-1.5">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               className="bg-white rounded-[1.25rem] py-2.5 px-4 border border-gray-300 text-gray-800 placeholder:text-gray-400 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/30 transition-all"

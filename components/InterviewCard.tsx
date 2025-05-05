@@ -13,7 +13,7 @@ import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 
 const InterviewCard = ({
   interviewId,
-  userId,
+  userId, // This should be the Firebase user.uid
   role,
   type,
   techstack,
@@ -75,7 +75,7 @@ const InterviewCard = ({
   }
 
   return (
-    <div className="card relative overflow-hidden rounded-[1.25rem] p-4 sm:p-6 w-full group">
+    <div className="card relative overflow-hidden rounded-md p-4 sm:p-6 w-full group">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
@@ -86,7 +86,7 @@ const InterviewCard = ({
       <div className="flex flex-col h-full relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start mb-5 gap-3 sm:gap-0">
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[1.25rem] bg-teal-100 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md bg-teal-100 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -116,7 +116,7 @@ const InterviewCard = ({
           </div>
 
           {feedback && (
-            <div className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-teal-100 px-3 py-2 rounded-[1.25rem] shadow-md mt-3 sm:mt-0 border border-teal-200 self-stretch sm:self-start">
+            <div className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-teal-100 px-3 py-2 rounded-md shadow-md mt-3 sm:mt-0 border border-teal-200 self-stretch sm:self-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -192,7 +192,7 @@ const InterviewCard = ({
 
         {/* Feedback or Placeholder Text */}
         <div className="flex-grow mb-5">
-          <p className="text-gray-700 line-clamp-2 bg-teal-50 p-3 rounded-[1rem] border-l-2 border-teal-500 shadow-sm">
+          <p className="text-gray-700 line-clamp-2 bg-teal-50 p-3 rounded-md border-l-2 border-teal-500 shadow-sm">
             {feedback?.finalAssessment ||
               "You haven't completed this interview yet. Continue to improve your skills."}
           </p>
@@ -207,7 +207,7 @@ const InterviewCard = ({
             }
             className="block w-full"
           >
-            <button className="bg-teal-500 text-white px-5 py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
+            <button className="bg-teal-500 text-white px-5 py-3 rounded-md font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
               {feedback ? "View Feedback" : "Continue Interview"}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
