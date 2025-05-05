@@ -6,11 +6,12 @@ import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LogOut, User, Menu, X } from "lucide-react";
 
+// Import auth functions
 import {
   isAuthenticated,
   signOut,
   getCurrentUser,
-} from "@/lib/actions/auth.action";
+} from "@/lib/actions/auth.client";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
@@ -19,33 +20,102 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    // Add a flag to prevent multiple redirects
+    let isMounted = true;
+    let redirectAttempted = false;
+
     const checkAuth = async () => {
       try {
+        // First check if we have a user in localStorage to prevent flickering
+        try {
+          const cachedUser = localStorage.getItem("user");
+          if (cachedUser) {
+            try {
+              const parsedUser = JSON.parse(cachedUser);
+              if (parsedUser && parsedUser.name) {
+                setUserName(parsedUser.name);
+              }
+            } catch (e) {
+              console.error("Error parsing cached user:", e);
+            }
+          }
+        } catch (e) {
+          console.error("Error accessing localStorage:", e);
+        }
+
+        // Then do the actual authentication check
         const isUserAuthenticated = await isAuthenticated();
-        if (!isUserAuthenticated) {
-          router.push("/sign-in");
+
+        if (!isUserAuthenticated && isMounted && !redirectAttempted) {
+          // Set flag to prevent multiple redirects
+          redirectAttempted = true;
+
+          // Use a timeout to prevent Edge throttling
+          setTimeout(() => {
+            if (isMounted) {
+              // Use a static HTML page to avoid React context issues
+              document.location.href = "/sign-in.html";
+            }
+          }, 100);
           return;
         }
 
         const user = await getCurrentUser();
-        if (user) {
+        if (user && isMounted) {
           setUserName(user.name || "User");
+          // Cache the user in localStorage to prevent flickering on next load
+          try {
+            localStorage.setItem("user", JSON.stringify(user));
+          } catch (e) {
+            console.error("Error saving to localStorage:", e);
+          }
         }
       } catch (error) {
         console.error("Authentication error:", error);
-        router.push("/sign-in");
+        if (isMounted && !redirectAttempted) {
+          // Set flag to prevent multiple redirects
+          redirectAttempted = true;
+
+          // Use a timeout to prevent Edge throttling
+          setTimeout(() => {
+            if (isMounted) {
+              // Use a static HTML page to avoid React context issues
+              document.location.href = "/sign-in.html";
+            }
+          }, 100);
+        }
       } finally {
-        setIsLoading(false);
+        if (isMounted) {
+          // Add a small delay to prevent flickering
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 300);
+        }
       }
     };
 
-    checkAuth();
-  }, [router]);
+    // Wrap in try-catch to prevent any uncaught errors
+    try {
+      checkAuth();
+    } catch (error) {
+      console.error("Uncaught error in checkAuth:", error);
+      setIsLoading(false);
+    }
+
+    // Cleanup function to prevent state updates after unmount
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleLogout = async () => {
     try {
       await signOut();
-      router.push("/sign-in");
+
+      // Use a static HTML page to avoid React context issues
+      setTimeout(() => {
+        document.location.href = "/sign-in.html";
+      }, 100);
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -54,7 +124,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#e6f7fa]">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary-200"></div>
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#1EBBA3]"></div>
+          <p className="text-[#1EBBA3] font-medium">
+            Loading your dashboard...
+          </p>
+        </div>
       </div>
     );
   }
@@ -99,9 +174,14 @@ const Layout = ({ children }: { children: ReactNode }) => {
             />
           </div>
           <div className="flex flex-col">
-            <h2 className="text-white text-xl font-bold">LLAMA3</h2>
+            <h2 className="text-white text-xl font-bold">
+              <span className="bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-md">
+                Intervie
+              </span>
+              <span className="text-white">HUB</span>
+            </h2>
             <span className="text-white/80 text-sm font-medium">
-              INTERVIEW AGENT
+              AI INTERVIEW PLATFORM
             </span>
           </div>
         </Link>
@@ -235,7 +315,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 className="text-[#008080]"
               />
             </div>
-            <h2 className="text-white text-lg font-bold">LLAMA3</h2>
+            <h2 className="text-lg font-bold">
+              <span className="bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-md">
+                Intervie
+              </span>
+              <span className="text-white">HUB</span>
+            </h2>
           </div>
 
           <Link href="/interview" aria-label="Start Interview">
@@ -260,8 +345,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
         {/* Desktop Header */}
         <div className="hidden md:flex sticky top-0 z-10 backdrop-blur-md bg-[#008080]/90 border-b border-[#008080]/20 px-4 lg:px-6 py-3 lg:py-4 justify-between items-center">
-          <h1 className="text-white text-xl lg:text-2xl font-bold">
-            LLAMA3 INTERVIEW DASHBOARD
+          <h1 className="text-xl lg:text-2xl font-bold flex items-center">
+            <span className="bg-yellow-300 text-gray-900 px-3 py-1 rounded-md mr-2">
+              Intervie
+            </span>
+            <span className="text-white">HUB DASHBOARD</span>
           </h1>
 
           <div className="flex items-center gap-3">

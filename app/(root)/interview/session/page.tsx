@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Agent from "@/components/Agent";
-import { getCurrentUser } from "@/lib/actions/auth.action";
-import { getInterviewById } from "@/lib/actions/general.action";
+import { getCurrentUser } from "@/lib/actions/auth.client";
+import { getInterviewById } from "@/lib/actions/general.client";
 
 const InterviewSessionPage = () => {
   const router = useRouter();

@@ -1,11 +1,7 @@
-import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import dynamic from "next/dynamic";
 
-import "./engineerhub-styles.css";
-
-const ChatBot = dynamic(() => import("@/components/ChatBot"), { ssr: false });
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,8 +29,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className} style={{ backgroundColor: "#e6f7fa" }}>
         {children}
-        <ChatBot />
-        <Toaster />
       </body>
     </html>
   );

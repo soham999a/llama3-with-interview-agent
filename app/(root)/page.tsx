@@ -72,8 +72,8 @@ const InteractiveCode3D = dynamic(
   { ssr: false }
 );
 
-import { getCurrentUser } from "@/lib/actions/auth.action";
-import { getInterviewsByUserId } from "@/lib/actions/general.action";
+import { getCurrentUser } from "@/lib/actions/auth.client";
+import { getInterviewsByUserId } from "@/lib/actions/general.client";
 
 function Home() {
   const [user, setUser] = useState<any>(null);
@@ -105,10 +105,21 @@ function Home() {
     async function fetchData() {
       try {
         const userData = await getCurrentUser();
+        console.log("Home page - User data:", userData);
         setUser(userData);
 
-        const interviews = await getInterviewsByUserId(userData?.id!);
-        setUserInterviews(interviews || []);
+        if (userData && userData.uid) {
+          console.log(
+            "Home page - Fetching interviews for user:",
+            userData.uid
+          );
+          const interviews = await getInterviewsByUserId(userData.uid);
+          console.log("Home page - Fetched interviews:", interviews);
+          setUserInterviews(interviews || []);
+        } else {
+          console.log("Home page - No user data available");
+          setUserInterviews([]);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -204,7 +215,7 @@ function Home() {
   return (
     <div className="flex flex-col gap-8 relative">
       {/* Welcome Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-teal-50 to-teal-100/20 rounded-[1.25rem] p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 border border-teal-100 shadow-md">
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-teal-50 to-teal-100/20 rounded-md p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 border border-teal-100 shadow-md">
         <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#1EBBA3]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#18A08B]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
@@ -228,7 +239,7 @@ function Home() {
 
             <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 mt-2 w-full sm:w-auto">
               <Link href="/interview" className="w-full xs:w-auto">
-                <button className="bg-[#1EBBA3] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-[#1EBBA3]/20 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
+                <button className="bg-[#1EBBA3] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium transition-all duration-300 hover:opacity-90 hover:shadow-[#1EBBA3]/20 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
                   <span className="flex items-center gap-2">
                     Start an Interview
                     <svg
@@ -251,7 +262,7 @@ function Home() {
               </Link>
 
               <Link href="/history" className="w-full xs:w-auto">
-                <button className="bg-white text-[#1EBBA3] border border-[#1EBBA3]/20 px-4 sm:px-6 py-2.5 sm:py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:bg-[#1EBBA3]/5 w-full flex items-center justify-center gap-2 hover:-translate-y-1 active:scale-95">
+                <button className="bg-white text-[#1EBBA3] border border-[#1EBBA3]/20 px-4 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium transition-all duration-300 hover:bg-[#1EBBA3]/5 w-full flex items-center justify-center gap-2 hover:-translate-y-1 active:scale-95">
                   <span>View History</span>
                 </button>
               </Link>
@@ -303,7 +314,7 @@ function Home() {
             </p>
           </div>
 
-          <button className="bg-white text-gray-700 border border-gray-200 px-4 py-2 rounded-[1.25rem] font-medium transition-all duration-200 hover:bg-gray-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
+          <button className="bg-white text-gray-700 border border-gray-200 px-4 py-2 rounded-md font-medium transition-all duration-200 hover:bg-gray-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
             View All
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -330,7 +341,7 @@ function Home() {
               className="group"
             >
               <div
-                className={`relative overflow-hidden rounded-[1.25rem] ${type.color} p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`}
+                className={`relative overflow-hidden rounded-md ${type.color} p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/20 rounded-full blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
@@ -387,7 +398,7 @@ function Home() {
       </section>
 
       {/* Recent Interviews */}
-      <section className="mb-8 bg-white p-4 sm:p-6 md:p-8 rounded-[1.25rem] border border-gray-200 shadow-sm">
+      <section className="mb-8 bg-white p-4 sm:p-6 md:p-8 rounded-md border border-gray-200 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3 sm:gap-0">
           <div className="flex flex-col gap-1">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
@@ -399,7 +410,7 @@ function Home() {
           </div>
 
           {hasPastInterviews && (
-            <button className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] font-medium transition-all duration-200 hover:bg-teal-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
+            <button className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-md font-medium transition-all duration-200 hover:bg-teal-50 flex items-center gap-2 text-sm w-full sm:w-auto justify-center sm:justify-start">
               <Link href="/history" className="flex items-center gap-2">
                 View All History
                 <svg
@@ -506,7 +517,7 @@ function Home() {
               )}
             </>
           ) : (
-            <div className="relative overflow-hidden rounded-[2rem] bg-white p-4 sm:p-6 md:p-8 text-center col-span-2 border border-gray-200 shadow-md">
+            <div className="relative overflow-hidden rounded-md bg-white p-4 sm:p-6 md:p-8 text-center col-span-2 border border-gray-200 shadow-md">
               <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
@@ -566,7 +577,7 @@ function Home() {
                   </div>
                 </div>
 
-                <button className="bg-teal-500 text-white px-6 py-3.5 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md mt-6 group hover:-translate-y-1">
+                <button className="bg-teal-500 text-white px-6 py-3.5 rounded-md font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md mt-6 group hover:-translate-y-1">
                   <Link href="/interview" className="flex items-center gap-2">
                     Start Your First Interview
                     <svg
@@ -593,7 +604,7 @@ function Home() {
       </section>
 
       {/* Job Opportunities */}
-      <section className="rounded-[1.25rem] bg-white p-4 sm:p-6 md:p-8 relative overflow-hidden border border-gray-200 shadow-md">
+      <section className="rounded-md bg-white p-4 sm:p-6 md:p-8 relative overflow-hidden border border-gray-200 shadow-md">
         <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
@@ -649,7 +660,7 @@ function Home() {
 
           <div className="flex flex-col xs:flex-row md:flex-col gap-3 sm:gap-4 w-full md:w-auto">
             <Link href="/interview" className="w-full md:w-auto">
-              <button className="bg-teal-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1 active:scale-95">
+              <button className="bg-teal-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap group w-full hover:-translate-y-1 active:scale-95">
                 <span>Start Interview</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -670,7 +681,7 @@ function Home() {
             </Link>
 
             <Link href="/about" className="w-full md:w-auto">
-              <button className="bg-white text-teal-600 border border-teal-200 px-4 sm:px-6 py-2.5 sm:py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:bg-teal-50 hover:shadow-teal-100 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap w-full hover:-translate-y-1 active:scale-95">
+              <button className="bg-white text-teal-600 border border-teal-200 px-4 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium transition-all duration-300 hover:bg-teal-50 hover:shadow-teal-100 hover:shadow-lg shadow-md flex items-center justify-center gap-2 whitespace-nowrap w-full hover:-translate-y-1 active:scale-95">
                 <span>Learn More</span>
               </button>
             </Link>

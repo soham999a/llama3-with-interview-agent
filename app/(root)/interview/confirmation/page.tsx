@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { getCurrentUser } from "@/lib/actions/auth.action";
+import { getCurrentUser } from "@/lib/actions/auth.client";
 
 const InterviewConfirmationPage = () => {
   const router = useRouter();
@@ -39,6 +39,19 @@ const InterviewConfirmationPage = () => {
 
   const handleStartInterview = async () => {
     try {
+      // Set loading state
+      setLoading(true);
+
+      // Log the data we're sending
+      console.log("Sending interview data:", {
+        type: interviewData.type,
+        role: interviewData.role,
+        level: "Intermediate",
+        techstack: interviewData.techstack.join(","),
+        amount: 5,
+        userid: user?.uid || user?.id || "anonymous", // Make sure we have a user ID
+      });
+
       // Create a new interview in the database
       const response = await fetch("/api/vapi/generate", {
         method: "POST",
@@ -51,7 +64,7 @@ const InterviewConfirmationPage = () => {
           level: "Intermediate", // Default level
           techstack: interviewData.techstack.join(","),
           amount: 5, // Number of questions
-          userid: user?.id,
+          userid: user?.uid || user?.id || "anonymous", // Make sure we have a user ID
         }),
       });
 
@@ -60,14 +73,46 @@ const InterviewConfirmationPage = () => {
       if (data.success) {
         // Store interview ID for the session
         sessionStorage.setItem("currentInterviewId", data.interviewId);
+
+        // Also store the interview data in session storage
+        const fullInterviewData = {
+          id: data.interviewId,
+          role: interviewData.role,
+          type: interviewData.type,
+          level: "Intermediate",
+          techstack: interviewData.techstack,
+          questions: data.questions || [],
+          userId: user?.uid || user?.id || "anonymous",
+          finalized: true,
+          createdAt: new Date().toISOString(),
+          fixtures: {
+            roles: [interviewData.role],
+          },
+        };
+
+        sessionStorage.setItem(
+          "currentInterview",
+          JSON.stringify(fullInterviewData)
+        );
+
         router.push("/interview/session");
       } else {
         console.error("Failed to create interview:", data.error);
-        alert("Failed to create interview. Please try again.");
+        alert(
+          `Failed to create interview: ${
+            data.error || "Unknown error"
+          }. Please try again.`
+        );
+        setLoading(false);
       }
     } catch (error) {
       console.error("Error creating interview:", error);
-      alert("An error occurred. Please try again.");
+      alert(
+        `An error occurred: ${
+          error instanceof Error ? error.message : String(error)
+        }. Please try again.`
+      );
+      setLoading(false);
     }
   };
 
@@ -81,7 +126,7 @@ const InterviewConfirmationPage = () => {
           <div className="flex items-center gap-4">
             <Button
               asChild
-              className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] hover:bg-teal-50 transition-all"
+              className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] hover:bg-teal-50 transition-all shadow-sm"
             >
               <Link href="/interview">Back</Link>
             </Button>
@@ -109,7 +154,7 @@ const InterviewConfirmationPage = () => {
         <div className="flex items-center gap-4">
           <Button
             asChild
-            className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] hover:bg-teal-50 transition-all"
+            className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] hover:bg-teal-50 transition-all shadow-sm"
           >
             <Link href="/interview">Back</Link>
           </Button>
@@ -469,7 +514,7 @@ const InterviewConfirmationPage = () => {
 
             <Button
               onClick={handleStartInterview}
-              className="bg-teal-500 text-white px-6 py-3.5 rounded-[1.25rem] font-medium transition-all duration-200 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95"
+              className="bg-teal-600 text-white px-6 py-3.5 rounded-[1.25rem] font-medium transition-all duration-200 hover:bg-teal-700 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
