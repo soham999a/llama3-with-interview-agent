@@ -296,7 +296,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         {/* Mobile Header */}
-        <div className="sticky top-0 z-20 w-full flex items-center justify-between px-4 py-3 bg-[#008080]/95 backdrop-blur-md border-b border-[#008080]/20 md:hidden shadow-sm">
+        <div className="relative z-20 w-full flex items-center justify-between px-4 py-3 bg-[#008080]/95 backdrop-blur-md border-b border-[#008080]/20 md:hidden shadow-sm">
           <button
             className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-[#008080] hover:bg-[#006666] hover:text-white transition-colors shadow-sm active:scale-95"
             onClick={() => setIsMobileMenuOpen(true)}
@@ -344,7 +344,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Desktop Header */}
-        <div className="hidden md:flex sticky top-0 z-10 backdrop-blur-md bg-[#008080]/90 border-b border-[#008080]/20 px-4 lg:px-6 py-3 lg:py-4 justify-between items-center">
+        <div className="hidden md:flex relative z-10 backdrop-blur-md bg-[#008080]/90 border-b border-[#008080]/20 px-4 lg:px-6 py-3 lg:py-4 justify-between items-center">
           <h1 className="text-xl lg:text-2xl font-bold flex items-center">
             <span className="bg-yellow-300 text-gray-900 px-3 py-1 rounded-md mr-2">
               Intervie
@@ -379,7 +379,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </div>
 
         {/* Page Content */}
-        <div className="p-3 sm:p-4 md:p-6 pt-16 md:pt-20">{children}</div>
+        <div className="p-3 sm:p-4 md:p-6">{children}</div>
       </div>
     </div>
   );
