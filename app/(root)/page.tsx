@@ -154,42 +154,42 @@ function Home() {
       id: "technical",
       title: "Technical Interview",
       description: "Practice coding problems and system design questions",
-      color: "bg-[#FFE082] border-yellow-200", // Darker yellow (1st color)
+      color: "bg-[#FFD54F] border-yellow-300", // Even darker yellow (1st color)
       icon: "/icons/code.svg",
     },
     {
       id: "behavioral",
       title: "Behavioral Interview",
       description: "Prepare for questions about your past experiences",
-      color: "bg-[#B3E5FC] border-blue-200", // Darker blue (2nd color)
+      color: "bg-[#81D4FA] border-blue-300", // Even darker blue (2nd color)
       icon: "/icons/chat.svg",
     },
     {
       id: "problem-solving",
       title: "Problem Solving",
       description: "Demonstrate your analytical and critical thinking skills",
-      color: "bg-[#C8E6C9] border-green-200", // Darker green (3rd color)
+      color: "bg-[#A5D6A7] border-green-300", // Even darker green (3rd color)
       icon: "/icons/brain.svg",
     },
     {
       id: "system-design",
       title: "System Design",
       description: "Practice designing scalable systems and architectures",
-      color: "bg-[#FFCCBC] border-orange-200", // Darker orange/peach (4th color)
+      color: "bg-[#FFAB91] border-orange-300", // Even darker orange/peach (4th color)
       icon: "/icons/design.svg",
     },
     {
       id: "leadership",
       title: "Leadership",
       description: "Prepare for questions about your leadership experience",
-      color: "bg-[#FFE082] border-yellow-200", // Repeat 1st color
+      color: "bg-[#FFD54F] border-yellow-300", // Repeat 1st color
       icon: "/icons/leadership.svg",
     },
     {
       id: "product-management",
       title: "Product Management",
       description: "Practice product management interview questions",
-      color: "bg-[#B3E5FC] border-blue-200", // Repeat 2nd color
+      color: "bg-[#81D4FA] border-blue-300", // Repeat 2nd color
       icon: "/icons/product.svg",
     },
   ];
