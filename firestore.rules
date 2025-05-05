@@ -1,25 +1,9 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow users to read and write their own data
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-    
-    // Allow users to read and write their own interviews
-    match /interviews/{interviewId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null;
-    }
-    
-    // Allow users to read and write their own feedback
-    match /feedback/{feedbackId} {
-      allow read, write: if request.auth != null;
-    }
-    
-    // Allow users to read and write their own profiles
-    match /userProfiles/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+    // Allow read/write access to all users for development
+    match /{document=**} {
+      allow read, write: if true;
     }
   }
 }
