@@ -1,16 +1,28 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install --legacy-peer-deps",
   "github": {
     "enabled": true,
     "silent": false
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/interviews/:id/feedback",
+      "destination": "/api/mock-data?type=feedback&id=:id"
+    },
+    {
+      "source": "/api/interviews/:id",
+      "destination": "/api/mock-data?type=interview&id=:id"
+    },
+    {
+      "source": "/api/interviews",
+      "destination": "/api/mock-data?type=interviews"
+    },
+    {
+      "source": "/api/user/stats",
+      "destination": "/api/mock-data?type=user-stats"
+    }
+  ]
 }

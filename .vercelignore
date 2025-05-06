@@ -1,0 +1,8 @@
+# Ignore problematic API routes
+app/api/interviews/[id]/feedback/route.js
+app/api/interviews/[id]/route.js
+app/api/interviews/route.js
+app/api/user/stats/route.js
+
+# Ignore backup files
+*.bak
