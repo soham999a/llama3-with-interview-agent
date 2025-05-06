@@ -1,77 +1,97 @@
-import { NextResponse } from 'next/server';
-import { getDatabase } from '@/lib/db';
-import { ObjectId } from 'mongodb';
-import { getCurrentUser } from '@/lib/actions/auth.action';
+import { NextResponse } from "next/server";
 
-// GET /api/interviews - Get all interviews for the current user
+// Simplified version for Vercel deployment
 export async function GET(request) {
-  try {
-    // Get current user from Firebase auth
-    const user = await getCurrentUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const db = await getDatabase();
-    const interviews = await db.collection('interviews')
-      .find({ userId: user.uid })
-      .sort({ createdAt: -1 })
-      .toArray();
-
-    // Convert MongoDB _id to string id for JSON response
-    const formattedInterviews = interviews.map(interview => ({
-      ...interview,
-      id: interview._id.toString(),
-      _id: undefined
-    }));
-
-    return NextResponse.json(formattedInterviews);
-  } catch (error) {
-    console.error('Error fetching interviews:', error);
-    return NextResponse.json({ error: 'Failed to fetch interviews' }, { status: 500 });
-  }
+  // Return mock interviews
+  return NextResponse.json([
+    {
+      id: "mock-interview-1",
+      userId: "mock-user-id",
+      title: "Mock Technical Interview",
+      type: "technical",
+      techStack: ["React", "JavaScript", "CSS"],
+      status: "completed",
+      score: 85,
+      feedback: "Great performance!",
+      questions: [
+        {
+          id: "q1",
+          question: "What is React?",
+          answer: "A JavaScript library for building user interfaces.",
+        },
+        {
+          id: "q2",
+          question: "Explain CSS flexbox.",
+          answer:
+            "A layout model that allows elements to align and distribute space.",
+        },
+        {
+          id: "q3",
+          question: "What is a closure in JavaScript?",
+          answer: "A function that has access to its outer function's scope.",
+        },
+      ],
+      duration: 30,
+      scheduledFor: new Date().toISOString(),
+      completedAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: "mock-interview-2",
+      userId: "mock-user-id",
+      title: "Mock Behavioral Interview",
+      type: "behavioral",
+      techStack: [],
+      status: "completed",
+      score: 90,
+      feedback: "Excellent communication skills!",
+      questions: [
+        {
+          id: "q1",
+          question: "Tell me about yourself.",
+          answer: "I am a software developer with 5 years of experience...",
+        },
+        {
+          id: "q2",
+          question: "Describe a challenging project.",
+          answer: "I worked on a project that required...",
+        },
+        {
+          id: "q3",
+          question: "How do you handle conflicts?",
+          answer: "I believe in open communication and...",
+        },
+      ],
+      duration: 45,
+      scheduledFor: new Date().toISOString(),
+      completedAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+  ]);
 }
 
 // POST /api/interviews - Create a new interview
 export async function POST(request) {
-  try {
-    const user = await getCurrentUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const data = await request.json();
-    
-    // Validate required fields
-    if (!data.title || !data.type) {
-      return NextResponse.json({ error: 'Title and type are required' }, { status: 400 });
-    }
-
-    const newInterview = {
-      userId: user.uid,
-      title: data.title,
-      type: data.type,
-      techStack: data.techStack || [],
-      status: data.status || 'scheduled',
-      score: data.score || null,
-      feedback: data.feedback || '',
-      questions: data.questions || [],
-      duration: data.duration || 30,
-      scheduledFor: data.scheduledFor ? new Date(data.scheduledFor) : new Date(),
-      completedAt: data.completedAt ? new Date(data.completedAt) : null,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-
-    const db = await getDatabase();
-    const result = await db.collection('interviews').insertOne(newInterview);
-
-    return NextResponse.json({
-      ...newInterview,
-      id: result.insertedId.toString()
-    }, { status: 201 });
-  } catch (error) {
-    console.error('Error creating interview:', error);
-    return NextResponse.json({ error: 'Failed to create interview' }, { status: 500 });
-  }
+  // Return a mock created interview
+  return NextResponse.json(
+    {
+      id: "mock-interview-new",
+      userId: "mock-user-id",
+      title: "New Mock Interview",
+      type: "technical",
+      techStack: ["React", "JavaScript", "CSS"],
+      status: "scheduled",
+      score: null,
+      feedback: "",
+      questions: [],
+      duration: 30,
+      scheduledFor: new Date().toISOString(),
+      completedAt: null,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    { status: 201 }
+  );
 }

@@ -1,72 +1,44 @@
-import { NextResponse } from 'next/server';
-import { getDatabase } from '@/lib/db';
-import { getCurrentUser } from '@/lib/actions/auth.action';
+import { NextResponse } from "next/server";
 
-// GET /api/user/stats - Get the current user's interview statistics
+// Simplified version for Vercel deployment
 export async function GET(request) {
-  try {
-    const user = await getCurrentUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    const db = await getDatabase();
-    
-    // Get total interviews count
-    const totalInterviews = await db.collection('interviews').countDocuments({ userId: user.uid });
-    
-    // Get count of interviews by status
-    const statusCounts = await db.collection('interviews').aggregate([
-      { $match: { userId: user.uid } },
-      { $group: { _id: '$status', count: { $sum: 1 } } }
-    ]).toArray();
-    
-    // Get average score for completed interviews
-    const scoreResult = await db.collection('interviews').aggregate([
-      { $match: { userId: user.uid, status: 'completed', score: { $ne: null } } },
-      { $group: { _id: null, averageScore: { $avg: '$score' } } }
-    ]).toArray();
-    
-    // Get count by interview type
-    const typeCounts = await db.collection('interviews').aggregate([
-      { $match: { userId: user.uid } },
-      { $group: { _id: '$type', count: { $sum: 1 } } }
-    ]).toArray();
-    
-    // Get recent interviews
-    const recentInterviews = await db.collection('interviews')
-      .find({ userId: user.uid })
-      .sort({ createdAt: -1 })
-      .limit(5)
-      .toArray();
-    
-    // Format the results
-    const statusMap = statusCounts.reduce((acc, curr) => {
-      acc[curr._id] = curr.count;
-      return acc;
-    }, {});
-    
-    const typeMap = typeCounts.reduce((acc, curr) => {
-      acc[curr._id] = curr.count;
-      return acc;
-    }, {});
-    
-    // Format recent interviews
-    const formattedRecentInterviews = recentInterviews.map(interview => ({
-      ...interview,
-      id: interview._id.toString(),
-      _id: undefined
-    }));
-    
-    return NextResponse.json({
-      totalInterviews,
-      byStatus: statusMap,
-      byType: typeMap,
-      averageScore: scoreResult.length > 0 ? scoreResult[0].averageScore : 0,
-      recentInterviews: formattedRecentInterviews
-    });
-  } catch (error) {
-    console.error('Error fetching user stats:', error);
-    return NextResponse.json({ error: 'Failed to fetch user statistics' }, { status: 500 });
-  }
+  // Return mock user statistics
+  return NextResponse.json({
+    totalInterviews: 10,
+    byStatus: {
+      completed: 7,
+      scheduled: 2,
+      "in-progress": 1,
+    },
+    byType: {
+      technical: 5,
+      behavioral: 3,
+      "problem-solving": 2,
+    },
+    averageScore: 87.5,
+    recentInterviews: [
+      {
+        id: "mock-interview-1",
+        userId: "mock-user-id",
+        title: "Mock Technical Interview",
+        type: "technical",
+        techStack: ["React", "JavaScript", "CSS"],
+        status: "completed",
+        score: 85,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      },
+      {
+        id: "mock-interview-2",
+        userId: "mock-user-id",
+        title: "Mock Behavioral Interview",
+        type: "behavioral",
+        techStack: [],
+        status: "completed",
+        score: 90,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      },
+    ],
+  });
 }
