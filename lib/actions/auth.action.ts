@@ -2,6 +2,7 @@
 
 import { auth, db } from "@/firebase/admin";
 import { cookies } from "next/headers";
+import { User, SignUpParams, SignInParams } from "@/lib/types";
 
 // Session duration (1 week)
 const SESSION_DURATION = 60 * 60 * 24 * 7;
@@ -98,6 +99,19 @@ export async function signOut() {
 
 // Get current user from session cookie
 export async function getCurrentUser(): Promise<User | null> {
+  // For Vercel preview deployments, return a mock user
+  if (
+    process.env.VERCEL_ENV === "preview" ||
+    process.env.NODE_ENV === "development"
+  ) {
+    console.log("Using mock user for preview/development environment");
+    return {
+      id: "mock-user-id",
+      name: "Mock User",
+      email: "mock@example.com",
+    } as User;
+  }
+
   const cookieStore = await cookies();
 
   const sessionCookie = cookieStore.get("session")?.value;
