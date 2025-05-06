@@ -26,6 +26,7 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
+        <link rel="stylesheet" href="/custom-colors.css" />
         <script src="/custom-colors.js" defer></script>
       </head>
       <body className={inter.className} style={{ backgroundColor: "#e6f7fa" }}>

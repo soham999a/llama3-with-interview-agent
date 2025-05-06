@@ -1,0 +1,59 @@
+[33mcommit e1c76bbc0dfe6e31e66d1e48f2e99dfcf5127ff9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: User <user@example.com>
+Date:   Mon May 5 23:39:17 2025 +0530
+
+    Update interview card colors to darker shades with repeating pattern
+
+[1mdiff --git a/app/(root)/page.tsx b/app/(root)/page.tsx[m
+[1mindex b1f4da1..ae8be37 100644[m
+[1m--- a/app/(root)/page.tsx[m
+[1m+++ b/app/(root)/page.tsx[m
+[36m@@ -154,42 +154,42 @@[m [mfunction Home() {[m
+       id: "technical",[m
+       title: "Technical Interview",[m
+       description: "Practice coding problems and system design questions",[m
+[31m-      color: "bg-[#FFF8E1] border-yellow-100",[m
+[32m+[m[32m      color: "bg-[#FFE082] border-yellow-200", // Darker yellow (1st color)[m
+       icon: "/icons/code.svg",[m
+     },[m
+     {[m
+       id: "behavioral",[m
+       title: "Behavioral Interview",[m
+       description: "Prepare for questions about your past experiences",[m
+[31m-      color: "bg-[#E1F5FE] border-blue-100",[m
+[32m+[m[32m      color: "bg-[#B3E5FC] border-blue-200", // Darker blue (2nd color)[m
+       icon: "/icons/chat.svg",[m
+     },[m
+     {[m
+       id: "problem-solving",[m
+       title: "Problem Solving",[m
+       description: "Demonstrate your analytical and critical thinking skills",[m
+[31m-      color: "bg-[#E8F5E9] border-green-100",[m
+[32m+[m[32m      color: "bg-[#C8E6C9] border-green-200", // Darker green (3rd color)[m
+       icon: "/icons/brain.svg",[m
+     },[m
+     {[m
+       id: "system-design",[m
+       title: "System Design",[m
+       description: "Practice designing scalable systems and architectures",[m
+[31m-      color: "bg-[#FFF8E1] border-yellow-100",[m
+[32m+[m[32m      color: "bg-[#FFCCBC] border-orange-200", // Darker orange/peach (4th color)[m
+       icon: "/icons/design.svg",[m
+     },[m
+     {[m
+       id: "leadership",[m
+       title: "Leadership",[m
+       description: "Prepare for questions about your leadership experience",[m
+[31m-      color: "bg-[#E1F5FE] border-blue-100",[m
+[32m+[m[32m      color: "bg-[#FFE082] border-yellow-200", // Repeat 1st color[m
+       icon: "/icons/leadership.svg",[m
+     },[m
+     {[m
+       id: "product-management",[m
+       title: "Product Management",[m
+       description: "Practice product management interview questions",[m
+[31m-      color: "bg-[#FFEBEE] border-red-100",[m
+[32m+[m[32m      color: "bg-[#B3E5FC] border-blue-200", // Repeat 2nd color[m
+       icon: "/icons/product.svg",[m
+     },[m
+   ];[m
