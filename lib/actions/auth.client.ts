@@ -13,7 +13,32 @@ export const getCurrentUser = async (): Promise<User | null> => {
   try {
     // For Vercel deployment, we'll return a mock user
     // This will be replaced with actual Firebase auth when the app is running
-    return null;
+    return {
+      uid: "mock-user-id",
+      email: "demo@example.com",
+      displayName: "Demo User",
+      emailVerified: true,
+      isAnonymous: false,
+      metadata: {
+        creationTime: new Date().toISOString(),
+        lastSignInTime: new Date().toISOString(),
+      },
+      providerData: [],
+      refreshToken: "mock-refresh-token",
+      tenantId: null,
+      delete: async () => {},
+      getIdToken: async () => "mock-id-token",
+      getIdTokenResult: async () => ({
+        token: "mock-id-token",
+        signInProvider: "password",
+        expirationTime: new Date(Date.now() + 3600000).toISOString(),
+        issuedAtTime: new Date().toISOString(),
+        authTime: new Date().toISOString(),
+        claims: {},
+      }),
+      reload: async () => {},
+      toJSON: () => ({}),
+    } as User;
   } catch (error) {
     console.error("Error getting current user:", error);
     return null;

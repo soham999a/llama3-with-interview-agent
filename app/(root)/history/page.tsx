@@ -95,7 +95,7 @@ export default function History() {
             {interviews.map((interview) => (
               <InterviewCard
                 key={interview.id}
-                userId={user?.id}
+                userId={user?.uid}
                 interviewId={interview.id}
                 role={interview.role}
                 type={interview.type}
