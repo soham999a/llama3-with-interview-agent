@@ -117,7 +117,7 @@ const InterviewSessionPage = () => {
               <div className="inline-flex items-center gap-2 bg-teal-100 rounded-full px-3 py-1 w-fit mt-1">
                 <span className="animate-pulse size-2 bg-teal-500 rounded-full"></span>
                 <span className="text-teal-600 text-xs font-medium">
-                  AI Interviewer
+                  Professional Interviewer
                 </span>
               </div>
             </div>

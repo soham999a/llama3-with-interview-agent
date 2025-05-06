@@ -249,7 +249,7 @@ const Agent = ({
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-200/30 to-teal-300/30 rounded-full blur-md"></div>
                 <div className="relative bg-white p-1 rounded-full border border-teal-100 shadow-lg">
                   <Image
-                    src="/ai-avatar.png"
+                    src="/interviewer-avatar.png"
                     alt="AI Interviewer"
                     width={120}
                     height={120}
@@ -278,7 +278,7 @@ const Agent = ({
               </div>
 
               <h3 className="text-xl font-semibold text-gray-800 mt-4">
-                AI Interviewer
+                Professional Interviewer
               </h3>
               <div className="mt-2 bg-teal-100 text-teal-600 px-3 py-1 rounded-full text-sm font-medium">
                 {callStatus === CallStatus.ACTIVE
@@ -465,7 +465,7 @@ const Agent = ({
                     >
                       <div className="text-sm font-medium text-gray-800 mb-1">
                         {message.role === "assistant"
-                          ? "AI Interviewer"
+                          ? "Professional Interviewer"
                           : userName}
                       </div>
                       <div

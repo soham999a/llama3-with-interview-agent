@@ -562,7 +562,7 @@ const InterviewConfirmationPage = () => {
               <div className="relative bg-white p-2 rounded-full border border-teal-100 shadow-lg">
                 <div className="w-[140px] h-[140px] rounded-full bg-gradient-to-br from-teal-50 to-teal-100 flex items-center justify-center">
                   <Image
-                    src="/ai-avatar.png"
+                    src="/interviewer-avatar.png"
                     alt="AI Interviewer"
                     width={120}
                     height={120}
@@ -589,7 +589,7 @@ const InterviewConfirmationPage = () => {
             </div>
 
             <h3 className="text-2xl font-semibold text-gray-800 mb-3">
-              AI Interviewer
+              Professional Interviewer
             </h3>
             <div className="bg-teal-100 text-teal-600 px-3 py-1 rounded-full text-sm font-medium mb-6 inline-flex items-center gap-2">
               <span className="animate-pulse size-2 bg-green-500 rounded-full"></span>
@@ -597,7 +597,7 @@ const InterviewConfirmationPage = () => {
             </div>
 
             <p className="text-gray-600 text-lg mb-8">
-              Your AI interviewer is ready to conduct a professional{" "}
+              Your professional interviewer is ready to conduct a thorough{" "}
               {interviewData.type} interview for the {interviewData.role} role.
             </p>
 
