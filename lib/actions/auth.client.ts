@@ -11,34 +11,49 @@ import { auth } from "@/lib/firebase/firebase-config";
 // Get current user (client-side version)
 export const getCurrentUser = async (): Promise<User | null> => {
   try {
-    // For Vercel deployment, we'll return a mock user
-    // This will be replaced with actual Firebase auth when the app is running
-    return {
-      uid: "mock-user-id",
-      email: "demo@example.com",
-      displayName: "Demo User",
-      emailVerified: true,
-      isAnonymous: false,
-      metadata: {
-        creationTime: new Date().toISOString(),
-        lastSignInTime: new Date().toISOString(),
-      },
-      providerData: [],
-      refreshToken: "mock-refresh-token",
-      tenantId: null,
-      delete: async () => {},
-      getIdToken: async () => "mock-id-token",
-      getIdTokenResult: async () => ({
-        token: "mock-id-token",
-        signInProvider: "password",
-        expirationTime: new Date(Date.now() + 3600000).toISOString(),
-        issuedAtTime: new Date().toISOString(),
-        authTime: new Date().toISOString(),
-        claims: {},
-      }),
-      reload: async () => {},
-      toJSON: () => ({}),
-    } as User;
+    // Check if we have a cached user
+    if (typeof window !== "undefined") {
+      const cachedUser = localStorage.getItem("currentUser");
+      if (cachedUser) {
+        try {
+          const { user, timestamp } = JSON.parse(cachedUser);
+          // If the cache is less than 5 minutes old, use it
+          if (Date.now() - timestamp < 5 * 60 * 1000) {
+            console.log("Using cached user:", user);
+            return user as User;
+          }
+        } catch (e) {
+          console.error("Error parsing cached user:", e);
+        }
+      }
+    }
+
+    // Otherwise check with Firebase
+    return new Promise((resolve, reject) => {
+      const unsubscribe = auth.onAuthStateChanged(
+        (user) => {
+          unsubscribe();
+
+          // Cache the result
+          if (user && typeof window !== "undefined") {
+            localStorage.setItem(
+              "currentUser",
+              JSON.stringify({
+                user,
+                timestamp: Date.now(),
+              })
+            );
+          }
+
+          console.log("Current user from Firebase:", user);
+          resolve(user);
+        },
+        (error) => {
+          console.error("Auth state change error:", error);
+          reject(error);
+        }
+      );
+    });
   } catch (error) {
     console.error("Error getting current user:", error);
     return null;
