@@ -562,7 +562,7 @@ const InterviewConfirmationPage = () => {
               <div className="relative bg-white p-2 rounded-full border border-teal-100 shadow-lg">
                 <div className="w-[140px] h-[140px] rounded-full bg-gradient-to-br from-teal-50 to-teal-100 flex items-center justify-center">
                   <Image
-                    src="/interviewer-avatar.png"
+                    src="/sanya.jpg"
                     alt="AI Interviewer"
                     width={120}
                     height={120}
