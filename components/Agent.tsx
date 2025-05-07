@@ -278,7 +278,7 @@ const Agent = ({
               </div>
 
               <h3 className="text-xl font-semibold text-gray-800 mt-4">
-                Professional Interviewer
+                SANYA
               </h3>
               <div className="mt-2 bg-teal-100 text-teal-600 px-3 py-1 rounded-full text-sm font-medium">
                 {callStatus === CallStatus.ACTIVE
@@ -464,9 +464,7 @@ const Agent = ({
                       }`}
                     >
                       <div className="text-sm font-medium text-gray-800 mb-1">
-                        {message.role === "assistant"
-                          ? "Professional Interviewer"
-                          : userName}
+                        {message.role === "assistant" ? "SANYA" : userName}
                       </div>
                       <div
                         className={`p-3 rounded-[1.25rem] ${

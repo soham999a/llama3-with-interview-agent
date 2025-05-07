@@ -588,9 +588,7 @@ const InterviewConfirmationPage = () => {
               </div>
             </div>
 
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">
-              Professional Interviewer
-            </h3>
+            <h3 className="text-2xl font-semibold text-gray-800 mb-3">SANYA</h3>
             <div className="bg-teal-100 text-teal-600 px-3 py-1 rounded-full text-sm font-medium mb-6 inline-flex items-center gap-2">
               <span className="animate-pulse size-2 bg-green-500 rounded-full"></span>
               Ready for Interview
