@@ -249,7 +249,7 @@ const Agent = ({
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-200/30 to-teal-300/30 rounded-full blur-md"></div>
                 <div className="relative bg-white p-1 rounded-full border border-teal-100 shadow-lg">
                   <Image
-                    src="/sanya-new.jpg"
+                    src="/sanya.jpg"
                     alt="AI Interviewer"
                     width={120}
                     height={120}
