@@ -1,6 +1,6 @@
 "use client";
 
-import { db } from "@/lib/firebase/firebase-config";
+import { db } from "@/lib/firebase/client";
 import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 
 // Get interviews by user ID (client-side version)

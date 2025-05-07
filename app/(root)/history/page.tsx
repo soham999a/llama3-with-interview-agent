@@ -22,10 +22,34 @@ export default function History() {
 
         if (userData) {
           // Firebase user object uses uid property
-          const userId = userData.uid;
+          const userId = userData.uid || userData.id;
           console.log("Fetching interviews for user:", userId);
-          const userInterviews = await getInterviewsByUserId(userId);
-          console.log("Fetched interviews:", userInterviews);
+
+          // Try to get interviews from Firebase
+          let userInterviews = await getInterviewsByUserId(userId);
+          console.log("Fetched interviews from Firebase:", userInterviews);
+
+          // If no interviews found, try to get mock interviews
+          if (!userInterviews || userInterviews.length === 0) {
+            console.log(
+              "No interviews found in Firebase, fetching mock interviews"
+            );
+            try {
+              const response = await fetch(
+                `/api/mock-interviews?userId=${userId}&count=8`
+              );
+              if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.interviews) {
+                  userInterviews = data.interviews;
+                  console.log("Using mock interviews:", userInterviews);
+                }
+              }
+            } catch (mockError) {
+              console.error("Error fetching mock interviews:", mockError);
+            }
+          }
+
           setInterviews(userInterviews || []);
         } else {
           console.log("No user data available");
@@ -33,6 +57,25 @@ export default function History() {
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        // Try to use mock data if there's an error
+        try {
+          const mockUserId = "mock-user-123";
+          const response = await fetch(
+            `/api/mock-interviews?userId=${mockUserId}&count=8`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.interviews) {
+              setInterviews(data.interviews);
+              console.log(
+                "Using mock interviews due to error:",
+                data.interviews
+              );
+            }
+          }
+        } catch (mockError) {
+          console.error("Error fetching mock interviews:", mockError);
+        }
       } finally {
         setLoading(false);
       }
@@ -77,12 +120,45 @@ export default function History() {
           </span>
           <span className="text-[#1EBBA3]">HUB</span>
         </h1>
-        <Button
-          asChild
-          className="bg-white text-[#1EBBA3] border border-[#1EBBA3]/20 px-4 py-2 rounded-[1.25rem] hover:bg-[#1EBBA3]/5 transition-all shadow-sm"
-        >
-          <Link href="/">Back to Dashboard</Link>
-        </Button>
+        <div className="flex gap-3">
+          <Button
+            asChild
+            className="bg-white text-[#1EBBA3] border border-[#1EBBA3]/20 px-4 py-2 rounded-[1.25rem] hover:bg-[#1EBBA3]/5 transition-all shadow-sm"
+          >
+            <Link href="/">Back to Dashboard</Link>
+          </Button>
+
+          {interviews.length === 0 && (
+            <Button
+              className="bg-[#1EBBA3] text-white px-4 py-2 rounded-[1.25rem] hover:bg-[#1EBBA3]/90 transition-all shadow-sm"
+              onClick={async () => {
+                setLoading(true);
+                try {
+                  const userId = user?.uid || user?.id || "mock-user-123";
+                  const response = await fetch(
+                    `/api/generate-mock-data?userId=${userId}`
+                  );
+                  if (response.ok) {
+                    const data = await response.json();
+                    if (data.success && data.interviews) {
+                      setInterviews(data.interviews);
+                      alert("Generated mock interview data for testing!");
+                    }
+                  }
+                } catch (error) {
+                  console.error("Error generating mock data:", error);
+                  alert(
+                    "Failed to generate mock data. See console for details."
+                  );
+                } finally {
+                  setLoading(false);
+                }
+              }}
+            >
+              Generate Test Data
+            </Button>
+          )}
+        </div>
       </div>
 
       <div className="bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md">

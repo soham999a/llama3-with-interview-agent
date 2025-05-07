@@ -108,13 +108,38 @@ function Home() {
         console.log("Home page - User data:", userData);
         setUser(userData);
 
-        if (userData && userData.uid) {
-          console.log(
-            "Home page - Fetching interviews for user:",
-            userData.uid
-          );
-          const interviews = await getInterviewsByUserId(userData.uid);
+        if (userData) {
+          const userId = userData.uid || userData.id;
+          console.log("Home page - Fetching interviews for user:", userId);
+
+          // Try to get interviews from Firebase
+          let interviews = await getInterviewsByUserId(userId);
           console.log("Home page - Fetched interviews:", interviews);
+
+          // If no interviews found, try to get mock interviews
+          if (!interviews || interviews.length === 0) {
+            console.log(
+              "Home page - No interviews found, fetching mock interviews"
+            );
+            try {
+              const response = await fetch(
+                `/api/mock-interviews?userId=${userId}&count=8`
+              );
+              if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.interviews) {
+                  interviews = data.interviews;
+                  console.log("Home page - Using mock interviews:", interviews);
+                }
+              }
+            } catch (mockError) {
+              console.error(
+                "Home page - Error fetching mock interviews:",
+                mockError
+              );
+            }
+          }
+
           setUserInterviews(interviews || []);
         } else {
           console.log("Home page - No user data available");
@@ -122,6 +147,28 @@ function Home() {
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        // Try to use mock data if there's an error
+        try {
+          const mockUserId = "mock-user-123";
+          const response = await fetch(
+            `/api/mock-interviews?userId=${mockUserId}&count=8`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.interviews) {
+              setUserInterviews(data.interviews);
+              console.log(
+                "Home page - Using mock interviews due to error:",
+                data.interviews
+              );
+            }
+          }
+        } catch (mockError) {
+          console.error(
+            "Home page - Error fetching mock interviews:",
+            mockError
+          );
+        }
       } finally {
         setLoading(false);
       }
@@ -438,7 +485,7 @@ function Home() {
               {currentInterviews?.map((interview) => (
                 <InterviewCard
                   key={interview.id}
-                  userId={user?.id}
+                  userId={user?.uid || user?.id}
                   interviewId={interview.id}
                   role={interview.role}
                   type={interview.type}

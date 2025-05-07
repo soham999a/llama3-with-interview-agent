@@ -6,7 +6,7 @@ import {
   signOut as firebaseSignOut,
   User,
 } from "firebase/auth";
-import { auth } from "@/lib/firebase/firebase-config";
+import { auth } from "@/lib/firebase/client";
 
 // Get current user (client-side version)
 export const getCurrentUser = async (): Promise<User | null> => {
