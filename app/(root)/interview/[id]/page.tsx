@@ -29,7 +29,7 @@ const InterviewDetails = async ({ params }: RouteParams) => {
       <div className="flex flex-col gap-8">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-teal-600">
-            LLAMA3 INTERVIEW DASHBOARD
+            Interview Details
           </h1>
         </div>
 

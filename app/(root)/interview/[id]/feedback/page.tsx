@@ -108,9 +108,7 @@ const Feedback = async ({ params }: RouteParams) => {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-teal-600">
-          LLAMA3 INTERVIEW DASHBOARD
-        </h1>
+        <h1 className="text-3xl font-bold text-teal-600">Interview Feedback</h1>
         <div className="flex items-center gap-4">
           <Button
             asChild

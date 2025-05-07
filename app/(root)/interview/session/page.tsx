@@ -65,7 +65,7 @@ const InterviewSessionPage = () => {
       <div className="flex flex-col gap-8">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-teal-600">
-            LLAMA3 INTERVIEW DASHBOARD
+            Interview Session
           </h1>
         </div>
         <div className="bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md flex flex-col items-center justify-center h-64 gap-4">
@@ -84,9 +84,7 @@ const InterviewSessionPage = () => {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-teal-600">
-          LLAMA3 INTERVIEW DASHBOARD
-        </h1>
+        <h1 className="text-3xl font-bold text-teal-600">Interview Session</h1>
       </div>
 
       <div className="bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md">
