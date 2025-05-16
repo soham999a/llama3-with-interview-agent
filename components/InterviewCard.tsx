@@ -109,9 +109,9 @@ const InterviewCard = ({
 
   if (loading) {
     return (
-      <div className="relative overflow-hidden rounded-[1.25rem] bg-white p-6 w-full border border-gray-200 shadow-md">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-300/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <div className="relative overflow-hidden rounded-[var(--radius)] bg-white p-6 w-full border border-gray-200 shadow-md">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-[var(--radius)] blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-300/5 rounded-[var(--radius)] blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
         <div className="flex flex-col h-full items-center justify-center py-8 relative z-10">
           <div className="size-16 relative mb-4">
@@ -128,13 +128,13 @@ const InterviewCard = ({
   }
 
   return (
-    <div className="card relative overflow-hidden rounded-md p-4 sm:p-6 w-full group">
+    <div className="card relative overflow-hidden rounded-[var(--radius)] p-4 sm:p-6 w-full group">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-teal-100 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-200/30 rounded-full blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-32 h-32 bg-teal-100 rounded-[var(--radius)] blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-200/30 rounded-[var(--radius)] blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
       <div className="flex flex-col h-full relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start mb-5 gap-3 sm:gap-0">
@@ -160,7 +160,7 @@ const InterviewCard = ({
                 {role} Interview
               </h3>
               <div className="flex flex-wrap items-center gap-2 mt-1">
-                <span className="bg-teal-100 text-teal-600 px-2 py-0.5 rounded-full text-xs font-medium">
+                <span className="bg-teal-100 text-teal-600 px-2 py-0.5 rounded-[4px] text-xs font-medium">
                   {normalizedType}
                 </span>
                 <span className="text-gray-500 text-xs">{formattedDate}</span>
@@ -169,7 +169,7 @@ const InterviewCard = ({
           </div>
 
           {feedback && (
-            <div className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-teal-100 px-3 py-2 rounded-md shadow-md mt-3 sm:mt-0 border border-teal-200 self-stretch sm:self-start">
+            <div className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-teal-100 px-3 py-2 rounded-[4px] shadow-md mt-3 sm:mt-0 border border-teal-200 self-stretch sm:self-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -205,7 +205,7 @@ const InterviewCard = ({
               ? techstack.split(",").map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full text-xs font-medium"
+                    className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
                   >
                     {tech.trim()}
                   </span>
@@ -213,7 +213,7 @@ const InterviewCard = ({
               : techstack?.map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full text-xs font-medium"
+                    className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
                   >
                     {tech.trim()}
                   </span>
@@ -226,7 +226,7 @@ const InterviewCard = ({
           <div className="flex justify-between items-center mb-2">
             <p className="text-gray-600 text-sm font-medium">Status:</p>
             <span
-              className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+              className={`text-xs font-medium px-2 py-0.5 rounded-[4px] ${
                 feedback
                   ? "bg-green-100 text-green-600"
                   : "bg-yellow-100 text-yellow-600"
@@ -235,7 +235,7 @@ const InterviewCard = ({
               {feedback ? "Completed" : "In Progress"}
             </span>
           </div>
-          <div className="h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+          <div className="h-2 bg-gray-100 rounded-[4px] overflow-hidden border border-gray-200">
             <div
               className={`h-full ${feedback ? "bg-green-500" : "bg-teal-500"}`}
               style={{ width: feedback ? "100%" : "30%" }}
@@ -245,7 +245,7 @@ const InterviewCard = ({
 
         {/* Feedback or Placeholder Text */}
         <div className="flex-grow mb-5">
-          <p className="text-gray-700 line-clamp-2 bg-teal-50 p-3 rounded-md border-l-2 border-teal-500 shadow-sm">
+          <p className="text-gray-700 line-clamp-2 bg-teal-50 p-3 rounded-[4px] border-l-2 border-teal-500 shadow-sm">
             {feedback?.finalAssessment ||
               "You haven't completed this interview yet. Continue to improve your skills."}
           </p>
@@ -260,7 +260,7 @@ const InterviewCard = ({
             }
             className="block w-full"
           >
-            <button className="bg-teal-500 text-white px-5 py-3 rounded-md font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
+            <button className="bg-teal-500 text-white px-5 py-3 rounded-[4px] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
               {feedback ? "View Feedback" : "Continue Interview"}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

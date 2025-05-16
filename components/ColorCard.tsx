@@ -29,10 +29,10 @@ const ColorCard: React.FC<ColorCardProps> = ({
     primary: "bg-teal-500",
     secondary: "bg-teal-400",
     dark: "bg-gray-100",
-    yellow: "bg-[#FFF8E1] border-yellow-200",
-    blue: "bg-[#E1F5FE] border-blue-200",
-    green: "bg-[#E8F5E9] border-green-200",
-    peach: "bg-[#FFEBEE] border-red-200",
+    yellow: "bg-[#FFE082] border-yellow-200",
+    blue: "bg-[#B3E5FC] border-blue-200",
+    green: "bg-[#C8E6C9] border-green-200",
+    peach: "bg-[#FFCCBC] border-red-200",
   };
 
   // Text color mapping
@@ -49,7 +49,7 @@ const ColorCard: React.FC<ColorCardProps> = ({
   return (
     <Link href={href} className={`block ${className}`}>
       <div
-        className={`${colorMap[color]} rounded-[1.25rem] p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden`}
+        className={`${colorMap[color]} rounded-[var(--radius)] p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden`}
       >
         {/* Background decorative elements */}
         <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -63,7 +63,9 @@ const ColorCard: React.FC<ColorCardProps> = ({
           <div className="mt-auto">
             {icon && (
               <div className="flex justify-end">
-                <div className="bg-white/50 rounded-[1.25rem] p-4">{icon}</div>
+                <div className="bg-white/50 rounded-[var(--radius-sm)] p-4">
+                  {icon}
+                </div>
               </div>
             )}
           </div>

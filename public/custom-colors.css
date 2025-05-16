@@ -1,28 +1,28 @@
 /* Custom colors for interview cards */
-.bg-\[\#FFE082\] { 
-  background-color: #FFD54F !important; 
+.bg-\[\#FFE082\] {
+  background-color: #ffe082 !important;
 }
-.border-yellow-200 { 
-  border-color: #FFD54F !important; 
-}
-
-.bg-\[\#B3E5FC\] { 
-  background-color: #81D4FA !important; 
-}
-.border-blue-200 { 
-  border-color: #81D4FA !important; 
+.border-yellow-200 {
+  border-color: #ffe082 !important;
 }
 
-.bg-\[\#C8E6C9\] { 
-  background-color: #A5D6A7 !important; 
+.bg-\[\#B3E5FC\] {
+  background-color: #b3e5fc !important;
 }
-.border-green-200 { 
-  border-color: #A5D6A7 !important; 
+.border-blue-200 {
+  border-color: #b3e5fc !important;
 }
 
-.bg-\[\#FFCCBC\] { 
-  background-color: #FFAB91 !important; 
+.bg-\[\#C8E6C9\] {
+  background-color: #c8e6c9 !important;
 }
-.border-orange-200 { 
-  border-color: #FFAB91 !important; 
+.border-green-200 {
+  border-color: #c8e6c9 !important;
+}
+
+.bg-\[\#FFCCBC\] {
+  background-color: #ffccbc !important;
+}
+.border-orange-200 {
+  border-color: #ffccbc !important;
 }

@@ -342,7 +342,7 @@ const InterviewPage = () => {
                 {interviewTypes.map((option) => (
                   <button
                     key={option.id}
-                    className={`relative overflow-hidden rounded-[1.5rem] p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white flex items-center gap-5 border ${
+                    className={`relative overflow-hidden rounded p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white flex items-center gap-5 border ${
                       selectedType === option.id
                         ? "border-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.3)]"
                         : "border-gray-200"
@@ -352,7 +352,7 @@ const InterviewPage = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
 
                     <div
-                      className={`rounded-[1.25rem] ${
+                      className={`rounded ${
                         option.id === "technical"
                           ? "bg-teal-100"
                           : option.id === "behavioral"
@@ -741,7 +741,7 @@ const InterviewPage = () => {
 
             {/* Show selected options */}
             {(selectedType || selectedRole || selectedTechStack.length > 0) && (
-              <div className="mt-4 w-full bg-white rounded-xl p-6 text-left border border-gray-200 shadow-md">
+              <div className="mt-4 w-full bg-white rounded p-6 text-left border border-gray-200 shadow-md">
                 <h4 className="text-gray-800 font-medium mb-4 flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -4,7 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LogOut, User, Menu, X } from "lucide-react";
+import {
+  LogOut,
+  User,
+  Menu,
+  X,
+  Home,
+  MessageSquare,
+  Clock,
+} from "lucide-react";
 
 // Import auth functions
 import {

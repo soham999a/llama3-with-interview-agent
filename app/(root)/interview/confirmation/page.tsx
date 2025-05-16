@@ -126,7 +126,7 @@ const InterviewConfirmationPage = () => {
           <div className="flex items-center gap-4">
             <Button
               asChild
-              className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] hover:bg-teal-50 transition-all shadow-sm"
+              className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded hover:bg-teal-50 transition-all shadow-sm"
             >
               <Link href="/interview">Back</Link>
             </Button>
@@ -154,7 +154,7 @@ const InterviewConfirmationPage = () => {
         <div className="flex items-center gap-4">
           <Button
             asChild
-            className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] hover:bg-teal-50 transition-all shadow-sm"
+            className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded hover:bg-teal-50 transition-all shadow-sm"
           >
             <Link href="/interview">Back</Link>
           </Button>
@@ -162,8 +162,8 @@ const InterviewConfirmationPage = () => {
       </div>
 
       {/* Workflow Steps */}
-      <div className="relative bg-white rounded-[1.25rem] p-6 border border-gray-200 shadow-md mb-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-50 rounded-[1.25rem]"></div>
+      <div className="relative bg-white rounded p-6 border border-gray-200 shadow-md mb-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-50 rounded"></div>
 
         <div className="relative z-10 flex items-center justify-between">
           <div className="flex flex-col items-center gap-2">
@@ -262,13 +262,13 @@ const InterviewConfirmationPage = () => {
 
       {/* Confirmation Card */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="relative overflow-hidden bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md flex flex-col gap-6">
+        <div className="relative overflow-hidden bg-white rounded p-8 border border-gray-200 shadow-md flex flex-col gap-6">
           <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
-              <div className="bg-teal-100 rounded-[1.25rem] p-2">
+              <div className="bg-teal-100 rounded p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -292,13 +292,13 @@ const InterviewConfirmationPage = () => {
               </h2>
             </div>
 
-            <div className="bg-white rounded-[1.25rem] p-6 border border-gray-200 shadow-md mb-6">
+            <div className="bg-white rounded p-6 border border-gray-200 shadow-md mb-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex flex-col gap-2">
                   <span className="text-gray-500 text-sm">Interview Type</span>
                   <div className="flex items-center gap-2">
                     <div
-                      className={`rounded-[1.25rem] p-2 ${
+                      className={`rounded p-2 ${
                         interviewData.type === "technical"
                           ? "bg-teal-100"
                           : interviewData.type === "behavioral"
@@ -336,7 +336,7 @@ const InterviewConfirmationPage = () => {
                 <div className="flex flex-col gap-2">
                   <span className="text-gray-500 text-sm">Role</span>
                   <div className="flex items-center gap-2">
-                    <div className="bg-blue-100 rounded-[1.25rem] p-2">
+                    <div className="bg-blue-100 rounded p-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -362,7 +362,7 @@ const InterviewConfirmationPage = () => {
                 <div className="flex flex-col gap-2">
                   <span className="text-gray-500 text-sm">Duration</span>
                   <div className="flex items-center gap-2">
-                    <div className="bg-green-100 rounded-[1.25rem] p-2">
+                    <div className="bg-green-100 rounded p-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -392,7 +392,7 @@ const InterviewConfirmationPage = () => {
                   {interviewData.techstack.map((tech) => (
                     <span
                       key={tech}
-                      className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium"
+                      className="bg-green-100 text-green-600 px-3 py-1 rounded text-xs font-medium"
                     >
                       {tech}
                     </span>
@@ -401,7 +401,7 @@ const InterviewConfirmationPage = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-[1.25rem] p-6 border border-gray-200 shadow-md mb-6">
+            <div className="bg-white rounded p-6 border border-gray-200 shadow-md mb-6">
               <h3 className="text-xl font-medium text-gray-800 mb-4 flex items-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -514,7 +514,7 @@ const InterviewConfirmationPage = () => {
 
             <Button
               onClick={handleStartInterview}
-              className="bg-teal-600 text-white px-6 py-3.5 rounded-[1.25rem] font-medium transition-all duration-200 hover:bg-teal-700 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95"
+              className="bg-teal-600 text-white px-6 py-3.5 rounded font-medium transition-all duration-200 hover:bg-teal-700 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -552,7 +552,7 @@ const InterviewConfirmationPage = () => {
           </div>
         </div>
 
-        <div className="relative overflow-hidden bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md flex flex-col items-center justify-center text-center">
+        <div className="relative overflow-hidden bg-white rounded p-8 border border-gray-200 shadow-md flex flex-col items-center justify-center text-center">
           <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 

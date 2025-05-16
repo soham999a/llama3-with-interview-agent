@@ -15,6 +15,13 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
+
+  /* Border radius variables */
+  --radius: 1.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
 }
 
 @layer base {
@@ -25,7 +32,7 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-teal-500 text-white hover:bg-teal-600 rounded-full py-2 px-4 font-medium transition-all;
+    @apply bg-teal-500 text-white hover:bg-teal-600 rounded-[var(--radius)] py-2 px-4 font-medium transition-all;
   }
 }
 

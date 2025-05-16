@@ -18,20 +18,20 @@ document.addEventListener("DOMContentLoaded", function () {
           // Apply colors based on index
           switch (index % 4) {
             case 0: // Technical Interview (Yellow)
-              card.style.backgroundColor = "#FFD54F";
-              card.style.borderColor = "#FFD54F";
+              card.style.backgroundColor = "#FFE082";
+              card.style.borderColor = "#FFE082";
               break;
             case 1: // Behavioral Interview (Blue)
-              card.style.backgroundColor = "#81D4FA";
-              card.style.borderColor = "#81D4FA";
+              card.style.backgroundColor = "#B3E5FC";
+              card.style.borderColor = "#B3E5FC";
               break;
             case 2: // Problem Solving (Green)
-              card.style.backgroundColor = "#A5D6A7";
-              card.style.borderColor = "#A5D6A7";
+              card.style.backgroundColor = "#C8E6C9";
+              card.style.borderColor = "#C8E6C9";
               break;
             case 3: // System Design (Orange)
-              card.style.backgroundColor = "#FFAB91";
-              card.style.borderColor = "#FFAB91";
+              card.style.backgroundColor = "#FFCCBC";
+              card.style.borderColor = "#FFCCBC";
               break;
           }
         });

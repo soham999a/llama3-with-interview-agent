@@ -112,7 +112,7 @@ const Feedback = async ({ params }: RouteParams) => {
         <div className="flex items-center gap-4">
           <Button
             asChild
-            className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[1.25rem] hover:bg-teal-50 transition-all"
+            className="bg-white text-teal-600 border border-teal-200 px-4 py-2 rounded-[4px] hover:bg-teal-50 transition-all"
           >
             <Link href="/">Back to Dashboard</Link>
           </Button>
@@ -120,7 +120,7 @@ const Feedback = async ({ params }: RouteParams) => {
       </div>
 
       {/* Feedback Summary Card */}
-      <div className="bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md">
+      <div className="bg-white rounded-[4px] p-8 border border-gray-200 shadow-md">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
           <div>
             <h2 className="text-2xl font-semibold text-gray-800">
@@ -173,7 +173,7 @@ const Feedback = async ({ params }: RouteParams) => {
               </div>
             </div>
           </div>
-          <div className="mt-4 md:mt-0 flex items-center gap-2 bg-teal-100 px-4 py-2 rounded-[1.25rem] shadow-sm">
+          <div className="mt-4 md:mt-0 flex items-center gap-2 bg-teal-100 px-4 py-2 rounded-[4px] shadow-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -213,7 +213,7 @@ const Feedback = async ({ params }: RouteParams) => {
             </svg>
             Final Assessment
           </h3>
-          <p className="text-gray-600 bg-gray-50 p-4 rounded-[1.25rem] border-l-4 border-teal-500">
+          <p className="text-gray-600 bg-gray-50 p-4 rounded-[4px] border-l-4 border-teal-500">
             {feedback?.finalAssessment}
           </p>
         </div>
@@ -242,11 +242,11 @@ const Feedback = async ({ params }: RouteParams) => {
             {feedback?.categoryScores?.map((category, index) => (
               <div
                 key={index}
-                className="bg-white rounded-[1.25rem] p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white rounded-[4px] p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex justify-between items-center mb-2">
                   <h4 className="font-medium text-gray-800">{category.name}</h4>
-                  <div className="flex items-center gap-1 bg-teal-100 px-3 py-1 rounded-full">
+                  <div className="flex items-center gap-1 bg-teal-100 px-3 py-1 rounded-[4px]">
                     <span className="text-teal-600 font-bold">
                       {category.score}
                     </span>
@@ -261,7 +261,7 @@ const Feedback = async ({ params }: RouteParams) => {
 
         {/* Strengths and Areas for Improvement */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-gray-200 pt-6 mt-6">
-          <div className="bg-white rounded-[1.25rem] p-5 border border-gray-200 shadow-sm">
+          <div className="bg-white rounded-[4px] p-5 border border-gray-200 shadow-sm">
             <h3 className="text-xl font-medium text-gray-800 mb-4 flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -284,7 +284,7 @@ const Feedback = async ({ params }: RouteParams) => {
               {feedback?.strengths?.map((strength, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-2 text-gray-600 bg-green-50 p-2 rounded-[1.25rem]"
+                  className="flex items-start gap-2 text-gray-600 bg-green-50 p-2 rounded-[4px]"
                 >
                   <span className="text-green-500 mt-1 flex-shrink-0">
                     <svg
@@ -306,7 +306,7 @@ const Feedback = async ({ params }: RouteParams) => {
               ))}
             </ul>
           </div>
-          <div className="bg-white rounded-[1.25rem] p-5 border border-gray-200 shadow-sm">
+          <div className="bg-white rounded-[4px] p-5 border border-gray-200 shadow-sm">
             <h3 className="text-xl font-medium text-gray-800 mb-4 flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -330,7 +330,7 @@ const Feedback = async ({ params }: RouteParams) => {
               {feedback?.areasForImprovement?.map((area, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-2 text-gray-600 bg-orange-50 p-2 rounded-[1.25rem]"
+                  className="flex items-start gap-2 text-gray-600 bg-orange-50 p-2 rounded-[4px]"
                 >
                   <span className="text-orange-500 mt-1 flex-shrink-0">
                     <svg
@@ -359,7 +359,7 @@ const Feedback = async ({ params }: RouteParams) => {
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
           <Button
             asChild
-            className="bg-white text-teal-600 border border-teal-200 px-6 py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:bg-teal-50 hover:shadow-teal-100 hover:shadow-lg shadow-md flex-1 hover:-translate-y-1 active:scale-95"
+            className="bg-white text-teal-600 border border-teal-200 px-6 py-3 rounded-[4px] font-medium transition-all duration-300 hover:bg-teal-50 hover:shadow-teal-100 hover:shadow-lg shadow-md flex-1 hover:-translate-y-1 active:scale-95"
           >
             <Link
               href="/"
@@ -385,7 +385,7 @@ const Feedback = async ({ params }: RouteParams) => {
 
           <Button
             asChild
-            className="bg-teal-500 text-white px-6 py-3 rounded-[1.25rem] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex-1 hover:-translate-y-1 active:scale-95"
+            className="bg-teal-500 text-white px-6 py-3 rounded-[4px] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md flex-1 hover:-translate-y-1 active:scale-95"
           >
             <Link
               href={`/interview/${id}`}

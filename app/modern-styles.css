@@ -80,11 +80,11 @@
   }
 
   .tech-tag {
-    @apply bg-purple-600/10 text-purple-400 px-2.5 py-1 rounded-full text-xs;
+    @apply bg-purple-600/10 text-purple-400 px-2.5 py-1 rounded text-xs;
   }
 
   .score-badge {
-    @apply flex items-center gap-1 bg-purple-600/10 px-3 py-1.5 rounded-full;
+    @apply flex items-center gap-1 bg-purple-600/10 px-3 py-1.5 rounded;
   }
 
   .section-title {
@@ -255,7 +255,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {

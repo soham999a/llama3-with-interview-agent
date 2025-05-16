@@ -201,42 +201,42 @@ function Home() {
       id: "technical",
       title: "Technical Interview",
       description: "Practice coding problems and system design questions",
-      color: "bg-[#FFD54F] border-yellow-300", // Even darker yellow (1st color)
+      color: "bg-[#FFE082] border-yellow-300", // Lighter yellow (1st color)
       icon: "/icons/code.svg",
     },
     {
       id: "behavioral",
       title: "Behavioral Interview",
       description: "Prepare for questions about your past experiences",
-      color: "bg-[#81D4FA] border-blue-300", // Even darker blue (2nd color)
+      color: "bg-[#B3E5FC] border-blue-300", // Lighter blue (2nd color)
       icon: "/icons/chat.svg",
     },
     {
       id: "problem-solving",
       title: "Problem Solving",
       description: "Demonstrate your analytical and critical thinking skills",
-      color: "bg-[#A5D6A7] border-green-300", // Even darker green (3rd color)
+      color: "bg-[#C8E6C9] border-green-300", // Lighter green (3rd color)
       icon: "/icons/brain.svg",
     },
     {
       id: "system-design",
       title: "System Design",
       description: "Practice designing scalable systems and architectures",
-      color: "bg-[#FFAB91] border-orange-300", // Even darker orange/peach (4th color)
+      color: "bg-[#FFCCBC] border-orange-300", // Lighter orange/peach (4th color)
       icon: "/icons/design.svg",
     },
     {
       id: "leadership",
       title: "Leadership",
       description: "Prepare for questions about your leadership experience",
-      color: "bg-[#FFD54F] border-yellow-300", // Repeat 1st color
+      color: "bg-[#FFE082] border-yellow-300", // Repeat 1st color
       icon: "/icons/leadership.svg",
     },
     {
       id: "product-management",
       title: "Product Management",
       description: "Practice product management interview questions",
-      color: "bg-[#81D4FA] border-blue-300", // Repeat 2nd color
+      color: "bg-[#B3E5FC] border-blue-300", // Repeat 2nd color
       icon: "/icons/product.svg",
     },
   ];
@@ -388,7 +388,7 @@ function Home() {
               className="group"
             >
               <div
-                className={`relative overflow-hidden rounded-md ${type.color} p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`}
+                className={`relative overflow-hidden rounded-[var(--radius)] ${type.color} p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/20 rounded-full blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
@@ -445,7 +445,7 @@ function Home() {
       </section>
 
       {/* Recent Interviews */}
-      <section className="mb-8 bg-white p-4 sm:p-6 md:p-8 rounded-md border border-gray-200 shadow-sm">
+      <section className="mb-8 bg-white p-4 sm:p-6 md:p-8 rounded-[var(--radius)] border border-gray-200 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3 sm:gap-0">
           <div className="flex flex-col gap-1">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
@@ -564,12 +564,12 @@ function Home() {
               )}
             </>
           ) : (
-            <div className="relative overflow-hidden rounded-md bg-white p-4 sm:p-6 md:p-8 text-center col-span-2 border border-gray-200 shadow-md">
+            <div className="relative overflow-hidden rounded-[var(--radius)] bg-white p-4 sm:p-6 md:p-8 text-center col-span-2 border border-gray-200 shadow-md">
               <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
               <div className="flex flex-col items-center justify-center gap-4 relative z-10">
-                <div className="w-20 h-20 rounded-[1.25rem] bg-teal-100 flex items-center justify-center mb-4 shadow-md">
+                <div className="w-20 h-20 rounded-[var(--radius)] bg-teal-100 flex items-center justify-center mb-4 shadow-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
@@ -613,13 +613,13 @@ function Home() {
                 </p>
 
                 <div className="flex flex-wrap gap-3 mt-4 justify-center">
-                  <div className="bg-teal-50 text-teal-600 px-3 py-1.5 rounded-[1.25rem] text-sm font-medium shadow-sm hover:shadow-md hover:shadow-teal-100 transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="bg-teal-50 text-teal-600 px-3 py-1.5 rounded-[var(--radius-sm)] text-sm font-medium shadow-sm hover:shadow-md hover:shadow-teal-100 transition-all duration-300 hover:-translate-y-0.5">
                     Personalized Feedback
                   </div>
-                  <div className="bg-blue-50 text-blue-600 px-3 py-1.5 rounded-[1.25rem] text-sm font-medium shadow-sm hover:shadow-md hover:shadow-blue-100 transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="bg-blue-50 text-blue-600 px-3 py-1.5 rounded-[var(--radius-sm)] text-sm font-medium shadow-sm hover:shadow-md hover:shadow-blue-100 transition-all duration-300 hover:-translate-y-0.5">
                     Performance Analytics
                   </div>
-                  <div className="bg-green-50 text-green-600 px-3 py-1.5 rounded-[1.25rem] text-sm font-medium shadow-sm hover:shadow-md hover:shadow-green-100 transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="bg-green-50 text-green-600 px-3 py-1.5 rounded-[var(--radius-sm)] text-sm font-medium shadow-sm hover:shadow-md hover:shadow-green-100 transition-all duration-300 hover:-translate-y-0.5">
                     Skill Assessment
                   </div>
                 </div>
@@ -651,7 +651,7 @@ function Home() {
       </section>
 
       {/* Job Opportunities */}
-      <section className="rounded-md bg-white p-4 sm:p-6 md:p-8 relative overflow-hidden border border-gray-200 shadow-md">
+      <section className="rounded-[var(--radius)] bg-white p-4 sm:p-6 md:p-8 relative overflow-hidden border border-gray-200 shadow-md">
         <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-teal-100/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-teal-200/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 

@@ -92,7 +92,7 @@ export default function History() {
       <div className="flex flex-col gap-8">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold flex items-center">
-            <span className="bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-md mr-2">
+            <span className="bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-[4px] mr-2">
               Intervie
             </span>
             <span className="text-[#1EBBA3]">HUB</span>
@@ -100,8 +100,8 @@ export default function History() {
         </div>
         <div className="flex flex-col items-center justify-center h-64 gap-4">
           <div className="relative size-20">
-            <div className="absolute inset-0 rounded-full bg-[#1EBBA3]/20 animate-ping opacity-75"></div>
-            <div className="relative size-full rounded-full border-4 border-t-[#1EBBA3] border-r-[#1EBBA3]/70 border-b-[#1EBBA3]/50 border-l-transparent animate-spin"></div>
+            <div className="absolute inset-0 rounded-[4px] bg-[#1EBBA3]/20 animate-ping opacity-75"></div>
+            <div className="relative size-full rounded-[4px] border-4 border-t-[#1EBBA3] border-r-[#1EBBA3]/70 border-b-[#1EBBA3]/50 border-l-transparent animate-spin"></div>
           </div>
           <p className="text-gray-600 font-medium">
             Loading your interview history...
@@ -115,7 +115,7 @@ export default function History() {
     <div className="flex flex-col gap-8">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold flex items-center">
-          <span className="bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-md mr-2">
+          <span className="bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-[4px] mr-2">
             Intervie
           </span>
           <span className="text-[#1EBBA3]">HUB</span>
@@ -123,14 +123,14 @@ export default function History() {
         <div className="flex gap-3">
           <Button
             asChild
-            className="bg-white text-[#1EBBA3] border border-[#1EBBA3]/20 px-4 py-2 rounded-[1.25rem] hover:bg-[#1EBBA3]/5 transition-all shadow-sm"
+            className="bg-white text-[#1EBBA3] border border-[#1EBBA3]/20 px-4 py-2 rounded-[4px] hover:bg-[#1EBBA3]/5 transition-all shadow-sm"
           >
             <Link href="/">Back to Dashboard</Link>
           </Button>
 
           {interviews.length === 0 && (
             <Button
-              className="bg-[#1EBBA3] text-white px-4 py-2 rounded-[1.25rem] hover:bg-[#1EBBA3]/90 transition-all shadow-sm"
+              className="bg-[#1EBBA3] text-white px-4 py-2 rounded-[4px] hover:bg-[#1EBBA3]/90 transition-all shadow-sm"
               onClick={async () => {
                 setLoading(true);
                 try {
@@ -161,7 +161,7 @@ export default function History() {
         </div>
       </div>
 
-      <div className="bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md">
+      <div className="bg-white rounded-[4px] p-8 border border-gray-200 shadow-md">
         <h2 className="text-xl font-semibold text-gray-800 mb-6">
           Your Past Interviews
         </h2>
@@ -182,7 +182,7 @@ export default function History() {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
-            <div className="rounded-full bg-[#1EBBA3]/20 p-4 mb-2">
+            <div className="rounded-[4px] bg-[#1EBBA3]/20 p-4 mb-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -210,7 +210,7 @@ export default function History() {
             </p>
             <Button
               asChild
-              className="bg-[#1EBBA3] text-white px-6 py-3 rounded-[1.25rem] font-medium transition-all duration-200 hover:bg-[#18A08B] hover:shadow-[#1EBBA3]/20 hover:shadow-lg shadow-md mt-4"
+              className="bg-[#1EBBA3] text-white px-6 py-3 rounded-[4px] font-medium transition-all duration-200 hover:bg-[#18A08B] hover:shadow-[#1EBBA3]/20 hover:shadow-lg shadow-md mt-4"
             >
               <Link href="/interview">Start an Interview</Link>
             </Button>
@@ -218,16 +218,16 @@ export default function History() {
         )}
       </div>
 
-      <div className="bg-white rounded-[1.25rem] p-8 border border-gray-200 shadow-md">
+      <div className="bg-white rounded-[4px] p-8 border border-gray-200 shadow-md">
         <h2 className="text-xl font-semibold text-gray-800 mb-6">
           Interview Statistics
         </h2>
 
         {interviews && interviews.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-[1.25rem] p-6 border border-gray-200 shadow-md">
+            <div className="bg-white rounded-[4px] p-6 border border-gray-200 shadow-md">
               <div className="flex items-center gap-3 mb-4">
-                <div className="rounded-full bg-[#1EBBA3]/20 p-3">
+                <div className="rounded-[4px] bg-[#1EBBA3]/20 p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -252,9 +252,9 @@ export default function History() {
               </p>
             </div>
 
-            <div className="bg-white rounded-[1.25rem] p-6 border border-gray-200 shadow-md">
+            <div className="bg-white rounded-[4px] p-6 border border-gray-200 shadow-md">
               <div className="flex items-center gap-3 mb-4">
-                <div className="rounded-full bg-[#1EBBA3]/20 p-3">
+                <div className="rounded-[4px] bg-[#1EBBA3]/20 p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -277,9 +277,9 @@ export default function History() {
               <p className="text-3xl font-bold text-[#1EBBA3]">75</p>
             </div>
 
-            <div className="bg-white rounded-[1.25rem] p-6 border border-gray-200 shadow-md">
+            <div className="bg-white rounded-[4px] p-6 border border-gray-200 shadow-md">
               <div className="flex items-center gap-3 mb-4">
-                <div className="rounded-full bg-[#1EBBA3]/20 p-3">
+                <div className="rounded-[4px] bg-[#1EBBA3]/20 p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -306,7 +306,7 @@ export default function History() {
             </div>
           </div>
         ) : (
-          <div className="text-gray-600 text-center py-6 bg-[#1EBBA3]/5 rounded-[1.25rem] border border-[#1EBBA3]/20">
+          <div className="text-gray-600 text-center py-6 bg-[#1EBBA3]/5 rounded-[4px] border border-[#1EBBA3]/20">
             Complete interviews to see your statistics
           </div>
         )}

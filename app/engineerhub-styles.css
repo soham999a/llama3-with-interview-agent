@@ -12,18 +12,18 @@
   --color-teal-600: #18a08b; /* Darker teal */
 
   /* Card background colors */
-  --color-card-yellow: #fff8e1; /* Light yellow for cards */
-  --color-card-blue: #e1f5fe; /* Light blue for cards */
-  --color-card-green: #e8f5e9; /* Light green for cards */
-  --color-card-peach: #ffebee; /* Light peach/pink for cards */
+  --color-card-yellow: #ffe082; /* Light yellow for cards */
+  --color-card-blue: #b3e5fc; /* Light blue for cards */
+  --color-card-green: #c8e6c9; /* Light green for cards */
+  --color-card-peach: #ffccbc; /* Light peach/pink for cards */
 
   /* Interview type card colors (pastel) */
-  --color-interview-technical: #fff8e1; /* Pastel yellow */
-  --color-interview-behavioral: #e1f5fe; /* Pastel blue */
-  --color-interview-problem: #e8f5e9; /* Pastel green */
-  --color-interview-system: #fff8e1; /* Pastel yellow */
-  --color-interview-leadership: #e1f5fe; /* Pastel blue */
-  --color-interview-product: #ffebee; /* Pastel pink */
+  --color-interview-technical: #ffe082; /* Pastel yellow */
+  --color-interview-behavioral: #b3e5fc; /* Pastel blue */
+  --color-interview-problem: #c8e6c9; /* Pastel green */
+  --color-interview-system: #ffe082; /* Pastel yellow */
+  --color-interview-leadership: #b3e5fc; /* Pastel blue */
+  --color-interview-product: #ffccbc; /* Pastel pink */
 
   /* Text colors */
   --color-text-dark: #333333; /* Dark text */
@@ -115,11 +115,11 @@
   }
 
   .tech-tag {
-    @apply bg-[#008080]/10 text-[#008080] px-2.5 py-1 rounded-full text-xs;
+    @apply bg-[#008080]/10 text-[#008080] px-2.5 py-1 rounded text-xs;
   }
 
   .score-badge {
-    @apply flex items-center gap-1 bg-[#008080]/10 px-3 py-1.5 rounded-full text-[#008080];
+    @apply flex items-center gap-1 bg-[#008080]/10 px-3 py-1.5 rounded text-[#008080];
   }
 
   .section-title {
@@ -190,27 +190,27 @@
 
   /* Interview card color variations */
   .interview-technical {
-    @apply bg-[#FFF8E1] border-yellow-100;
+    @apply bg-[#FFE082] border-yellow-100;
   }
 
   .interview-behavioral {
-    @apply bg-[#E1F5FE] border-blue-100;
+    @apply bg-[#B3E5FC] border-blue-100;
   }
 
   .interview-problem {
-    @apply bg-[#E8F5E9] border-green-100;
+    @apply bg-[#C8E6C9] border-green-100;
   }
 
   .interview-system {
-    @apply bg-[#FFF8E1] border-yellow-100;
+    @apply bg-[#FFE082] border-yellow-100;
   }
 
   .interview-leadership {
-    @apply bg-[#E1F5FE] border-blue-100;
+    @apply bg-[#B3E5FC] border-blue-100;
   }
 
   .interview-product {
-    @apply bg-[#FFEBEE] border-red-100;
+    @apply bg-[#FFCCBC] border-red-100;
   }
 
   /* Avatar styles */
