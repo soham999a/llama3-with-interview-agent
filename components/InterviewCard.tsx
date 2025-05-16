@@ -171,31 +171,46 @@ const InterviewCard = ({
 
   // Get the appropriate background color class
   const bgColorMap: Record<string, string> = {
-    technical: "bg-[#F7D77F]",
-    behavioral: "bg-[#8FC8E8]",
-    problem: "bg-[#B2E887]",
-    system: "bg-[#F7D77F]",
-    leadership: "bg-[#8FC8E8]",
-    product: "bg-[#E8BA98]",
+    technical: "from-white to-[#F7D77F]/60 border-[#F7D77F]",
+    behavioral: "from-white to-[#8FC8E8]/60 border-[#8FC8E8]",
+    problem: "from-white to-[#B2E887]/60 border-[#B2E887]",
+    system: "from-white to-[#F7D77F]/60 border-[#F7D77F]",
+    leadership: "from-white to-[#8FC8E8]/60 border-[#8FC8E8]",
+    product: "from-white to-[#E8BA98]/60 border-[#E8BA98]",
   };
 
-  const bgColor = bgColorMap[interviewType] || "bg-[#F7D77F]";
+  // Get accent color for elements
+  const accentColorMap: Record<string, string> = {
+    technical: "bg-[#F7D77F] border-[#F7D77F]/70 text-yellow-800",
+    behavioral: "bg-[#8FC8E8] border-[#8FC8E8]/70 text-blue-800",
+    problem: "bg-[#B2E887] border-[#B2E887]/70 text-green-800",
+    system: "bg-[#F7D77F] border-[#F7D77F]/70 text-yellow-800",
+    leadership: "bg-[#8FC8E8] border-[#8FC8E8]/70 text-blue-800",
+    product: "bg-[#E8BA98] border-[#E8BA98]/70 text-orange-800",
+  };
+
+  const bgColor = bgColorMap[interviewType] || bgColorMap.technical;
+  const accentColor = accentColorMap[interviewType] || accentColorMap.technical;
 
   return (
     <div
-      className={`${bgColor} relative overflow-hidden rounded-[var(--radius)] p-4 sm:p-6 w-full group`}
+      className={`bg-gradient-to-br ${bgColor} relative overflow-hidden rounded-[12px] p-4 sm:p-6 w-full group border shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
     >
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-white/30 rounded-[var(--radius)] blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/30 rounded-[var(--radius)] blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-32 h-32 bg-white/40 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/40 rounded-full blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
       <div className="flex flex-col h-full relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start mb-5 gap-3 sm:gap-0">
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md bg-white/50 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-md ${
+                accentColor.split(" ")[0]
+              } flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -206,18 +221,22 @@ const InterviewCard = ({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-gray-700 sm:w-6 sm:h-6"
+                className="text-white sm:w-6 sm:h-6"
               >
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
             </div>
             <div>
-              <h3 className="text-gray-800 font-semibold text-base sm:text-lg capitalize group-hover:text-teal-600 transition-colors duration-300">
+              <h3
+                className={`text-gray-800 font-semibold text-base sm:text-lg capitalize group-hover:${
+                  accentColor.split(" ")[2]
+                } transition-colors duration-300`}
+              >
                 {role} Interview
               </h3>
               <div className="flex flex-wrap items-center gap-2 mt-1">
                 <span
-                  className={`${badgeColor} px-2 py-0.5 rounded-[4px] text-xs font-medium capitalize`}
+                  className={`${accentColor} px-2 py-0.5 rounded-[4px] text-xs font-medium capitalize`}
                 >
                   {interviewType}
                 </span>
@@ -227,7 +246,9 @@ const InterviewCard = ({
           </div>
 
           {feedback && (
-            <div className="flex items-center gap-2 bg-white/60 px-3 py-2 rounded-[4px] shadow-md mt-3 sm:mt-0 border border-white/30 self-stretch sm:self-start">
+            <div
+              className={`flex items-center gap-2 ${accentColor} px-3 py-2 rounded-[4px] shadow-md mt-3 sm:mt-0 self-stretch sm:self-start`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -238,18 +259,18 @@ const InterviewCard = ({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-gray-700"
+                className="text-white"
               >
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
               <div className="flex flex-col">
                 <div className="flex items-end">
-                  <span className="text-gray-800 font-bold text-lg leading-none">
+                  <span className="text-white font-bold text-lg leading-none">
                     {feedback?.totalScore || "--"}
                   </span>
-                  <span className="text-gray-600 text-xs ml-1">/100</span>
+                  <span className="text-white/80 text-xs ml-1">/100</span>
                 </div>
-                <span className="text-gray-600 text-xs">Score</span>
+                <span className="text-white/80 text-xs">Score</span>
               </div>
             </div>
           )}
@@ -258,12 +279,12 @@ const InterviewCard = ({
         {/* Tech Stack */}
         <div className="mb-5">
           <p className="text-gray-600 text-sm font-medium mb-2">Tech Stack:</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {typeof techstack === "string"
               ? techstack.split(",").map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-white/50 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
+                    className={`${accentColor} px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-[4px] text-xs font-medium`}
                   >
                     {tech.trim()}
                   </span>
@@ -271,7 +292,7 @@ const InterviewCard = ({
               : techstack?.map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-white/50 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
+                    className={`${accentColor} px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-[4px] text-xs font-medium`}
                   >
                     {tech.trim()}
                   </span>
@@ -285,9 +306,7 @@ const InterviewCard = ({
             <p className="text-gray-600 text-sm font-medium">Status:</p>
             <span
               className={`text-xs font-medium px-2 py-0.5 rounded-[4px] ${
-                feedback
-                  ? "bg-white/60 text-gray-700"
-                  : "bg-white/60 text-gray-700"
+                feedback ? `${accentColor}` : `${accentColor}`
               }`}
             >
               {feedback ? "Completed" : "In Progress"}
@@ -295,7 +314,7 @@ const InterviewCard = ({
           </div>
           <div className="h-2 bg-white/40 rounded-[4px] overflow-hidden border border-white/30">
             <div
-              className={`h-full ${feedback ? "bg-white/80" : "bg-white/60"}`}
+              className={`h-full ${accentColor.split(" ")[0]}`}
               style={{ width: feedback ? "100%" : "30%" }}
             ></div>
           </div>
@@ -303,7 +322,11 @@ const InterviewCard = ({
 
         {/* Feedback or Placeholder Text */}
         <div className="flex-grow mb-5">
-          <p className="text-gray-700 line-clamp-2 bg-white/60 p-3 rounded-[4px] border-l-2 border-white/60 shadow-sm">
+          <p
+            className={`text-gray-700 line-clamp-2 bg-white/60 p-3 rounded-[4px] border-l-2 ${accentColor
+              .split(" ")[0]
+              .replace("bg-", "border-")} shadow-sm`}
+          >
             {feedback?.finalAssessment ||
               "You haven't completed this interview yet. Continue to improve your skills."}
           </p>
@@ -318,7 +341,9 @@ const InterviewCard = ({
             }
             className="block w-full"
           >
-            <button className="bg-white/70 text-gray-800 px-5 py-3 rounded-[4px] font-medium transition-all duration-300 hover:bg-white/90 hover:shadow-white/20 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
+            <button
+              className={`${accentColor} px-4 sm:px-5 py-2.5 sm:py-3 rounded-[4px] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95`}
+            >
               {feedback ? "View Feedback" : "Continue Interview"}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -330,7 +355,7 @@ const InterviewCard = ({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="group-hover:translate-x-1 transition-transform"
+                className="text-white group-hover:translate-x-1 transition-transform"
               >
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>

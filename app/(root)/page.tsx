@@ -201,42 +201,42 @@ function Home() {
       id: "technical",
       title: "Technical Interview",
       description: "Practice coding problems and system design questions",
-      color: "bg-[#F7D77F] border-yellow-300", // Yellow from image
+      color: "to-[#F7D77F]/60 border-[#F7D77F]", // Yellow from image
       icon: "/icons/code.svg",
     },
     {
       id: "behavioral",
       title: "Behavioral Interview",
       description: "Prepare for questions about your past experiences",
-      color: "bg-[#8FC8E8] border-blue-300", // Blue from image
+      color: "to-[#8FC8E8]/60 border-[#8FC8E8]", // Blue from image
       icon: "/icons/chat.svg",
     },
     {
       id: "problem-solving",
       title: "Problem Solving",
       description: "Demonstrate your analytical and critical thinking skills",
-      color: "bg-[#B2E887] border-green-300", // Green from image
+      color: "to-[#B2E887]/60 border-[#B2E887]", // Green from image
       icon: "/icons/brain.svg",
     },
     {
       id: "system-design",
       title: "System Design",
       description: "Practice designing scalable systems and architectures",
-      color: "bg-[#E8BA98] border-orange-300", // Peach from image
+      color: "to-[#E8BA98]/60 border-[#E8BA98]", // Peach from image
       icon: "/icons/design.svg",
     },
     {
       id: "leadership",
       title: "Leadership",
       description: "Prepare for questions about your leadership experience",
-      color: "bg-[#F7D77F] border-yellow-300", // Yellow from image
+      color: "to-[#F7D77F]/60 border-[#F7D77F]", // Yellow from image
       icon: "/icons/leadership.svg",
     },
     {
       id: "product-management",
       title: "Product Management",
       description: "Practice product management interview questions",
-      color: "bg-[#8FC8E8] border-blue-300", // Blue from image
+      color: "to-[#8FC8E8]/60 border-[#8FC8E8]", // Blue from image
       icon: "/icons/product.svg",
     },
   ];
@@ -388,13 +388,20 @@ function Home() {
               className="group"
             >
               <div
-                className={`relative overflow-hidden rounded-[var(--radius)] ${type.color} p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full`}
+                className={`relative overflow-hidden rounded-[12px] bg-gradient-to-br from-white ${type.color} p-4 sm:p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full border`}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/20 rounded-full blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
                 <div className="flex items-start justify-between relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-white/50 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+                  <div
+                    className={`w-14 h-14 rounded-2xl ${type.color
+                      .replace("to-", "bg-")
+                      .replace(
+                        "/60",
+                        ""
+                      )} flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <Image
                       src={type.icon || "/icons/default.svg"}
                       alt={type.title}
