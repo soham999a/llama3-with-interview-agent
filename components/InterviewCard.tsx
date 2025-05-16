@@ -87,9 +87,9 @@ const InterviewCard = ({
   }, [interviewId, userId]);
 
   // Normalize the interview type to match our CSS classes
-  let normalizedType = type;
+  let normalizedType = type || "technical";
 
-  if (/mix/gi.test(type)) {
+  if (/mix/gi.test(normalizedType)) {
     normalizedType = "Mixed";
   }
 
@@ -110,6 +110,9 @@ const InterviewCard = ({
     Engineer: "technical",
     Developer: "technical",
     Scientist: "problem",
+    DevOps: "technical",
+    Manager: "leadership",
+    Solving: "problem",
   };
 
   // Find the matching type or default to technical
@@ -117,7 +120,9 @@ const InterviewCard = ({
     normalizedType.toLowerCase().includes(key.toLowerCase())
   );
 
-  normalizedType = mappedType ? typeMapping[mappedType] : "technical";
+  const interviewType = mappedType ? typeMapping[mappedType] : "technical";
+
+  console.log("Interview type:", type, "Mapped to:", interviewType);
 
   // Badge color based on interview type
   const badgeColorMap: Record<string, string> = {
@@ -130,7 +135,7 @@ const InterviewCard = ({
   };
 
   const badgeColor =
-    badgeColorMap[normalizedType] || "bg-[#F7D77F] text-yellow-800";
+    badgeColorMap[interviewType] || "bg-[#F7D77F] text-yellow-800";
 
   // Format date without dayjs dependency
   const formatDate = (dateString: string | number | undefined) => {
@@ -164,12 +169,21 @@ const InterviewCard = ({
     );
   }
 
-  // Determine the interview type class
-  const interviewTypeClass = `interview-${normalizedType.toLowerCase()}`;
+  // Get the appropriate background color class
+  const bgColorMap: Record<string, string> = {
+    technical: "bg-[#F7D77F]",
+    behavioral: "bg-[#8FC8E8]",
+    problem: "bg-[#B2E887]",
+    system: "bg-[#F7D77F]",
+    leadership: "bg-[#8FC8E8]",
+    product: "bg-[#E8BA98]",
+  };
+
+  const bgColor = bgColorMap[interviewType] || "bg-[#F7D77F]";
 
   return (
     <div
-      className={`${interviewTypeClass} relative overflow-hidden rounded-[var(--radius)] p-4 sm:p-6 w-full group`}
+      className={`${bgColor} relative overflow-hidden rounded-[var(--radius)] p-4 sm:p-6 w-full group`}
     >
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -181,7 +195,7 @@ const InterviewCard = ({
       <div className="flex flex-col h-full relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start mb-5 gap-3 sm:gap-0">
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md bg-teal-100 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-md bg-white/50 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -192,7 +206,7 @@ const InterviewCard = ({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-teal-600 sm:w-6 sm:h-6"
+                className="text-gray-700 sm:w-6 sm:h-6"
               >
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
@@ -205,7 +219,7 @@ const InterviewCard = ({
                 <span
                   className={`${badgeColor} px-2 py-0.5 rounded-[4px] text-xs font-medium capitalize`}
                 >
-                  {normalizedType}
+                  {interviewType}
                 </span>
                 <span className="text-gray-500 text-xs">{formattedDate}</span>
               </div>
@@ -213,7 +227,7 @@ const InterviewCard = ({
           </div>
 
           {feedback && (
-            <div className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-teal-100 px-3 py-2 rounded-[4px] shadow-md mt-3 sm:mt-0 border border-teal-200 self-stretch sm:self-start">
+            <div className="flex items-center gap-2 bg-white/60 px-3 py-2 rounded-[4px] shadow-md mt-3 sm:mt-0 border border-white/30 self-stretch sm:self-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -224,7 +238,7 @@ const InterviewCard = ({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-teal-500"
+                className="text-gray-700"
               >
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
@@ -233,9 +247,9 @@ const InterviewCard = ({
                   <span className="text-gray-800 font-bold text-lg leading-none">
                     {feedback?.totalScore || "--"}
                   </span>
-                  <span className="text-gray-500 text-xs ml-1">/100</span>
+                  <span className="text-gray-600 text-xs ml-1">/100</span>
                 </div>
-                <span className="text-gray-500 text-xs">Score</span>
+                <span className="text-gray-600 text-xs">Score</span>
               </div>
             </div>
           )}
@@ -249,7 +263,7 @@ const InterviewCard = ({
               ? techstack.split(",").map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
+                    className="bg-white/50 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
                   >
                     {tech.trim()}
                   </span>
@@ -257,7 +271,7 @@ const InterviewCard = ({
               : techstack?.map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
+                    className="bg-white/50 text-gray-700 px-2.5 py-1 rounded-[4px] text-xs font-medium"
                   >
                     {tech.trim()}
                   </span>
@@ -272,16 +286,16 @@ const InterviewCard = ({
             <span
               className={`text-xs font-medium px-2 py-0.5 rounded-[4px] ${
                 feedback
-                  ? "bg-green-100 text-green-600"
-                  : "bg-yellow-100 text-yellow-600"
+                  ? "bg-white/60 text-gray-700"
+                  : "bg-white/60 text-gray-700"
               }`}
             >
               {feedback ? "Completed" : "In Progress"}
             </span>
           </div>
-          <div className="h-2 bg-gray-100 rounded-[4px] overflow-hidden border border-gray-200">
+          <div className="h-2 bg-white/40 rounded-[4px] overflow-hidden border border-white/30">
             <div
-              className={`h-full ${feedback ? "bg-green-500" : "bg-teal-500"}`}
+              className={`h-full ${feedback ? "bg-white/80" : "bg-white/60"}`}
               style={{ width: feedback ? "100%" : "30%" }}
             ></div>
           </div>
@@ -289,7 +303,7 @@ const InterviewCard = ({
 
         {/* Feedback or Placeholder Text */}
         <div className="flex-grow mb-5">
-          <p className="text-gray-700 line-clamp-2 bg-teal-50 p-3 rounded-[4px] border-l-2 border-teal-500 shadow-sm">
+          <p className="text-gray-700 line-clamp-2 bg-white/60 p-3 rounded-[4px] border-l-2 border-white/60 shadow-sm">
             {feedback?.finalAssessment ||
               "You haven't completed this interview yet. Continue to improve your skills."}
           </p>
@@ -304,7 +318,7 @@ const InterviewCard = ({
             }
             className="block w-full"
           >
-            <button className="bg-teal-500 text-white px-5 py-3 rounded-[4px] font-medium transition-all duration-300 hover:opacity-90 hover:shadow-teal-200 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
+            <button className="bg-white/70 text-gray-800 px-5 py-3 rounded-[4px] font-medium transition-all duration-300 hover:bg-white/90 hover:shadow-white/20 hover:shadow-lg shadow-md w-full flex items-center justify-center gap-2 group hover:-translate-y-1 active:scale-95">
               {feedback ? "View Feedback" : "Continue Interview"}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
