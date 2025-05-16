@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/actions/auth.client";
+import InterviewerAvatar from "@/components/InterviewerAvatar";
 
 const InterviewConfirmationPage = () => {
   const router = useRouter();
@@ -558,18 +559,7 @@ const InterviewConfirmationPage = () => {
 
           <div className="relative z-10">
             <div className="relative mb-8">
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-200/30 to-teal-300/30 rounded-full blur-md"></div>
-              <div className="relative bg-white p-2 rounded-full border border-teal-100 shadow-lg">
-                <div className="w-[140px] h-[140px] rounded-full bg-gradient-to-br from-teal-50 to-teal-100 flex items-center justify-center">
-                  <Image
-                    src="/sanya-backup.png"
-                    alt="AI Interviewer"
-                    width={120}
-                    height={120}
-                    className="rounded-full object-cover"
-                  />
-                </div>
-              </div>
+              <InterviewerAvatar size={140} className="mb-2" />
               <div className="absolute -bottom-2 -right-2 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full p-3 shadow-md">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
