@@ -86,14 +86,51 @@ const InterviewCard = ({
     fetchFeedback();
   }, [interviewId, userId]);
 
-  const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
+  // Normalize the interview type to match our CSS classes
+  let normalizedType = type;
+
+  if (/mix/gi.test(type)) {
+    normalizedType = "Mixed";
+  }
+
+  // Map the normalized type to one of our supported types
+  const typeMapping: Record<string, string> = {
+    Technical: "technical",
+    Behavioral: "behavioral",
+    Problem: "problem",
+    System: "system",
+    Leadership: "leadership",
+    Product: "product",
+    Mixed: "technical", // Default mixed to technical
+    Frontend: "technical",
+    Backend: "technical",
+    FullStack: "technical",
+    Data: "technical",
+    Software: "technical",
+    Engineer: "technical",
+    Developer: "technical",
+    Scientist: "problem",
+  };
+
+  // Find the matching type or default to technical
+  const mappedType = Object.keys(typeMapping).find((key) =>
+    normalizedType.toLowerCase().includes(key.toLowerCase())
+  );
+
+  normalizedType = mappedType ? typeMapping[mappedType] : "technical";
+
+  // Badge color based on interview type
+  const badgeColorMap: Record<string, string> = {
+    technical: "bg-[#F7D77F] text-yellow-800",
+    behavioral: "bg-[#8FC8E8] text-blue-800",
+    problem: "bg-[#B2E887] text-green-800",
+    system: "bg-[#F7D77F] text-yellow-800",
+    leadership: "bg-[#8FC8E8] text-blue-800",
+    product: "bg-[#E8BA98] text-orange-800",
+  };
 
   const badgeColor =
-    {
-      Behavioral: "bg-teal-200",
-      Mixed: "bg-teal-300",
-      Technical: "bg-teal-400",
-    }[normalizedType] || "bg-teal-300";
+    badgeColorMap[normalizedType] || "bg-[#F7D77F] text-yellow-800";
 
   // Format date without dayjs dependency
   const formatDate = (dateString: string | number | undefined) => {
@@ -127,14 +164,19 @@ const InterviewCard = ({
     );
   }
 
+  // Determine the interview type class
+  const interviewTypeClass = `interview-${normalizedType.toLowerCase()}`;
+
   return (
-    <div className="card relative overflow-hidden rounded-[var(--radius)] p-4 sm:p-6 w-full group">
+    <div
+      className={`${interviewTypeClass} relative overflow-hidden rounded-[var(--radius)] p-4 sm:p-6 w-full group`}
+    >
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-teal-100 rounded-[var(--radius)] blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-200/30 rounded-[var(--radius)] blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-32 h-32 bg-white/30 rounded-[var(--radius)] blur-xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/30 rounded-[var(--radius)] blur-xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
       <div className="flex flex-col h-full relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start mb-5 gap-3 sm:gap-0">
@@ -160,7 +202,9 @@ const InterviewCard = ({
                 {role} Interview
               </h3>
               <div className="flex flex-wrap items-center gap-2 mt-1">
-                <span className="bg-teal-100 text-teal-600 px-2 py-0.5 rounded-[4px] text-xs font-medium">
+                <span
+                  className={`${badgeColor} px-2 py-0.5 rounded-[4px] text-xs font-medium capitalize`}
+                >
                   {normalizedType}
                 </span>
                 <span className="text-gray-500 text-xs">{formattedDate}</span>
