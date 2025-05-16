@@ -29,10 +29,10 @@ const ColorCard: React.FC<ColorCardProps> = ({
     primary: "bg-teal-500",
     secondary: "bg-teal-400",
     dark: "bg-gray-100",
-    yellow: "bg-[#FFE082] border-yellow-200",
-    blue: "bg-[#B3E5FC] border-blue-200",
-    green: "bg-[#C8E6C9] border-green-200",
-    peach: "bg-[#FFCCBC] border-red-200",
+    yellow: "bg-[#F7D77F] border-yellow-200",
+    blue: "bg-[#8FC8E8] border-blue-200",
+    green: "bg-[#B2E887] border-green-200",
+    peach: "bg-[#E8BA98] border-red-200",
   };
 
   // Text color mapping

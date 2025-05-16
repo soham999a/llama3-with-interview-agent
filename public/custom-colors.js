@@ -18,20 +18,20 @@ document.addEventListener("DOMContentLoaded", function () {
           // Apply colors based on index
           switch (index % 4) {
             case 0: // Technical Interview (Yellow)
-              card.style.backgroundColor = "#FFE082";
-              card.style.borderColor = "#FFE082";
+              card.style.backgroundColor = "#F7D77F";
+              card.style.borderColor = "#F7D77F";
               break;
             case 1: // Behavioral Interview (Blue)
-              card.style.backgroundColor = "#B3E5FC";
-              card.style.borderColor = "#B3E5FC";
+              card.style.backgroundColor = "#8FC8E8";
+              card.style.borderColor = "#8FC8E8";
               break;
             case 2: // Problem Solving (Green)
-              card.style.backgroundColor = "#C8E6C9";
-              card.style.borderColor = "#C8E6C9";
+              card.style.backgroundColor = "#B2E887";
+              card.style.borderColor = "#B2E887";
               break;
             case 3: // System Design (Orange)
-              card.style.backgroundColor = "#FFCCBC";
-              card.style.borderColor = "#FFCCBC";
+              card.style.backgroundColor = "#E8BA98";
+              card.style.borderColor = "#E8BA98";
               break;
           }
         });
@@ -46,17 +46,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // Create a style element
         const styleEl = document.createElement("style");
         styleEl.textContent = `
-          .bg-\\[\\#FFE082\\] { background-color: #FFD54F !important; }
-          .border-yellow-200 { border-color: #FFD54F !important; }
+          .bg-\\[\\#FFE082\\], .bg-\\[\\#F7D77F\\] { background-color: #F7D77F !important; }
+          .border-yellow-200 { border-color: #F7D77F !important; }
 
-          .bg-\\[\\#B3E5FC\\] { background-color: #81D4FA !important; }
-          .border-blue-200 { border-color: #81D4FA !important; }
+          .bg-\\[\\#B3E5FC\\], .bg-\\[\\#8FC8E8\\] { background-color: #8FC8E8 !important; }
+          .border-blue-200 { border-color: #8FC8E8 !important; }
 
-          .bg-\\[\\#C8E6C9\\] { background-color: #A5D6A7 !important; }
-          .border-green-200 { border-color: #A5D6A7 !important; }
+          .bg-\\[\\#C8E6C9\\], .bg-\\[\\#B2E887\\] { background-color: #B2E887 !important; }
+          .border-green-200 { border-color: #B2E887 !important; }
 
-          .bg-\\[\\#FFCCBC\\] { background-color: #FFAB91 !important; }
-          .border-orange-200 { border-color: #FFAB91 !important; }
+          .bg-\\[\\#FFCCBC\\], .bg-\\[\\#E8BA98\\] { background-color: #E8BA98 !important; }
+          .border-orange-200, .border-red-200 { border-color: #E8BA98 !important; }
         `;
 
         document.head.appendChild(styleEl);

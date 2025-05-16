@@ -7,33 +7,33 @@ body {
 
 /* Override for interview type cards */
 .interview-technical {
-  background-color: #ffe082 !important;
-  border-color: #ffe082 !important;
+  background-color: #f7d77f !important;
+  border-color: #f7d77f !important;
 }
 
 .interview-behavioral {
-  background-color: #b3e5fc !important;
-  border-color: #b3e5fc !important;
+  background-color: #8fc8e8 !important;
+  border-color: #8fc8e8 !important;
 }
 
 .interview-problem {
-  background-color: #c8e6c9 !important;
-  border-color: #c8e6c9 !important;
+  background-color: #b2e887 !important;
+  border-color: #b2e887 !important;
 }
 
 .interview-system {
-  background-color: #ffe082 !important;
-  border-color: #ffe082 !important;
+  background-color: #f7d77f !important;
+  border-color: #f7d77f !important;
 }
 
 .interview-leadership {
-  background-color: #b3e5fc !important;
-  border-color: #b3e5fc !important;
+  background-color: #8fc8e8 !important;
+  border-color: #8fc8e8 !important;
 }
 
 .interview-product {
-  background-color: #ffccbc !important;
-  border-color: #ffccbc !important;
+  background-color: #e8ba98 !important;
+  border-color: #e8ba98 !important;
 }
 
 /* Card styles */

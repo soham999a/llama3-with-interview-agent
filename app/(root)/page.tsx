@@ -201,42 +201,42 @@ function Home() {
       id: "technical",
       title: "Technical Interview",
       description: "Practice coding problems and system design questions",
-      color: "bg-[#FFE082] border-yellow-300", // Lighter yellow (1st color)
+      color: "bg-[#F7D77F] border-yellow-300", // Yellow from image
       icon: "/icons/code.svg",
     },
     {
       id: "behavioral",
       title: "Behavioral Interview",
       description: "Prepare for questions about your past experiences",
-      color: "bg-[#B3E5FC] border-blue-300", // Lighter blue (2nd color)
+      color: "bg-[#8FC8E8] border-blue-300", // Blue from image
       icon: "/icons/chat.svg",
     },
     {
       id: "problem-solving",
       title: "Problem Solving",
       description: "Demonstrate your analytical and critical thinking skills",
-      color: "bg-[#C8E6C9] border-green-300", // Lighter green (3rd color)
+      color: "bg-[#B2E887] border-green-300", // Green from image
       icon: "/icons/brain.svg",
     },
     {
       id: "system-design",
       title: "System Design",
       description: "Practice designing scalable systems and architectures",
-      color: "bg-[#FFCCBC] border-orange-300", // Lighter orange/peach (4th color)
+      color: "bg-[#E8BA98] border-orange-300", // Peach from image
       icon: "/icons/design.svg",
     },
     {
       id: "leadership",
       title: "Leadership",
       description: "Prepare for questions about your leadership experience",
-      color: "bg-[#FFE082] border-yellow-300", // Repeat 1st color
+      color: "bg-[#F7D77F] border-yellow-300", // Yellow from image
       icon: "/icons/leadership.svg",
     },
     {
       id: "product-management",
       title: "Product Management",
       description: "Practice product management interview questions",
-      color: "bg-[#B3E5FC] border-blue-300", // Repeat 2nd color
+      color: "bg-[#8FC8E8] border-blue-300", // Blue from image
       icon: "/icons/product.svg",
     },
   ];

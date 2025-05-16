@@ -12,18 +12,18 @@
   --color-teal-600: #18a08b; /* Darker teal */
 
   /* Card background colors */
-  --color-card-yellow: #ffe082; /* Light yellow for cards */
-  --color-card-blue: #b3e5fc; /* Light blue for cards */
-  --color-card-green: #c8e6c9; /* Light green for cards */
-  --color-card-peach: #ffccbc; /* Light peach/pink for cards */
+  --color-card-yellow: #f7d77f; /* Light yellow for cards - from image */
+  --color-card-blue: #8fc8e8; /* Light blue for cards - from image */
+  --color-card-green: #b2e887; /* Light green for cards - from image */
+  --color-card-peach: #e8ba98; /* Light peach/pink for cards - from image */
 
   /* Interview type card colors (pastel) */
-  --color-interview-technical: #ffe082; /* Pastel yellow */
-  --color-interview-behavioral: #b3e5fc; /* Pastel blue */
-  --color-interview-problem: #c8e6c9; /* Pastel green */
-  --color-interview-system: #ffe082; /* Pastel yellow */
-  --color-interview-leadership: #b3e5fc; /* Pastel blue */
-  --color-interview-product: #ffccbc; /* Pastel pink */
+  --color-interview-technical: #f7d77f; /* Pastel yellow - from image */
+  --color-interview-behavioral: #8fc8e8; /* Pastel blue - from image */
+  --color-interview-problem: #b2e887; /* Pastel green - from image */
+  --color-interview-system: #f7d77f; /* Pastel yellow - from image */
+  --color-interview-leadership: #8fc8e8; /* Pastel blue - from image */
+  --color-interview-product: #e8ba98; /* Pastel pink - from image */
 
   /* Text colors */
   --color-text-dark: #333333; /* Dark text */
@@ -190,27 +190,27 @@
 
   /* Interview card color variations */
   .interview-technical {
-    @apply bg-[#FFE082] border-yellow-100;
+    @apply bg-[#F7D77F] border-yellow-100;
   }
 
   .interview-behavioral {
-    @apply bg-[#B3E5FC] border-blue-100;
+    @apply bg-[#8FC8E8] border-blue-100;
   }
 
   .interview-problem {
-    @apply bg-[#C8E6C9] border-green-100;
+    @apply bg-[#B2E887] border-green-100;
   }
 
   .interview-system {
-    @apply bg-[#FFE082] border-yellow-100;
+    @apply bg-[#F7D77F] border-yellow-100;
   }
 
   .interview-leadership {
-    @apply bg-[#B3E5FC] border-blue-100;
+    @apply bg-[#8FC8E8] border-blue-100;
   }
 
   .interview-product {
-    @apply bg-[#FFCCBC] border-red-100;
+    @apply bg-[#E8BA98] border-red-100;
   }
 
   /* Avatar styles */
