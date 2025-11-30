@@ -1,3 +1,5 @@
+import CosdataPanel from '@/components/cosdata/CosdataPanel';
+
 export default function TestPage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24 bg-white">
@@ -15,6 +17,16 @@ export default function TestPage() {
           ✅ DeepSeek integration is working correctly!
         </p>
       </div>
+
+      {/* Cosdata demo panel */}
+      <div className="mt-8 w-full flex justify-center">
+        {/* @ts-ignore Server component can render this client component via import path */}
+        {/* The CosdataPanel is a client component that calls /api/cosdata endpoints */}
+        <div style={{ width: '100%', maxWidth: 820 }}>
+          <CosdataPanel />
+        </div>
+      </div>
+
     </div>
   );
 }
